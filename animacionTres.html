@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Animación de línea y círculos</title>
+    <style>
+      #canvas {
+        border: 1px solid black;
+      }
+      .circle {
+        fill: yellow;
+        stroke: black;
+        stroke-width: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="canvas" width="800" height="600">
+      <circle id="circle1" class="circle" cx="50" cy="450" r="30" />
+      <circle id="circle2" class="circle" cx="200" cy="350" r="30" />
+      <circle id="circle3" class="circle" cx="400" cy="450" r="30" />
+      <circle id="circle4" class="circle" cx="600" cy="350" r="30" />
+      <circle id="circle5" class="circle" cx="750" cy="450" r="30" />
+      <path id="line" stroke="black" stroke-width="12" fill="none" d="M-50,450 C-50,450 100,200 250,250 C400,300 550,100 700,150 C850,200 950,400 950,400" />
+    </svg>
+    <script>
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const circle1 = document.getElementById('circle1');
+      const circle2 = document.getElementById('circle2');
+      const circle3 = document.getElementById('circle3');
+      const circle4 = document.getElementById('circle4');
+      const circle5 = document.getElementById('circle5');
+      const start = { x: -50, y: 450 };
+      const end = { x: 950, y: 400 };
+      const controlPoint1 = { x: -50, y: 450 };
+      const controlPoint2 = { x: 100, y: 200 };
+      const controlPoint3 = { x: 250, y: 250 };
+      const controlPoint4 = { x: 400, y: 300 };
+      const controlPoint5 = { x: 550, y: 100 };
+      const controlPoint6 = { x: 700, y: 150 };
+      const controlPoint7 = { x: 850, y: 200 };
+      const controlPoint8 = { x: 950, y: 400 };
+      let t = 0;
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Dibujar línea
+        const currentPoint = calculateBezierPoint(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, controlPoint6, controlPoint7, controlPoint8, end);
+        drawLine(currentPoint);
+
+        // Dibujar círculos
+        const circle1Position = calculateCirclePosition(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, controlPoint6, controlPoint7, controlPoint8, circle1);
+        const circle2Position = calculateCirclePosition(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, controlPoint6
+        , controlPoint7, controlPoint8, circle2);
+
+        const circle3Position = calculateCirclePosition(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, controlPoint6
+        , controlPoint7, controlPoint8, circle3);
+
+        const circle4Position = calculateCirclePosition(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, controlPoint6
+        , controlPoint7, controlPoint8, circle4);
+
+        const circle5Position = calculateCirclePosition(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, controlPoint6
+        , controlPoint7, controlPoint8, circle5);
+
+        drawCircle(circle1Position);
+
+        drawCircle(circle2Position);
+
+        drawCircle(circle3Position);
+
+        drawCircle(circle4Position);
+
+        drawCircle(circle5Position);
+
+        t += 0.005;
+
+        if (t <= 1) {
+          requestAnimationFrame(animate);
+        }
+
+        }
+
+        
+
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Animación de línea y círculos</title>
+    <style>
+      #canvas {
+        border: 1px solid black;
+      }
+      .circle {
+        fill: red;
+        stroke: black;
+        stroke-width: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="canvas" width="800" height="600">
+      <circle id="circle1" class="circle" cx="50" cy="300" r="30" />
+      <circle id="circle2" class="circle" cx="250" cy="200" r="30" />
+      <circle id="circle3" class="circle" cx="450" cy="100" r="30" />
+      <circle id="circle4" class="circle" cx="650" cy="50" r="30" />
+      <path id="line" stroke="black" stroke-width="6" fill="none" d="M-50,250 C-50,250 150,150 350,50 C550,-50 750,-50 750,-50" />
+    </svg>
+    <script>
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const circle1 = document.getElementById('circle1');
+      const circle2 = document.getElementById('circle2');
+      const circle3 = document.getElementById('circle3');
+      const circle4 = document.getElementById('circle4');
+      const start = { x: -50, y: 250 };
+      const end = { x: 750, y: -50 };
+      const controlPoint1 = { x: -50, y: 250 };
+      const controlPoint2 = { x: 150, y: 150 };
+      const controlPoint3 = { x: 350, y: 50 };
+      const controlPoint4 = { x: 550, y: -50 };
+      const controlPoint5 = { x: 750, y: -50 };
+      let t = 0;
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Dibujar línea
+        const currentPoint = calculateBezierPoint(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, end);
+        drawLine(currentPoint);
+
+        // Dibujar círculos
+        drawCircle(circle1);
+        drawCircle(circle2);
+        drawCircle(circle3);
+        drawCircle(circle4);
+
+        // Incrementar parámetro t
+        t += 0.01;
+
+        // Si t está dentro del rango 0-1, continuar animando
+        if (t < 1) {
+          requestAnimationFrame(animate);
+        }
+      }
+
+      function calculateBezierPoint(t, start, controlPoint1, controlPoint2, controlPoint3, controlPoint4, controlPoint5, end) {
+        const u = 1 - t;
+        const tt = t * t;
+        const uu = u * u;
+        const uuu = uu * u;
+        const ttt = tt * t;
+
+        const x = start.x * uuu + 5 * controlPoint1.x * uu * t + 10 * controlPoint2.x * u * tt + 10 * controlPoint3.x * ttt + 5 * controlPoint4.x * tt * u + controlPoint5.x * ttt;
+        const y = start.y * uuu + 5 * controlPoint1.y * uu * t + 10 * controlPoint2.y * u * tt + 10 * controlPoint3.y * ttt + 5 * controlPoint4.y * tt * u + controlPoint5.y * ttt;
+
+        return { x, y };
+        }
+
+        function drawLine(currentPoint) {
+            ctx.beginPath();
+            ctx.moveTo(start.x, start.y);
+            ctx.lineTo(currentPoint.x, currentPoint.y);
+            ctx.stroke();
+            }
+
+            
+
+
+
