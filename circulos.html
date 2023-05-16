@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Animación de línea y círculos</title>
+    <style>
+      #canvas {
+        width: 800px;
+        height: 600px;
+        position: relative;
+        overflow: hidden;
+      }
+      .circle {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border-radius: 50%;
+        position: absolute;
+      }
+      .line {
+        position: absolute;
+        height: 10px;
+        background-color: black;
+        transform-origin: left center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="canvas">
+      <div class="line"></div>
+      <div class="circle" style="top: 240px; left: -50px;"></div>
+      <div class="circle" style="top: 140px; left: 100px;"></div>
+      <div class="circle" style="top: 340px; left: 300px;"></div>
+      <div class="circle" style="top: 140px; left: 500px;"></div>
+      <div class="circle" style="top: 240px; left: 650px;"></div>
+    </div>
+
+    <script>
+      const canvas = document.getElementById('canvas');
+      const line = document.querySelector('.line');
+      const circles = document.querySelectorAll('.circle');
+
+      const totalCircles = circles.length;
+      const animationDuration = 3; // Duración de la animación en segundos
+      const delayBetweenCircles = animationDuration / totalCircles;
+
+      line.style.animationDuration = `${animationDuration}s`;
+
+      circles.forEach((circle, index) => {
+        circle.style.animationDelay = `${index * delayBetweenCircles}s`;
+      });
+    </script>
+  </body>
+</html>

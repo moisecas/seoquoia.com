@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Cambio de palabra y fondo de color</title>
+    <style>
+      .text-box {
+        width: 150px;
+        height: 50px;
+        background-color: #ccc;
+        padding: 10px;
+        text-align: center;
+        font-size: 16px;
+        color: #fff;
+        transition: background-color 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="text-box" id="textBox"></div>
+
+    <script>
+      const textBox = document.getElementById('textBox');
+      const words = ['Palabra 1', 'Palabra 2', 'Palabra 3', 'Palabra 4', 'Palabra 5'];
+      let currentIndex = 0;
+
+      function changeWord() {
+        textBox.textContent = words[currentIndex];
+        textBox.style.backgroundColor = getRandomColor();
+
+        currentIndex++;
+        if (currentIndex >= words.length) {
+          currentIndex = 0;
+        }
+
+        setTimeout(changeWord, 2000); // Cambiar la palabra cada 2 segundos
+      }
+
+      function getRandomColor() {
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff']; // Colores aleatorios
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      // Iniciar el cambio de palabra
+      changeWord();
+    </script>
+  </body>
+</html>
+
