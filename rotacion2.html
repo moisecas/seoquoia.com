@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lista de palabras animada con cambio de color de fondo</title>
+    <style>
+      /* Estilos del contenedor */
+      .word-container {
+        display: inline-block;
+        position: relative;
+        animation: wordAnimation 12s infinite;
+      }
+      
+      /* Estilos de cada palabra */
+      .word-container h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        animation: fadeAnimation 12s infinite;
+      }
+      
+      /* Animación de cambio de palabra */
+      @keyframes wordAnimation {
+        0%, 20% { background-color: #ff0000; }
+        20%, 40% { background-color: #00ff00; }
+        40%, 60% { background-color: #0000ff; }
+        60%, 80% { background-color: #ffff00; }
+        80%, 100% { background-color: #ff00ff; }
+      }
+      
+      /* Animación de desvanecimiento de palabra */
+      @keyframes fadeAnimation {
+        0%, 16.66% { opacity: 0; }
+        16.66%, 33.33% { opacity: 1; }
+        66.66%, 83.33% { opacity: 1; }
+        83.33%, 100% { opacity: 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="word-container">
+      <h2>Predictable</h2>
+      <h2>Scalable</h2>
+      <h2>Measurable</h2>
+      <h2>Sustainable</h2>
+    </div>
+  </body>
+</html>

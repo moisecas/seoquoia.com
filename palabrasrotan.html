@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lista de palabras animada</title>
+    <style>
+      /* Estilos de la animación */
+      @keyframes wordAnimation {
+        0% { opacity: 0; }
+        25% { opacity: 1; }
+        75% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+
+      /* Estilos del contenedor */
+      .word-container {
+        display: inline-block;
+        animation: wordAnimation 8s infinite;
+      }
+      
+      /* Estilos de cada palabra */
+      .word-container h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="word-container">
+      <h2>Sustainable</h2>
+      <h2>Predictable</h2>
+      <h2>Scalable</h2>
+      <h2>Measurable</h2>
+      <h2>Sustainable</h2>
+    </div>
+  </body>
+</html>
