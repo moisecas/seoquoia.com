@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lista de palabras animada con cambio de color de fondo</title>
+    <style>
+      /* Estilos del contenedor */
+      .word-container {
+        display: inline-block;
+        position: relative;
+        width: 200px;
+        height: 50px;
+        background-color: #ff0000;
+        animation: wordAnimation 12s infinite;
+      }
+      
+      /* Estilos de cada palabra */
+      .word-container h2 {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeAnimation 12s infinite;
+      }
+      
+      /* Animación de cambio de palabra */
+      @keyframes wordAnimation {
+        0%, 8.33% { background-color: #ff0000; }
+        8.33%, 16.66% { background-color: #00ff00; }
+        16.66%, 25% { background-color: #0000ff; }
+        25%, 33.33% { background-color: #ffff00; }
+        33.33%, 100% { background-color: #ff00ff; }
+      }
+      
+      /* Animación de desvanecimiento de palabra */
+      @keyframes fadeAnimation {
+        0%, 8.33% { opacity: 0; }
+        8.33%, 16.66% { opacity: 1; }
+        83.33%, 91.66% { opacity: 1; }
+        91.66%, 100% { opacity: 0; }
+      }
+      
+      /* Estilos de cada palabra con color personalizado */
+      .word-container h2:nth-child(1) { color: #ff0000; }
+      .word-container h2:nth-child(2) { color: #00ff00; }
+      .word-container h2:nth-child(3) { color: #0000ff; }
+      .word-container h2:nth-child(4) { color: #ffff00; }
+    </style>
+  </head>
+  <body>
+    <div class="word-container">
+      <h2>Predictable</h2>
+      <h2>Scalable</h2>
+      <h2>Measurable</h2>
+      <h2>Sustainable</h2>
+    </div>
+  </body>
+</html>
