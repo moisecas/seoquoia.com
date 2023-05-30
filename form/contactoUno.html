@@ -15,6 +15,7 @@
       padding: 50px;
       display: inline-block;
       border-radius: 5px;
+      width: 400px; /* Aumenta el valor para hacer el formulario más ancho */
     }
     
     .form-field {
@@ -33,8 +34,12 @@
       border-bottom: 1px solid #ccc;
     }
     
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    
     input[type="submit"] {
-      background-color: #4CAF50;
+      background-color: #000;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -46,6 +51,7 @@
 <body>
   <div class="outer-box">
     <div class="inner-box">
+      <h2>Tell us about you </h2>
       <form>
         <div class="form-field">
           <label for="first-name">First Name:</label>
@@ -73,7 +79,12 @@
         </div>
         
         <div class="form-field">
-          <input type="submit" value="Submit">
+          <input type="checkbox" id="newsletter-checkbox">
+          <label for="newsletter-checkbox">Yes, I want to experience the greatest growth newsletter on the internet</label>
+        </div>
+        
+        <div class="form-field">
+          <input type="submit" value="SUBMIT YOUR MESSAGE">
         </div>
       </form>
     </div>
