@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lista de palabras animada con cambio de color de fondo</title>
+    <style>
+      /* Estilos del contenedor */
+      .word-container {
+        display: inline-block;
+        position: relative;
+        width: 600px;
+        height: 100px;
+        background-color: #ff0000;
+        animation: wordAnimation 20s infinite;
+      }
+      
+      /* Estilos de cada palabra */
+      .word-container h2 {
+        
+        font-weight: bold;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeAnimation 20s infinite;
+      }
+
+      .marco{
+        
+        display: inlie-block;
+        border-radius: 5px;
+        width: 900px; 
+        margin-left: 30px;
+        margin-right: 30px;
+      }
+      
+      /* Animación de cambio de palabra */
+      @keyframes wordAnimation {
+        0%, 20% { background-color: #FACDF8; }
+        20%, 40% { background-color: #4D7EFC; } 
+        40%, 60% { background-color: #AAFF9C; }
+        60%, 80% { background-color: #FDFF9C; }
+        80%, 100% { background-color: #FACDF8; } 
+      }
+      
+      /* Animación de desvanecimiento de palabra */
+      @keyframes fadeAnimation {
+        0%, 10% { opacity: 1; }
+        20%, 30% { opacity: 0; }
+        100% { opacity: 0; }
+      }
+      
+      /* Estilos de cada palabra con color personalizado */
+      .word-container h2:nth-child(1) { animation-delay: 0s; }
+      .word-container h2:nth-child(2) { animation-delay: 5s; }
+      .word-container h2:nth-child(3) { animation-delay: 10s; }
+      .word-container h2:nth-child(4) { animation-delay: 15s; }
+    </style>
+  </head>
+  <body>
+    
+
+    <div class="marco">
+      <h2>We Help Impactful Brands Build</h2> 
+<span class="word-container">
+        <h2>Predictable</h2>
+        <h2>Scalable</h2>
+        <h2>Measurable</h2>
+        <h2>Sustainable</h2>
+      </span> 
+<br>
+<h2>Compounding Growth</h2>
+    </div>
+  </body>
+</html>
