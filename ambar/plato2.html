@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Estilos del plato */
+    .plate {
+      width: 300px;
+      height: 200px;
+      background-color: #EFEFEF;
+      border: 2px solid #CCCCCC;
+      border-radius: 10px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Estilos de la hamburguesa */
+    .burger {
+      width: 120px;
+      height: 60px;
+      background-color: #FFA500;
+      border-radius: 5px;
+    }
+
+    /* Estilos del queso */
+    .cheese {
+      width: 100px;
+      height: 10px;
+      background-color: #FFD700;
+      border-radius: 2px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Estilos de la lechuga */
+    .lettuce {
+      width: 120px;
+      height: 40px;
+      background-color: #00FF00;
+      border-radius: 5px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Estilos del tomate */
+    .tomato {
+      width: 60px;
+      height: 60px;
+      background-color: #FF0000;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 5px;
+      right: 25%;
+    }
+
+    /* Estilos de la carne */
+    .patty {
+      width: 100px;
+      height: 20px;
+      background-color: #8B4513;
+      border-radius: 5px;
+      position: absolute;
+      bottom: 10px;
+      right: 50%;
+      transform: translateX(50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="plate">
+    <div class="burger"></div>
+    <div class="cheese"></div>
+    <div class="lettuce"></div>
+    <div class="tomato"></div>
+    <div class="patty"></div>
+  </div>
+</body>
+</html>
