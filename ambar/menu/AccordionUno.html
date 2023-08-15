@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .menu {
+      width: 300px;
+      margin: 50px auto;
+    }
+    
+    /* Estilos para el acordeón */
+    .accordion {
+      margin-bottom: 5px;
+    }
+    
+    .accordion-title {
+      background-color: #f2f2f2;
+      padding: 10px;
+      cursor: pointer;
+    }
+    
+    .accordion-content {
+      display: none;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+    }
+    
+    /* Cambiar estilo al título activo */
+    .accordion.active .accordion-title {
+      background-color: #ddd;
+    }
+    
+    .accordion.active .accordion-content {
+      display: block;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const accordions = document.querySelectorAll(".accordion");
+
+      accordions.forEach((accordion) => {
+        const title = accordion.querySelector(".accordion-title");
+
+        title.addEventListener("click", () => {
+          // Ocultar otros acordeones antes de mostrar uno nuevo
+          accordions.forEach((otherAccordion) => {
+            if (otherAccordion !== accordion) {
+              otherAccordion.classList.remove("active");
+              otherAccordion.querySelector(".accordion-content").style.display = "none";
+            }
+          });
+
+          accordion.classList.toggle("active");
+          const content = accordion.querySelector(".accordion-content");
+          content.style.display = content.style.display === "block" ? "none" : "block";
+        });
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="menu">
+    <div class="accordion">
+      <div class="accordion-title">Entradas</div>
+      <div class="accordion-content">
+        <div class="accordion">
+          <div class="accordion-title">Sopa del día</div>
+          <div class="accordion-content">
+            <div class="submenu">
+              <div class="submenu-item">Sopa 1</div>
+              <div class="submenu-item">Sopa 2</div>
+              <div class="submenu-item">Sopa 3</div>
+            </div>
+          </div>
+        </div>
+        <div class="submenu-item">Ensalada fresca</div>
+        cuando de click en ensala fresca muestre 3 opciones
+        <div class="submenu">
+          <div class="submenu-item">Ensalada 1</div>
+          <div class="submenu-item">Ensalada 2</div>
+          <div class="submenu-item">Ensalada 3</div>
+
+         
+
+        <div class="submenu-item">Aros de cebolla</div>
+      </div>
+    </div>
+    
+    <div class="accordion">
+      <div class="accordion-title">Platos Principales</div>
+      <div class="accordion-content">
+        <div class="submenu">
+          <div class="submenu-item">Hamburguesa clásica</div>
+          <div class="submenu-item">Pasta carbonara</div>
+          <div class="submenu-item">Filete a la parrilla</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="accordion">
+      <div class="accordion-title">Postres</div>
+      <div class="accordion-content">
+        <div class="submenu">
+          <div class="submenu-item">Tarta de chocolate</div>
+          <div class="submenu-item">Helado de vainilla</div>
+          <div class="submenu-item">Flan casero</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
