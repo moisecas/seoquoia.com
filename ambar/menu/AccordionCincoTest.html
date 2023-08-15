@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .accordion {
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+  }
+
+  .active, .accordion:hover {
+    background-color: #ccc;
+  }
+
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+  }
+
+  .sub-menu {
+    padding-left: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h2>Menú de Restaurante</h2>
+
+<button class="accordion">Platos Principales</button>
+<div class="panel">
+  <button class="sub-menu">Opción 1 - Submenu</button>
+  <div class="panel sub-menu-panel">
+    <p>Subopción 1</p>
+    <p>Subopción 2</p>
+    <p>Subopción 3</p>
+  </div>
+  <button class="sub-menu">Opción 2 - Submenu</button>
+  <div class="panel sub-menu-panel">
+    <p>Subopción 1</p>
+    <p>Subopción 2</p>
+    <p>Subopción 3</p>
+  </div>
+</div>
+
+<button class="accordion">Bebidas</button>
+<div class="panel">
+  <button class="sub-menu">Opción 1 - Submenu</button>
+  <div class="panel sub-menu-panel">
+    <p>Subopción 1</p>
+    <p>Subopción 2</p>
+    <p>Subopción 3</p>
+  </div>
+  <button class="sub-menu">Opción 2 - Submenu</button>
+  <div class="panel sub-menu-panel">
+    <p>Subopción 1</p>
+    <p>Subopción 2</p>
+    <p>Subopción 3</p>
+  </div>
+</div>
+
+<button class="accordion">Postres</button>
+<div class="panel">
+  <button class="sub-menu">Opción 1 - Submenu</button>
+  <div class="panel sub-menu-panel">
+    <p>Subopción 1</p>
+    <p>Subopción 2</p>
+    <p>Subopción 3</p>
+  </div>
+  <button class="sub-menu">Opción 2 - Submenu</button>
+  <div class="panel sub-menu-panel">
+    <p>Subopción 1</p>
+    <p>Subopción 2</p>
+    <p>Subopción 3</p>
+  </div>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var subMenus = document.getElementsByClassName("sub-menu");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+for (i = 0; i < subMenus.length; i++) {
+  subMenus[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var subMenuPanel = this.nextElementSibling;
+    if (subMenuPanel.style.display === "block") {
+      subMenuPanel.style.display = "none";
+    } else {
+      subMenuPanel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
