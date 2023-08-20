@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .menu-container {
+    background-color: #714337;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .accordion {
+    background-color: #714337;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .active, .accordion:hover {
+    background-color: #8D6250;
+  }
+
+  .panel {
+    padding: 0;
+    display: none;
+    background-color: #714337;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .sub-menu {
+    padding-left: 20px;
+    display: block;
+    border: none;
+    border-radius: 0;
+    color: white;
+    background-color: #714337;
+    transition: background-color 0.4s;
+  }
+
+  .sub-menu:hover {
+    background-color: #8D6250;
+  }
+
+  .sub-menu-divider {
+    border-bottom: 1px solid white;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="menu-container">
+  <h2>Menú de Restaurante</h2>
+  
+  <button class="accordion">Platos Principales</button>
+  <div class="panel">
+    <button class="sub-menu">Opción 1 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="sub-menu-divider"></div>
+    <button class="sub-menu">Opción 2 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="sub-menu-divider"></div>
+    <button class="sub-menu">Opción 3 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+
+  <button class="accordion">Vinos</button>
+  <div class="panel">
+    <button class="sub-menu">Opción 1 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="sub-menu-divider"></div>
+    <button class="sub-menu">Opción 2 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+
+  <button class="accordion">Bebidas Alcohólicas</button>
+  <div class="panel">
+    <button class="sub-menu">Opción 1 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="sub-menu-divider"></div>
+    <button class="sub-menu">Opción 2 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+
+  <button class="accordion">Refrescos</button>
+  <div class="panel">
+    <button class="sub-menu">Opción 1 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="sub-menu-divider"></div>
+    <button class="sub-menu">Opción 2 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+
+  <button class="accordion">Café y Tés</button>
+  <div class="panel">
+    <button class="sub-menu">Opción 1 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="sub-menu-divider"></div>
+    <button class="sub-menu">Opción 2 - Submenu</button>
+    <div class="panel sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var subMenus = document.getElementsByClassName("sub-menu");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+for (i = 0; i < subMenus.length; i++) {
+  subMenus[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var subMenuPanel = this.nextElementSibling;
+    if (subMenuPanel.style.display === "block") {
+      subMenuPanel.style.display = "none";
+    } else {
+      subMenuPanel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+

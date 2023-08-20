@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .custom-menu-container {
+    background-color: #D69D50;
+    padding: 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .custom-accordion {
+    background-color: #D69D50;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  .custom-active, .custom-accordion:hover {
+    background-color: #E5C8A2;
+  }
+
+  .custom-panel {
+    padding: 0;
+    display: none;
+    background-color: #D69D50;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+
+  .custom-sub-menu {
+    padding-left: 20px;
+    display: block;
+    border: none;
+    border-radius: 0;
+    color: white;
+    background-color: #D69D50;
+    transition: background-color 0.4s;
+  }
+
+  .custom-sub-menu:hover {
+    background-color: #E5C8A2;
+  }
+
+  .custom-sub-menu-divider {
+    border-top: 1px solid white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="custom-menu-container">
+  <h2>Menú de Restaurante</h2>
+  
+  <button class="custom-accordion">Platos Principales</button>
+  <div class="custom-panel">
+    <button class="custom-sub-menu">Opción 1 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="custom-sub-menu-divider"></div>
+    <button class="custom-sub-menu">Opción 2 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+
+  <button class="custom-accordion">Bebidas</button>
+  <div class="custom-panel">
+    <button class="custom-sub-menu">Opción 1 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="custom-sub-menu-divider"></div>
+    <button class="custom-sub-menu">Opción 2 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+
+  <button class="custom-accordion">Postres</button>
+  <div class="custom-panel">
+    <button class="custom-sub-menu">Opción 1 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <div class="custom-sub-menu-divider"></div>
+    <button class="custom-sub-menu">Opción 2 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+</div>
+
+<script>
+var acc = document.getElementsByClassName("custom-accordion");
+var subMenus = document.getElementsByClassName("custom-sub-menu");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("custom-active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+for (i = 0; i < subMenus.length; i++) {
+  subMenus[i].addEventListener("click", function() {
+    this.classList.toggle("custom-active");
+    var subMenuPanel = this.nextElementSibling;
+    if (subMenuPanel.style.display === "block") {
+      subMenuPanel.style.display = "none";
+    } else {
+      subMenuPanel.style.display = "block";
+    }
+  });
+}
+</script>
+
+</body>
+</html>
+
