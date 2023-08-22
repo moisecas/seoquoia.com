@@ -8,10 +8,11 @@
     padding: 20px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
   }
 
   .custom-accordion {
-    background-color: #D69D50;
     color: white;
     cursor: pointer;
     padding: 18px;
@@ -23,7 +24,10 @@
     transition: 0.4s;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    margin: 0; /* Eliminar margen superior e inferior */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .custom-active, .custom-accordion:hover {
@@ -37,7 +41,7 @@
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 0; /* Eliminar margen superior e inferior */
+    margin: 0;
   }
 
   .custom-sub-menu {
@@ -52,7 +56,7 @@
     width: 100%;
     text-align: left;
     border-bottom: 1px solid white;
-    margin: 0; /* Eliminar margen superior e inferior */
+    margin: 0;
   }
 
   .custom-sub-menu:hover {
@@ -62,27 +66,39 @@
   .custom-sub-menu-divider {
     border-top: 1px solid white;
     padding-top: 10px;
-    margin: 0; /* Eliminar margen superior e inferior */
+    margin: 0;
   }
 
   /* Colores personalizados para cada opción de menú */
-  .custom-accordion.platos-principales {
+  .custom-accordion.categoria-carta-1 {
+    background-color: #E0A955;
+  }
+  .custom-sub-menu.categoria-carta-1 {
+    background-color: #D2924A;
+  }
+  .custom-accordion.categoria-carta-2 {
     background-color: #D69D50;
   }
-  .custom-sub-menu.platos-principales {
-    background-color: #C68943;
+  .custom-sub-menu.categoria-carta-2 {
+    background-color: #C68A46;
   }
-  .custom-accordion.bebidas {
-    background-color: #D66350;
+  .custom-accordion.categoria-carta-3 {
+    background-color: #CB914C;
   }
-  .custom-sub-menu.bebidas {
-    background-color: #C45242;
+  .custom-sub-menu.categoria-carta-3 {
+    background-color: #BB8147;
+  }
+  .custom-accordion.categoria-carta-4 {
+    background-color: #C08648;
+  }
+  .custom-sub-menu.categoria-carta-4 {
+    background-color: #AC7644;
   }
   .custom-accordion.postres {
-    background-color: #D69350;
+    background-color: #B57C45;
   }
   .custom-sub-menu.postres {
-    background-color: #C67F42;
+    background-color: #A46E40;
   }
 </style>
 </head>
@@ -90,16 +106,15 @@
 
 <div class="custom-menu-container">
   
-  <button class="custom-accordion platos-principales">Platos Principales</button>
+  <button class="custom-accordion categoria-carta-1">Categoria Carta 1</button>
   <div class="custom-panel">
-    <button class="custom-sub-menu platos-principales">Opción 1 - Submenu</button>
+    <button class="custom-sub-menu categoria-carta-1">Opción 1 - Submenu</button>
     <div class="custom-panel custom-sub-menu-panel">
       <p>Subopción 1</p>
       <p>Subopción 2</p>
       <p>Subopción 3</p>
     </div>
-    <div class="custom-sub-menu-divider"></div>
-    <button class="custom-sub-menu platos-principales">Opción 2 - Submenu</button>
+    <button class="custom-sub-menu categoria-carta-1">Opción 2 - Submenu</button>
     <div class="custom-panel custom-sub-menu-panel">
       <p>Subopción 1</p>
       <p>Subopción 2</p>
@@ -107,16 +122,47 @@
     </div>
   </div>
 
-  <button class="custom-accordion bebidas">Bebidas</button>
+  <button class="custom-accordion categoria-carta-2">Categoria Carta 2</button>
   <div class="custom-panel">
-    <button class="custom-sub-menu bebidas">Opción 1 - Submenu</button>
+    <button class="custom-sub-menu categoria-carta-2">Opción 1 - Submenu</button>
     <div class="custom-panel custom-sub-menu-panel">
       <p>Subopción 1</p>
       <p>Subopción 2</p>
       <p>Subopción 3</p>
     </div>
-    <div class="custom-sub-menu-divider"></div>
-    <button class="custom-sub-menu bebidas">Opción 2 - Submenu</button>
+    <button class="custom-sub-menu categoria-carta-2">Opción 2 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+
+  <button class="custom-accordion categoria-carta-3">Categoria Carta 3</button>
+  <div class="custom-panel">
+    <button class="custom-sub-menu categoria-carta-3">Opción 1 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <button class="custom-sub-menu categoria-carta-3">Opción 2 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+  </div>
+  
+  <button class="custom-accordion categoria-carta-4">Categoria Carta 4</button>
+  <div class="custom-panel">
+    <button class="custom-sub-menu categoria-carta-4">Opción 1 - Submenu</button>
+    <div class="custom-panel custom-sub-menu-panel">
+      <p>Subopción 1</p>
+      <p>Subopción 2</p>
+      <p>Subopción 3</p>
+    </div>
+    <button class="custom-sub-menu categoria-carta-4">Opción 2 - Submenu</button>
     <div class="custom-panel custom-sub-menu-panel">
       <p>Subopción 1</p>
       <p>Subopción 2</p>
@@ -132,7 +178,6 @@
       <p>Subopción 2</p>
       <p>Subopción 3</p>
     </div>
-    <div class="custom-sub-menu-divider"></div>
     <button class="custom-sub-menu postres">Opción 2 - Submenu</button>
     <div class="custom-panel custom-sub-menu-panel">
       <p>Subopción 1</p>
@@ -140,6 +185,7 @@
       <p>Subopción 3</p>
     </div>
   </div>
+  
 </div>
 
 <script>
@@ -174,3 +220,4 @@ for (i = 0; i < subMenus.length; i++) {
 
 </body>
 </html>
+
