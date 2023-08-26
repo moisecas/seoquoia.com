@@ -6,10 +6,12 @@
 <style>
   .custom-menu-container {
     padding: 20px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
     display: flex;
     flex-direction: column;
+    background: #E0A955;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    overflow: hidden; /* Ocultar los bordes triangulares */
   }
 
   .custom-accordion {
@@ -25,24 +27,32 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #E0A955;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
+  }
+
+  .custom-accordion::before,
+  .custom-accordion::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    z-index: -1;
   }
 
   .custom-accordion::before {
-    content: '';
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    background-color: #E0A955;
-    clip-path: polygon(100% 0, 0 0, 100% 100%);
-    z-index: -1;
-    top: -20px;
-    right: -20px;
+    top: 0;
+    left: 0;
+    border-width: 18px 0 0 18px;
+    border-color: transparent transparent transparent #E0A955;
+  }
+
+  .custom-accordion::after {
+    top: 0;
+    right: 0;
+    border-width: 18px 18px 0 0;
+    border-color: transparent #E0A955 transparent transparent;
   }
 
   .custom-active, .custom-accordion:hover {
@@ -235,5 +245,3 @@ for (i = 0; i < subMenus.length; i++) {
 
 </body>
 </html>
-
-
