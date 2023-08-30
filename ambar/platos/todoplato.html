@@ -39,15 +39,18 @@
   }
 
   .imagen-plato {
-    flex: 1;
     max-width: 50%;
     margin-right: 20px; /* Espacio entre imagen y descripción */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
   }
 
   .imagen-plato img {
-    max-width: 100%;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 20px; /* Solo en las esquinas de la derecha */
+    border-bottom-right-radius: 20px; /* Solo en las esquinas de la derecha */
   }
 
   .detalle-plato {
@@ -69,6 +72,11 @@
 </style>
 </head>
 <body>
+<div class="button-container">
+  <a class="volver-button" href="https://ambarvistahermosa.com/carta/" target="_blank" rel="noopener">
+    <span class="back-arrow">&lt;</span>Volver al menú
+  </a>
+</div>
 
 <div class="plato-container">
   <div class="imagen-plato">
@@ -100,11 +108,6 @@
   </div>
 </div>
 
-<div class="button-container">
-  <a class="volver-button" href="https://ambarvistahermosa.com/carta/" target="_blank" rel="noopener">
-    <span class="back-arrow">&lt;</span>Volver al menú
-  </a>
-</div>
-
 </body>
 </html>
+
