@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .linea {
+    width: 100%;
+    height: 2px;
+    background-color: #82523A;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .linea::before,
+  .linea::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    background-color: #82523A;
+    position: absolute;
+    bottom: -10px;
+  }
+
+  .linea::before {
+    left: -20px;
+    border-top-left-radius: 20px;
+  }
+
+  .linea::after {
+    right: -20px;
+    border-top-right-radius: 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="linea"></div>
+
+</body>
+</html>
+
+
