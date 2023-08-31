@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #82523A;
+    line-height: 1.2;
+  }
+  
+  .nombre-plato {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .descripcion {
+    font-size: 18px;
+    margin-top: 5px;
+  }
+
+  .maridaje {
+    margin-top: 5px;
+  }
+
+  .alergenos {
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
+  .plato-container {
+    display: flex;
+    align-items: flex-start; /* Alineación arriba */
+    margin: 20px;
+  }
+
+  .imagen-plato {
+    max-width: 50%;
+    margin-right: 20px; /* Espacio entre imagen y descripción */
+    overflow: hidden;
+  }
+
+  .imagen-plato img {
+    width: 100%;
+    height: auto;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+  }
+
+  .detalle-plato {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+  }
+
+  .categoria {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .linea-blanca {
+    width: 100%;
+    border-top: 1px solid white;
+    margin-top: 5px;
+  }
+</style>
+</head>
+<body>
+<div class="button-container">
+  <a class="volver-button" href="https://ambarvistahermosa.com/carta/" target="_blank" rel="noopener">
+    <span class="back-arrow">&lt;</span>Volver al menú
+  </a>
+</div>
+
+<div class="plato-container">
+  <div class="imagen-plato">
+    <a data-fancybox="plato-image" href="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80">
+      <img id="plato-image" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80" alt="Imagen del plato">
+    </a>
+  </div>
+  <div class="detalle-plato">
+    <div class="categoria">
+      <h3>Categoria Carta 1</h3>
+      <div class="linea-blanca"></div>
+    </div>
+    <div class="nombre-plato">
+      <h3>Nombre de Plato 1</h3>
+    </div>
+
+    <div class="descripcion">
+      <h4>Descripción:</h4>
+      <p>Mollejas de Angus braseada pintada con nuestra salsa casera anticuchera acompañada de limón quemado</p>
+    </div>
+
+    <div class="maridaje">
+      <h4>Maridaje:</h4>
+      <p>Se recomienda acompañar con vino de...</p>
+    </div>
+
+    <div class="alergenos">
+      <h4>Alergenos:</h4>
+      <p>Espacio para indicar posibles alérgenos que pueda contener el plato</p>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('[data-fancybox="plato-image"]').fancybox({
+      thumbs: {
+        autoStart: true,
+      },
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
