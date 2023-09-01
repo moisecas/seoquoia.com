@@ -37,12 +37,14 @@
     display: flex;
     align-items: flex-start; /* Alineación arriba */
     margin: 20px;
+    position: relative; /* Para contener la imagen */
   }
 
   .imagen-plato {
     max-width: 50%;
     margin-right: 20px; /* Espacio entre imagen y descripción */
     overflow: hidden;
+    position: relative; /* Para que la imagen se posicione dentro del contenedor */
   }
 
   .imagen-plato img {
@@ -57,10 +59,11 @@
     flex: 1;
     padding: 20px;
     position: relative;
+    text-align: left;
   }
 
   .categoria {
-    text-align: center;
+    text-align: left; 
     margin-bottom: 10px;
   }
 
@@ -69,16 +72,23 @@
     border-top: 1px solid white;
     margin-top: 5px;
   }
+
+  .button-container {
+    text-align: center;   
+    font-size: 20px;
+    position: absolute; /* Posición absoluta para que quede encima del contenedor */
+    top: 0; /* Lo posiciona arriba del contenedor */
+    left: 50%; /* Lo alinea horizontalmente al centro */
+    transform: translateX(-50%); /* Centra horizontalmente */
+    margin-top: 20px; /* Espacio entre el botón y la imagen */
+  }
+
 </style>
 </head>
 <body>
-<div class="button-container">
-  <a class="volver-button" href="https://ambarvistahermosa.com/carta/" target="_blank" rel="noopener">
-    <span class="back-arrow">&lt;</span>Volver al menú
-  </a>
-</div>
 
 <div class="plato-container">
+ 
   <div class="imagen-plato">
     <a data-fancybox="plato-image" href="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80">
       <img id="plato-image" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80" alt="Imagen del plato">
@@ -99,12 +109,12 @@
     </div>
 
     <div class="maridaje">
-      <h4>Maridaje:</h4>
+      <h4>MARIDAJE</h4>
       <p>Se recomienda acompañar con vino de...</p>
     </div>
 
     <div class="alergenos">
-      <h4>Alergenos:</h4>
+      <h4>ALERGENOS</h4> 
       <p>Espacio para indicar posibles alérgenos que pueda contener el plato</p>
     </div>
   </div>
@@ -112,18 +122,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('[data-fancybox="plato-image"]').fancybox({
-      thumbs: {
-        autoStart: true,
-      },
-    });
-  });
-</script>
 
 </body>
 </html>
+
+
 
 
 
