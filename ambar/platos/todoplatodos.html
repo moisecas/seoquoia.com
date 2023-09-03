@@ -6,35 +6,34 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 <style>
   body {
-    font-family: Arial, sans-serif;
+   
     margin: 0;
     padding: 0;
     color: #82523A;
     line-height: 1.2;
   }
   
-  .nombre-plato {
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-
+ 
   .descripcion {
-    font-size: 18px;
+    font-size: 25px;
     margin-top: 5px;
+    font-weight: bold; 
   }
 
   .maridaje {
+    font-size: 25px;
     margin-top: 5px;
+    font-weight: bold; 
   }
 
   .alergenos {
+    font-size: 25px;
     margin-top: 5px;
-    font-weight: bold;
+    font-weight: bold; 
   }
 
   .plato-container {
-    display: rigth; /* Alineación horizontal */ 
+    display: flex;
     align-items: flex-start; /* Alineación arriba */
     margin: 20px;
     position: relative; /* Para contener la imagen */
@@ -42,7 +41,7 @@
 
   .imagen-plato {
     max-width: 50%;
-    margin-right: 20px; /* Espacio entre imagen y descripción */
+    margin-right: 50px; /* Espacio entre imagen y descripción */
     overflow: hidden;
     position: relative; /* Para que la imagen se posicione dentro del contenedor */
   }
@@ -53,7 +52,6 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
-    display: flex; /* Para que la imagen se posicione dentro del contenedor */
   }
 
   .detalle-plato {
@@ -64,8 +62,21 @@
   }
 
   .categoria {
-    text-align: left; 
+    text-align: left;
     margin-bottom: 10px;
+    font-family: 'Trebuchet MS';
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 35px;
+  }
+
+  .nombre-plato {
+    text-align: left;
+    margin-bottom: 10px;
+    font-family: 'Trebuchet MS';
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 10px;
   }
 
   .linea-blanca {
@@ -105,17 +116,19 @@
     </div>
 
     <div class="descripcion">
-      <h4>Descripción:</h4>
-      <p>Mollejas de Angus braseada pintada con nuestra salsa casera anticuchera acompañada de limón quemado</p>
+      <p>Mollejas de Angus braseada 
+        pintada con nuestra salsa casera 
+        anticuchera acompañada de 
+        limón quemado</p>
     </div>
 
     <div class="maridaje">
-      <h4>MARIDAJE</h4>
+      <p>MARIDAJE</p>
       <p>Se recomienda acompañar con vino de...</p>
     </div>
 
     <div class="alergenos">
-      <h4>ALERGENOS</h4> 
+      <p>ALERGENOS</p>
       <p>Espacio para indicar posibles alérgenos que pueda contener el plato</p>
     </div>
   </div>
@@ -126,7 +139,6 @@
 
 </body>
 </html>
-
 
 
 
