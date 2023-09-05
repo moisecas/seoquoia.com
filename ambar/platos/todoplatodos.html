@@ -64,7 +64,6 @@
   .categoria {
     text-align: left;
     margin-bottom: 10px;
-    font-family: 'Trebuchet MS';
     font-weight: bold;
     margin-top: 10px;
     font-size: 35px;
@@ -73,7 +72,6 @@
   .nombre-plato {
     text-align: left;
     margin-bottom: 10px;
-    font-family: 'Trebuchet MS';
     font-size: 35px;
     font-weight: bold;
     margin-top: 10px;
@@ -82,7 +80,7 @@
   .linea-blanca {
     width: 100%;
     border-top: 1px solid white;
-    margin-top: 5px;
+    margin-top: 0px;
   }
 
   .button-container {
@@ -93,6 +91,17 @@
     left: 50%; /* Lo alinea horizontalmente al centro */
     transform: translateX(-50%); /* Centra horizontalmente */
     margin-top: 20px; /* Espacio entre el botón y la imagen */
+  }
+
+  .maridaje-titulo{
+    
+    font-weight: bold;
+    
+  }
+
+  .alergenos-titulo{
+      
+      font-weight: bold;
   }
 
 </style>
@@ -108,28 +117,28 @@
   </div>
   <div class="detalle-plato">
     <div class="categoria">
-      <h3>Categoria Carta 1</h3>
+      <p>Categoria Carta 1</p>
       <div class="linea-blanca"></div>
     </div>
     <div class="nombre-plato">
-      <h3>Nombre de Plato 1</h3>
+      <p>Nombre de Plato 1</p>
     </div>
 
     <div class="descripcion">
-      <p>Mollejas de Angus braseada 
+      <h4>Mollejas de Angus braseada 
         pintada con nuestra salsa casera 
         anticuchera acompañada de 
-        limón quemado</p>
+        limón quemado</h4>
     </div>
 
     <div class="maridaje">
-      <p>MARIDAJE</p>
-      <p>Se recomienda acompañar con vino de...</p>
+      <h4 style="font-weight: bold;">MARIDAJE</h4>
+      <h4>Se recomienda acompañar con vino de...</h4>
     </div>
 
     <div class="alergenos">
-      <p>ALERGENOS</p>
-      <p>Espacio para indicar posibles alérgenos que pueda contener el plato</p>
+      <h4 style="font-weight: bold;">ALÉRGENOS</h4>
+      <h4>Espacio para indicar posibles alérgenos que pueda contener el plato</h4>
     </div>
   </div>
 </div>
@@ -139,8 +148,6 @@
 
 </body>
 </html>
-
-
 
 
 
