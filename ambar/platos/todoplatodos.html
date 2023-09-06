@@ -6,14 +6,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
 <style>
   body {
-   
     margin: 0;
     padding: 0;
     color: #82523A;
     line-height: 1.2;
   }
-  
- 
+
   .descripcion {
     font-size: 25px;
     margin-top: 5px;
@@ -34,16 +32,16 @@
 
   .plato-container {
     display: flex;
-    align-items: flex-start; /* Alineación arriba */
-    margin: 20px;
-    position: relative; /* Para contener la imagen */
+    align-items: flex-start;
+    margin: 20px 0; /* Ajustar los márgenes verticalmente, reducir el margen a la derecha */
+    position: relative;
   }
 
   .imagen-plato {
     max-width: 50%;
-    margin-right: 50px; /* Espacio entre imagen y descripción */
+    margin-right: 50px;
     overflow: hidden;
-    position: relative; /* Para que la imagen se posicione dentro del contenedor */
+    position: relative;
   }
 
   .imagen-plato img {
@@ -66,13 +64,13 @@
     margin-bottom: 10px;
     font-weight: bold;
     margin-top: 10px;
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .nombre-plato {
     text-align: left;
     margin-bottom: 10px;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     margin-top: 10px;
   }
@@ -86,30 +84,25 @@
   .button-container {
     text-align: center;   
     font-size: 20px;
-    position: absolute; /* Posición absoluta para que quede encima del contenedor */
-    top: 0; /* Lo posiciona arriba del contenedor */
-    left: 50%; /* Lo alinea horizontalmente al centro */
-    transform: translateX(-50%); /* Centra horizontalmente */
-    margin-top: 20px; /* Espacio entre el botón y la imagen */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
   }
 
-  .maridaje-titulo{
-    
+  .maridaje-titulo {
     font-weight: bold;
-    
   }
 
-  .alergenos-titulo{
-      
-      font-weight: bold;
+  .alergenos-titulo {
+    font-weight: bold;
   }
-
 </style>
 </head>
 <body>
 
 <div class="plato-container">
- 
   <div class="imagen-plato">
     <a data-fancybox="plato-image" href="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80">
       <img id="plato-image" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80" alt="Imagen del plato">
@@ -132,12 +125,12 @@
     </div>
 
     <div class="maridaje">
-      <h4 style="font-weight: bold;">MARIDAJE</h4>
+      <h3 class="maridaje-titulo">MARIDAJE</h3>
       <h4>Se recomienda acompañar con vino de...</h4>
     </div>
 
     <div class="alergenos">
-      <h4 style="font-weight: bold;">ALÉRGENOS</h4>
+      <h3 class="alergenos-titulo">ALÉRGENOS</h3>
       <h4>Espacio para indicar posibles alérgenos que pueda contener el plato</h4>
     </div>
   </div>
@@ -148,7 +141,6 @@
 
 </body>
 </html>
-
 
 
 
