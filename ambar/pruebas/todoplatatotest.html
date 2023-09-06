@@ -33,7 +33,7 @@
   .plato-container {
     display: flex;
     align-items: flex-start;
-    margin: 20px 0; /* Ajustar los márgenes verticalmente, reducir el margen a la derecha */
+    margin: 20px 0;
     position: relative;
   }
 
@@ -61,16 +61,16 @@
 
   .categoria {
     text-align: left;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     font-weight: bold;
     margin-top: 10px;
-    font-size: 30px;
+    font-size: 35px;
   }
 
   .nombre-plato {
     text-align: left;
     margin-bottom: 10px;
-    font-size: 30px;
+    font-size: 35px;
     font-weight: bold;
     margin-top: 10px;
   }
@@ -91,23 +91,13 @@
     margin-top: 20px;
   }
 
-  .maridaje-titulo {
-    font-weight: bold;
+  .maridaje h4 {
+    margin-top: 5px; /* Ajusta el margen superior según tus preferencias */
   }
 
   .alergenos-titulo {
     font-weight: bold;
   }
- 
-  hr.custom-line {
-      flex-grow: 1;
-      border: none;
-      border-bottom: 1px solid black;
-      background-color: black;
-      height: 1px;
-      margin: 0 10px;
-    }
-
 </style>
 </head>
 <body>
@@ -118,17 +108,10 @@
       <img id="plato-image" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80" alt="Imagen del plato">
     </a>
   </div>
-
-  
-
-
   <div class="detalle-plato">
     <div class="categoria">
-      <p>Categoría carta 1</p>
-     
-    </div>
-  <div class="circle-line-container">        
-      <hr class="custom-line">
+      <p>Categoria Carta 1</p>
+      <div class="linea-blanca"></div>
     </div>
     <div class="nombre-plato">
       <p>Nombre de Plato 1</p>
@@ -142,19 +125,23 @@
     </div>
 
     <div class="maridaje">
-      <p>
-        <span class="maridaje-titulo">MARIDAJE</span>
-        <br>
-        <span class="maridaje-texto">Se recomienda acompañar con vino de...</span>
-    </p>
+        <p>
+            <span class="maridaje-titulo">MARIDAJE</span>
+            <br>
+            <span class="maridaje-texto">Se recomienda acompañar con vino de...</span>
+        </p>
+      <!-- <h3 class="maridaje-titulo">MARIDAJE</h3>
+      <h4>Se recomienda acompañar con vino de...</h4> -->
     </div>
 
     <div class="alergenos">
-      <p>
-        <span class="alergenos-titulo">ALÉRGENOS</span>
-        <br>
-        <span class="alergenos-texto">Espacio para indicar posibles alérgenos que pueda contener el plato</span>
-    </p>
+        <p>
+            <span class="alergenos-titulo">ALÉRGENOS</span>
+            <br>
+            <span class="alergenos-texto">Espacio para indicar posibles alérgenos que pueda contener el plato</span>
+        </p>
+      <!-- <h3 class="alergenos-titulo">ALÉRGENOS</h3>
+      <h4>Espacio para indicar posibles alérgenos que pueda contener el plato</h4> -->
     </div>
   </div>
 </div>
@@ -164,6 +151,4 @@
 
 </body>
 </html>
-
-
 
