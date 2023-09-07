@@ -50,6 +50,17 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     cursor: pointer;
+    position: relative;
+  }
+
+  /* Estilos para la imagen adicional en la esquina superior derecha */
+  .imagen-adicional {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: auto;
+    cursor: pointer;
   }
 
   .detalle-plato {
@@ -63,22 +74,26 @@
     text-align: left;
     margin-bottom: 0px;
     font-weight: bold;
-    margin-top: 10px;
-    font-size: 35px;
+    margin-top: 0px; /* Elimina el margen superior */
+    font-size: 30px;
   }
+
+  .categoria p{
+margin-bottom:1em;
+}
 
   .nombre-plato {
     text-align: left;
     margin-bottom: 10px;
-    font-size: 35px;
+    font-size: 30px;
     font-weight: bold;
     margin-top: 10px;
   }
 
   .linea-blanca {
     width: 100%;
-    border-top: 1px solid white;
-    margin-top: 0px;
+    border-top: 1px solid black;
+    margin-top: 0px; /* Elimina el margen superior */
   }
 
   .button-container {
@@ -92,7 +107,8 @@
   }
 
   .maridaje h4 {
-    margin-top: 5px; /* Ajusta el margen superior según tus preferencias */
+    margin-top: 5px;
+    margin-right: 20px;
   }
 
   .alergenos-titulo {
@@ -104,9 +120,12 @@
 
 <div class="plato-container">
   <div class="imagen-plato">
-    <a data-fancybox="plato-image" href="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80">
-      <img id="plato-image" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80" alt="Imagen del plato">
-    </a>
+    <!-- Agrega la imagen principal al contenedor -->
+    <img id="plato-image" src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE0fHx8ZW58MHx8fHx8&w=1000&q=80" alt="Imagen del plato">
+    
+    <!-- Agrega la imagen adicional dentro del contenedor de la imagen principal -->
+    <img src="https://drive.google.com/file/d/1A5Qy7FBuX7EXHssSONONjtDQRPLkpiBg/view?usp=drive_link" alt="Imagen Adicional" class="imagen-adicional">
+    
   </div>
   <div class="detalle-plato">
     <div class="categoria">
@@ -118,20 +137,19 @@
     </div>
 
     <div class="descripcion">
-      <h4>Mollejas de Angus braseada 
+      <span>Mollejas de Angus braseada 
         pintada con nuestra salsa casera 
         anticuchera acompañada de 
-        limón quemado</h4>
+        limón quemado</span>
     </div>
-
+    <br>
+    <br>
     <div class="maridaje">
         <p>
             <span class="maridaje-titulo">MARIDAJE</span>
             <br>
             <span class="maridaje-texto">Se recomienda acompañar con vino de...</span>
         </p>
-      <!-- <h3 class="maridaje-titulo">MARIDAJE</h3>
-      <h4>Se recomienda acompañar con vino de...</h4> -->
     </div>
 
     <div class="alergenos">
@@ -140,8 +158,6 @@
             <br>
             <span class="alergenos-texto">Espacio para indicar posibles alérgenos que pueda contener el plato</span>
         </p>
-      <!-- <h3 class="alergenos-titulo">ALÉRGENOS</h3>
-      <h4>Espacio para indicar posibles alérgenos que pueda contener el plato</h4> -->
     </div>
   </div>
 </div>
@@ -151,4 +167,6 @@
 
 </body>
 </html>
+
+
 
