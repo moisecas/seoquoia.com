@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos generales para el encabezado */
+        header {
+            background-image: url('https://ambarvistahermosa.com/wp-content/uploads/2023/09/EDEEE.png');
+            background-size: cover; /* Ajusta la imagen al tamaño del encabezado */
+            background-position: center; /* Centra la imagen */
+            text-align: center; /* Alinea el contenido al centro */
+            height: 100vh; /* Altura igual al 100% del viewport */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #82523A; /* Color de fondo fijo */
+        }
+
+        /* Estilos para los botones */
+        .botones-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 300px; /* Ajusta la distancia hacia abajo */
+        }
+
+        .boton {
+            padding: 10px 60px;
+            background-color: transparent;
+            color: #82523A;
+            font-size: 18px;
+            text-decoration: none;
+            margin: 15px; 
+            border: 2px solid white; /* Borde blanco */
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s; /* Transición de colores */
+            position: relative;
+        }
+
+        .boton::before {
+            content: "";
+            position: absolute;
+            top: -4px; /* Ajusta la posición del primer borde blanco */
+            left: -4px; /* Ajusta la posición del primer borde blanco */
+            right: -4px; /* Ajusta la posición del primer borde blanco */
+            bottom: -4px; /* Ajusta la posición del primer borde blanco */
+            border: 2px solid white; /* Borde blanco */
+            border-radius: 5px;
+        }
+
+        .boton{
+            background-color: #82523A;
+            color: #FFF;
+        }
+    </style>
+</head>
+<body>
+    <!-- Encabezado con imagen de fondo -->
+    <header>
+        <!-- Contenedor de los botones -->
+        <div class="botones-container">
+            <!-- Botones -->
+            <a href="#" class="boton">Reservar</a>
+            <a href="#" class="boton">Ver menú</a>  
+        </div>
+    </header>
+</body>
+</html>
+
+
+
