@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Estilo para el contenedor (div) */
+    .contenedor {
+      width:300px; /* Ancho del contenedor al 100% para dispositivos móviles */
+      height: 100px; /* Altura del contenedor */
+      text-align: center; /* Centrar contenido horizontalmente */
+      display: flex; /* Usar flexbox para centrar verticalmente */
+      align-items: center; /* Centrar verticalmente */
+      justify-content: center; /* Centrar horizontalmente */
+      margin-top: 10rem; 
+    }
+
+    /* Estilo para los botones */
+    .boton {
+      padding: 10px 2em;
+      height: 40px;
+      width: 300px;
+      background-color: #976a4d;
+      color: white;
+      border: 4px double white;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s; /* Agregar transición a los cambios */
+      margin: 0 6em;
+      font-size: 0.8em;
+    }
+
+    /* Agregar sombra en el hover */
+    .boton:hover {
+      background-color: #7d593f; /* Cambiar el color de fondo al pasar el cursor */
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Agregar sombra al pasar el cursor */
+    }
+
+    /* Media query para dispositivos móviles */
+    @media (max-width: 768px) {
+      .boton {
+        font-size: 12px; /* Ajustar el tamaño de fuente en dispositivos móviles */
+        font-size: 12px;
+        margin: 0 1em;
+        width: 150px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <button class="boton" onclick="window.location.href='https://ambarvistahermosa.com/carta/'">Reservas</button>
+    <button class="boton" onclick="window.location.href='https://ambarvistahermosa.com/carta/'">Ver menú</button> 
+  </div>
+</body>
+</html>
+
