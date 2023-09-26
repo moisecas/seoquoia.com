@@ -13,3 +13,25 @@
     animation: 1.5s cubic-bezier(.25, 1, .30, 1) diamond-in-center both;
   }
   
+/* Estilos personalizados con Keyframes para header movil */
+  /* Estilos personalizados con Keyframes */
+@keyframes diamond-in-center {
+  from {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+  to {
+    clip-path: polygon(-50% 50%, 50% -50%, 150% 50%, 50% 150%);
+  }
+}
+
+/* Aplicar animación a elementos con la clase específica en pantallas grandes */
+.wp-block-uagb-container.uagb-block-36d4d4eb.alignfull.uagb-is-root-container {
+  animation: 1.5s cubic-bezier(.25, 1, .30, 1) diamond-in-center both;
+}
+
+/* Aplicar animación a elementos con la clase específica en tabletas y dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .wp-block-uagb-container.uagb-block-36d4d4eb.alignfull.uagb-is-root-container {
+    animation: 1.5s cubic-bezier(.25, 1, .30, 1) diamond-in-center both;
+  }
+}

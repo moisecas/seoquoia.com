@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Fotos</title>
+    <style>
+        /* Estilos para el contenedor de la galería */
+        .gallery-container {
+            width: 60%; /* Ancho del contenedor de la galería al 60% */
+            margin: 0 auto; /* Centrar horizontalmente */
+            max-width: 1000px; /* Ancho máximo del contenedor */
+            position: relative; /* Posición relativa para posicionar las imágenes */
+        }
+
+        /* Estilos para las imágenes de la galería */
+        .gallery-slide {
+            width: 100%; /* Ancho al 100% para ajustarse al contenedor */
+            height: auto; /* Altura automática para mantener la proporción de la imagen */
+            display: none; /* Ocultar las imágenes por defecto */
+        }
+
+        /* Estilos para las flechas de navegación */
+        .gallery-nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .gallery-nav button {
+            background-color: transparent; /* Fondo transparente */
+            color: white; /* Color del texto de las flechas */
+            border: none; /* Eliminar el borde del botón */
+            padding: 10px 20px; /* Espaciado interno del botón */
+            margin: 5px; /* Margen entre botones */
+            cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+            font-size: 24px; /* Tamaño de fuente para las flechas */
+        }
+
+        /* Estilo para mostrar la imagen actual */
+        .active {
+            display: block; /* Mostrar la imagen actual */
+        }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <!-- Imágenes de la galería -->
+        <img class="gallery-slide active" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pimientos-del-poquillo-de-lodosa-ala-brasa--scaled.webp" alt="Imagen 1">
+        <img class="gallery-slide" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Quisquilla-de-motril-barnizada-con-grasa-de-vaca-rubia-gallega-ahumada-en-mesa-scaled.jpg" alt="Imagen 2">
+        <img class="gallery-slide" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Croquetas-de-jamA³n-5j-emulsiA³n-de-su-grasa-velo-iberico-scaled.webp" alt="Imagen 3">
+    </div>
+    
+    <!-- Flecha izquierda -->
+    <div class="gallery-nav">
+        <button onclick="cambiarImagen(-1)">&#9664;</button>
+        <button onclick="cambiarImagen(1)">&#9654;</button>
+    </div>
+
+    <script>
+        // JavaScript para controlar la galería
+        let currentIndex = 0; // Índice de la imagen actual
+        const imagenes = document.querySelectorAll(".gallery-slide");
+
+        // Función para mostrar la imagen actual
+        function mostrarImagen(index) {
+            imagenes.forEach((imagen) => {
+                imagen.classList.remove("active"); // Ocultar todas las imágenes
+            });
+
+            imagenes[index].classList.add("active"); // Mostrar la imagen seleccionada
+            currentIndex = index; // Actualizar el índice actual
+        }
+
+        // Función para cambiar de imagen
+        function cambiarImagen(delta) {
+            let newIndex = currentIndex + delta;
+
+            if (newIndex < 0) {
+                newIndex = imagenes.length - 1;
+            } else if (newIndex >= imagenes.length) {
+                newIndex = 0;
+            }
+
+            mostrarImagen(newIndex);
+        }
+
+        // Mostrar la primera imagen al cargar la página
+        mostrarImagen(currentIndex);
+    </script>
+</body>
+</html>
+
