@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    color: #82523A;
+    line-height: 1.2;
+  }
+
+  .descripcion {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .maridaje {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .alergenos {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+
+  .plato-container {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  .detalle-plato {
+    flex: 1;
+    padding: 10px; 
+    position: relative;
+    text-align: left;
+  }
+
+  .categoria {
+    text-align: left;
+    margin-bottom: 0px;
+    font-weight: bold;
+    margin-top: 0px; /* Elimina el margen superior */
+    font-size: 30px;
+  }
+
+  .nombre-plato {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .button-container {
+    text-align: center;   
+    font-size: 20px;
+    margin-top: 20px;
+  }
+
+  .maridaje h4 {
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+
+  .alergenos-titulo {
+    font-weight: bold;
+  }
+
+  /* Ajusta el margen superior del primer elemento de texto */
+  .maridaje p:first-child {
+    margin-top: 10px; /* Ajusta el margen superior del primer elemento de texto */
+  }
+
+  .categoria p {
+    margin-bottom: 0.58em;
+  }
+
+  /* Estilo para la imagen */
+  .imagen-plato {
+    max-width: 50%;
+    margin-left: 50px; /* Cambia de margin-right a margin-left */
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 20px; /* Ajusta el margen inferior de la imagen */
+  }
+
+  .imagen-plato img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Estilo para el botón "Ver Menú" */
+  .ver-menu-button {
+    background-color: #976a4d;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-family: 'Gothic', sans-serif; /* Cambiar la fuente a gótica */
+    text-transform: uppercase; /* Convertir el texto a mayúsculas */
+    font-weight: bold; /* Hacer el texto en negritas */
+    border: 4px double white;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    display: inline-block;
+  }
+
+  .ver-menu-button:hover {
+    background-color: #754a2e; /* Cambiar el color de fondo al pasar el cursor a marrón oscuro */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Agregar sombra al pasar el cursor */
+    border-color: #754a2e; /* Cambiar el color de la línea a marrón oscuro */
+    color: #754a2e; /* Cambiar el color del texto a marrón oscuro */
+    background-color: rgba(0, 0, 0, 0); /* Hacer el fondo transparente */
+  }
+
+   /* movil and tablet*/
+    @media only screen and (max-width: 1024px) {
+     .plato-container {
+        display: block;
+     }
+    
+     .imagen-plato {
+        max-width: 100%;
+        margin-left: 0px;
+        margin-bottom: 20px;
+     }
+    
+     .detalle-plato {
+        text-align: center;
+     }
+    
+     .button-container {
+        text-align: center;
+     } 
+    }
+
+</style>
+</head>
+<body>
+
+<div class="plato-container">
+  <div class="detalle-plato">
+    <div class="maridaje">
+        <p>
+            <span class="maridaje-texto">Cruza nuestra puerta y disfruta de la
+                experiencia única e inimitable de ÁMBAR.
+                Una propuesta diferenciadora y
+                cosmopolita; llena de luces, aromas y
+                acciones que despertarán todos tus
+                sentidos.</span>
+        </p>
+    </div>
+
+    <div class="alergenos">
+        <p>
+            <span class="alergenos-texto">
+                Un espectáculo y un placer que despertará
+                tus cinco sentidos. ÁMBAR es mucho más
+                que un restaurante, un espacio
+                multiexperiencia donde disfrutar de una
+                reunión de familia o amigos, un espacio
+                donde generar networking o simplemente
+                disfrutar de un excelente cóctel en
+                compañía.</span>
+        </p>
+    </div>
+    <div class="button-container">
+        <button class="ver-menu-button" onclick="window.location.href='https://ambarvistahermosa.com/carta/'">Ver Menú</button>
+    </div>
+  </div>
+  
+  <div class="imagen-plato">
+    <br>
+    <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-23.webp" alt="Imagen del plato">
+  </div>
+</div>
+
+</body>
+</html>
