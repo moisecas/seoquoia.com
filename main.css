@@ -35,3 +35,43 @@
     animation: 1.5s cubic-bezier(.25, 1, .30, 1) diamond-in-center both;
   }
 }
+
+
+
+
+/* Estilo para los botones */
+.boton {
+  padding: 10px 2em;
+  height: 40px;
+  width: 300px;
+  font-family: 'Gothic', sans-serif; /* Cambiar la fuente a gótica */
+  text-transform: uppercase; /* Convertir el texto a mayúsculas */
+  font-weight: bold; /* Hacer el texto en negritas */
+  background-color: #976a4d;
+  color: white;
+  border: 4px double white;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s; /* Agregar transición a los cambios */
+  margin: 0 6em;
+  font-size: 0.8em;
+}
+
+/* Agregar sombra en el hover y fondo semi-transparente */
+.boton:hover {
+  background-color: #754a2e; /* Cambiar el color de fondo al pasar el cursor a marrón oscuro */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2); /* Agregar sombra al pasar el cursor */
+  border-color: #754a2e; /* Cambiar el color de la línea a marrón oscuro */
+  color: #754a2e; /* Cambiar el color del texto a marrón oscuro */
+  background-color: rgba(0, 0, 0, 0); /* Hacer el fondo transparente */
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .boton {
+    font-size: 12px; /* Ajustar el tamaño de fuente en dispositivos móviles */
+    font-size: 12px;
+    margin: 0 1em;
+    width: 150px;
+    text-align: center;
+  }
+}

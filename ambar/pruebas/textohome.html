@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plato y Detalle</title>
+    <style>
+        .maridaje,
+        .alergenos {
+            font-size: 20px;
+            margin-top: 5px;
+            color: #82523A;
+        }
+
+        .plato-container,
+        .plato-container-reversed {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .imagen-plato,
+        .imagen-plato-reversed {
+            max-width: 50%;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .imagen-plato {
+            margin-right: 50px;
+        }
+
+        .imagen-plato-reversed {
+            margin-left: 50px;
+        }
+
+        .imagen-plato img,
+        .imagen-plato-reversed img {
+            width: 100%;
+            height: auto;
+        }
+
+        .detalle-plato,
+        .detalle-plato-reversed {
+            flex: 1;
+            padding: 10px;
+            position: relative;
+            text-align: left;
+        }
+
+        @media (max-width: 1024px) {
+            .plato-container,
+            .plato-container-reversed {
+                flex-direction: column;
+            }
+
+            .imagen-plato,
+            .imagen-plato-reversed {
+                max-width: 100%;
+                margin-right: 0;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+
+            .detalle-plato,
+            .detalle-plato-reversed {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Primer bloque: imagen a la izquierda, texto a la derecha -->
+    <div class="plato-container">
+        <div class="imagen-plato">
+            <img id="plato-image-1" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-23.webp" alt="Imagen del plato 1">
+        </div>
+        <div class="detalle-plato">
+            <div class="maridaje">
+                <p><span class="maridaje-texto">Cruza nuestra puerta y disfruta de la experiencia única e inimitable de ÁMBAR. Una propuesta diferenciadora y cosmopolita; llena de luces, aromas y acciones que despertarán todos tus sentidos.</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Segundo bloque: texto a la izquierda, imagen a la derecha -->
+    <div class="plato-container-reversed">
+        <div class="detalle-plato-reversed">
+            <div class="alergenos">
+                <p><span class="alergenos-texto">Un espectáculo y un placer que despertará tus cinco sentidos. ÁMBAR es mucho más que un restaurante, un espacio multiexperiencia donde disfrutar de una reunión de familia o amigos, un espacio donde generar networking o simplemente disfrutar de un excelente cóctel en compañía.</span></p>
+            </div>
+        </div>
+        <div class="imagen-plato-reversed">
+            <img id="plato-image-2" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-23.webp" alt="Imagen del plato 2">
+        </div>
+    </div>
+</body>
+
+</html>
