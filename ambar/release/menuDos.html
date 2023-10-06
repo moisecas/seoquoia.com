@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+body{
+  background-color: #D6CFC2;
+
+}
+
+  .new-acordeon {
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    padding-left: 40px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0%;
+    border-bottom-right-radius: 0%;
+  }
+
+  
+  .new-acordeon.activo {
+    background-color: #7F2C1B;
+  }
+
+  .new-acordeon.principal {
+    background-color: #7F2C1B;
+  }
+
+  .new-acordeon.vinos {
+    background-color: #88331D;
+    position: relative;
+    margin-top: -3px;
+    
+  }
+
+  .new-acordeon.alcoholicas {
+    background-color: #913B1F;
+    position: relative;
+    margin-top: -3px;
+  }
+
+  .new-acordeon.refrescos {
+    background-color:#9B4420;
+    position: relative;
+    margin-top: -3px;
+
+  }
+
+  .new-acordeon.cafe {
+    background-color: #994724;
+    position: relative;
+    margin-top: -3px;
+  }
+  /* Estilo para el ícono de más (+) */
+.toggle .plus {
+  font-size: 30px; /* Tamaño de fuente personalizado */
+}
+
+/* Estilo para el ícono de menos (-) */
+.toggle .minus {
+  font-size: 30px; /* Tamaño de fuente personalizado */
+}
+
+/* Resto del código CSS permanece igual */
+  .new-submenu1{
+    background-color: #7F2C1B!important;
+
+  }
+.new-submenu2{
+background-color: #7F2C1B!important; 
+}
+.new-submenu3{
+  background-color: #7F2C1B!important;
+}
+ 
+  /*  Colores segundo acordeon submenu "Vinos"*/
+  .new-submenu4{
+    background-color: #88331D!important;
+
+  }
+  .new-submenu5{
+    background-color: #88331D!important;
+
+  }
+  .new-submenu6{
+    background-color: #88331D!important;
+
+  }
+
+  .new-submenu7 {
+    background-color: #913B1F;
+
+  }
+  
+.new-submenu8{
+  background-color: #913B1F;
+}
+
+.new-submenu9{
+  background-color: #913B1F;
+}
+
+.new-submenu10{
+  background-color:#9B4420 ;
+}
+.new-submenu11{
+  background-color:#9B4420 ;
+}
+.new-submenu12{
+  background-color:#9B4420 ;
+}
+/* tercerpanel */
+.new-submenu13{
+  background-color: #994724;
+}
+.new-submenu14{
+  background-color: #994724;
+}
+.new-submenu15{
+  background-color: #994724;
+}
+
+.fondo6{ background-color:#7F2C1B!important;
+border-bottom-left-radius:20px!important;
+border-bottom-right-radius:20px!important;}
+
+.fondo7{ background-color:#88331D!important;
+border-bottom-left-radius:20px!important;
+border-bottom-right-radius:20px!important;}
+
+.fondo8{ background-color:#913B1F!important;
+border-bottom-left-radius:20px!important;
+border-bottom-right-radius:20px!important;}
+
+.fondo9{ background-color:#9B4420!important;
+border-bottom-left-radius:20px!important;
+border-bottom-right-radius:20px!important;}
+
+.fondo10{ background-color:#994724!important;
+border-bottom-left-radius:20px!important;
+border-bottom-right-radius:20px!important;}
+
+
+</style>
+</head>
+<body>
+ 
+<div class="menu-contenedor">
+  
+  <button class="new-acordeon principal">Platos Principales</button>
+  <div class="panel">
+
+    <button class="submenu new-submenu1">  
+     <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo6"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+
+    </div>
+    <button class="submenu new-submenu2">  
+       <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo6"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div></div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+      
+    </div>
+    <button class="submenu new-submenu3">  
+       <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo6"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div></div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+    </div>
+  </div>
+
+  <button class="new-acordeon vinos">Vinos</button>
+  <div class="panel">
+    <button class="submenu new-submenu4">  
+       <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo7"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+    </div>
+    <button class="submenu new-submenu5">  
+            <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo7"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+      
+    </div>
+    <button class="submenu new-submenu6">  
+            <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo7"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+      
+    </div>
+  </div>
+
+  <button class="new-acordeon alcoholicas">Bebidas Alcohólicas</button>
+  <div class="panel">
+    <button class="submenu new-submenu7">  
+             <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo8"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+      
+    </div>
+    <button class="submenu new-submenu8">  
+            <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo8"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+    </div>
+    <button class="submenu new-submenu9">  
+           <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo8"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div></div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+    </div>
+  </div>
+
+  <button class="new-acordeon refrescos">Refrescos</button>
+  <div class="panel">
+    <button class="submenu new-submenu10">  
+            <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo9"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+    </div>
+    <button class="submenu new-submenu11">  
+             <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo9"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+    </div>
+    <button class="submenu new-submenu12">  
+           <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo9"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+    </div>
+  </div>
+
+  <button class="new-acordeon cafe">Café y Tés</button>
+  <div class="panel">
+    <button class="submenu new-submenu13">  
+            <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo10"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div></div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+      
+    </div>
+    <button class="submenu new-submenu14">  
+           <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo10"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div></div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+      
+    </div>
+    <button class="submenu new-submenu15">  
+             <div class="sub-menu-separador">
+      <p> 
+        Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate
+      </p>
+      </div>
+   </button>
+    
+    <div class="panel sub-menu-panel-1">
+	
+	 <div class="imagen-plato"><div class="fondo10"> 
+    <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp" >
+      <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"  alt="Imagen del plato">
+    </a></div>
+    <!-- Agrega la imagen adicional aquí -->
+    <div class="imagen-adicional">
+     
+    </div>
+  </div>	
+	<div class="descripcion-plato">
+       <div class="container-ingredientes">
+      <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+</div>
+     
+    </div>
+  </div>
+</div>
+<button class="separador-transparente"></button>
+
+<script>
+
+  // Para iterar sobre los contenedores del submenu si agrega mas aumente el numero
+  document.addEventListener("DOMContentLoaded", function() {
+  for (let i = 1; i <= 15; i++) {
+    const className = `.new-submenu${i}`;
+    const subMenus = document.querySelectorAll(className);
+
+    subMenus.forEach(function(subMenu) {
+      const toggleButton = document.createElement("div");
+      toggleButton.classList.add("toggle");
+      toggleButton.innerHTML = '<div class="plus">+</div>';
+      subMenu.appendChild(toggleButton);
+
+      toggleButton.addEventListener("click", function(e) {
+        e.stopPropagation();
+        const subMenuPanel = subMenu.nextElementSibling;
+
+        if (subMenuPanel.style.display === "none" || subMenuPanel.style.display === "") {
+          subMenuPanel.style.display = "block";
+          toggleButton.querySelector(".plus").style.display = "none";
+          toggleButton.innerHTML = '<div class="minus">-</div>';
+        } else {
+          subMenuPanel.style.display = "none";
+          toggleButton.querySelector(".minus").style.display = "none";
+          toggleButton.innerHTML = '<div class="plus">+</div>';
+        }
+      });
+
+      subMenu.addEventListener("click", function(event) {
+        event.stopPropagation();
+        const subMenuPanel = subMenu.nextElementSibling;
+
+        if (subMenuPanel.style.display === "none" || subMenuPanel.style.display === "") {
+          subMenuPanel.style.display = "block";
+          toggleButton.querySelector(".plus").style.display = "none";
+          toggleButton.innerHTML = '<div class="minus">-</div>';
+        } else {
+          subMenuPanel.style.display = "none";
+          toggleButton.querySelector(".minus").style.display = "none";
+          toggleButton.innerHTML = '<div class="plus">+</div>';
+        }
+      });
+    });
+  }
+
+  const acordeones = document.querySelectorAll(".new-acordeon");
+
+  acordeones.forEach(function(acordeon) {
+    acordeon.addEventListener("click", function() {
+      acordeones.forEach(function(item) {
+        if (item !== acordeon) {
+          item.classList.remove("activo");
+          item.nextElementSibling.style.display = "none";
+        }
+      });
+
+      this.classList.toggle("activo");
+      const panel = this.nextElementSibling;
+
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+        const otrosPaneles = document.querySelectorAll(".panel");
+        otrosPaneles.forEach(function(otroPanel) {
+          if (otroPanel !== panel) {
+            otroPanel.style.display = "none";
+          }
+        });
+      }
+    });
+  });
+});
+
+</script>
+
+</body>
+</html>
