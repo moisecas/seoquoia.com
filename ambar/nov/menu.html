@@ -1,0 +1,2464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background-color: #d6cfc2;
+    }
+
+    .button:hover {
+      background-color: transparent;
+      /* Mismo estilo en :hover, sin cambios */
+    }
+
+    .new-acordeon {
+      color: white;
+      cursor: pointer;
+      padding: 20px;
+      padding-left: 40px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 16px;
+      transition: 0.4s;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      align-items: center;
+      justify-content: space-between;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 0%;
+      border-bottom-right-radius: 0%;
+    }
+
+    .contenido-adicional {
+      display: none;
+      padding: 12px 0 0 0;
+    }
+    .contenido-adicional ul  {
+       padding-left: 4em;
+       padding-bottom: 0.8em;
+    }
+    .ingredientes2 ul{
+      display: inline-block !important;
+    }
+
+    .ingredientes2 ul{
+      padding: 2em 0 0 5em;
+    }
+
+    .ver-mas {
+      text-align: left;
+      padding-left: 50px;
+    }
+
+    .ver-mas.one {
+      background-color: #7f2c1b !important;
+      padding-left: 4em;
+    }
+
+    .ver-mas.two {
+      background-color: #7f2c1b !important;
+      padding-left: 4em;
+    }
+    .ver-mas.three{
+      background-color: #a1451f !important;
+      padding-left: 4em;
+    }
+    .descripcion-plato-btn {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .new-acordeon.activo {
+      background-color: #7f2c1b !important;
+    }
+
+    .new-acordeon.principal {
+      background-color: #7f2c1b !important;
+    }
+
+    .new-acordeon.vinos {
+      background-color: #88331d !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.alcoholicas {
+      background-color: #913b1f !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.refrescos {
+      background-color: #9b4420 !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.cafe {
+      background-color: #994724 !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.blanco {
+      background-color: #a1451f !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.viajeros-blancos {
+      background-color: #a74922 !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.rojo {
+      background-color: #ad4d25 !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.new-acordeon.viajeros-tinto {
+      background-color: #af512a !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.algo-dulce {
+      background-color: #b3542d !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .new-acordeon.reservas {
+      background-color: #b7572f !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    /* Estilo para el ícono de más (+) */
+    .toggle .plus {
+      font-size: 30px;
+      /* Tamaño de fuente personalizado */
+    }
+
+    /* Estilo para el ícono de menos (-) */
+    .toggle .minus {
+      font-size: 30px;
+      /* Tamaño de fuente personalizado */
+    }
+
+    /* Resto del código CSS permanece igual */
+    .new-submenu1 {
+      background-color: #7f2c1b !important;
+    }
+
+    .new-submenu2 {
+      background-color: #7f2c1b !important;
+    }
+
+    .new-submenu3 {
+      background-color: #7f2c1b !important;
+    }
+
+    /*  Colores segundo acordeon submenu "Vinos"*/
+    .new-submenu4 {
+      background-color: #88331d !important;
+    }
+
+    .new-submenu5 {
+      background-color: #88331d !important;
+    }
+
+    .new-submenu6 {
+      background-color: #88331d !important;
+    }
+
+    .new-submenu7 {
+      background-color: #913b1f !important;
+    }
+
+    .new-submenu8 {
+      background-color: #913b1f !important;
+    }
+
+    .new-submenu9 {
+      background-color: #913b1f !important;
+    }
+
+    .new-submenu10 {
+      background-color: #9b4420 !important;
+    }
+
+    .new-submenu11 {
+      background-color: #9b4420 !important;
+    }
+
+    .new-submenu12 {
+      background-color: #9b4420 !important;
+    }
+
+    /* tercerpanel */
+    .new-submenu13 {
+      background-color: #994724 !important;
+    }
+
+    .new-submenu14 {
+      background-color: #994724 !important;
+    }
+
+    .new-submenu15 {
+      background-color: #994724 !important;
+    }
+
+    .new-submenu16 {
+      background-color: #a74922 !important;
+    }
+
+    .new-submenu17 {
+      background-color: #a1451f !important;
+    }
+
+    .new-submenu18 {
+      background-color: #ad4d25 !important;
+    }
+
+    .new-submenu19 {
+      background-color: #af512a !important;
+    }
+
+    .new-submenu20 {
+      background-color: #b3542d !important;
+    }
+
+    .new-submenu21 {
+      background-color: #b7572f !important;
+    }
+
+    .fondo6 {
+      background-color: #7f2c1b !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo7 {
+      background-color: #88331d !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo8 {
+      background-color: #913b1f !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo9 {
+      background-color: #9b4420 !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo10 {
+      background-color: #994724 !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu-contenedor">
+    <button class="new-acordeon principal">Generosos</button>
+    <div class="panel">
+      <button class="submenu new-submenu1">
+        <div class="sub-menu-separador">
+          <p>Finos</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Clasicos</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Pavón</li>
+              <li>Palomino/Bodegas Caballero/D.O. Jerez-Xérès-Sherry</li>
+              <li>Romate</li>
+              <li>
+                Palomino Fino/Bodegas Sánchez Romate/ D.O. Jerez-Xérès-Sherry
+              </li>
+              <li>Palomino Fino/Bodegas Osborne/ D.O. Jerez-Xérès-Sherry</li>
+              <li>Harveys 50cl</li>
+              <li>
+                Palomino Fino (Pago Macharnudo) /Bodegas Harveys/ D.O.
+                Jerez-Xérès-Sherryn
+              </li>
+              <li>Fino del Puerto Almacenista</li>
+              <li>Palomino Fino/Bodegas Lustau/ D.O. Jerez-Xérès-Sherry</li>
+              <li>Inocente</li>
+              <li>
+                Palomino Fino (Pago Macharnudo) /Bodega Valdespino/ D.O.
+                Jerez-Xérès-Sherry
+              </li>
+              <li>Fino La Draga</li>
+              <li>
+                Palomino/Bodegas González Obregón/ D.O. Jerez-Xérès-Sherry
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">En Rama</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>3 en Rama Fino El Puerto 2023 50cl</li>
+              <li>Palomino/Bodegas Lustau/ D.O. Jerez-Xérès-Sherry</li>
+              <li>3 en Rama Fino Jerez 2023 50cl</li>
+              <li>Palomino/Bodegas Lustau/ D.O. Jerez-Xérès-Sherry</li>
+              <li>Coquinero fino en Rama</li>
+              <li>Cruz vieja en Rama</li>
+              <li>
+                Palomino Fino (Pago de Montealegre) /Bodegas Faustino
+                González/ D.O. Jerez-Xérès-Sherry
+              </li>
+              <li>Bombilla Fino</li>
+            </ul>
+          </div>
+        </div>
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Singulares</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>
+                Palomino fino/bodegas Sánchez Romate/ D.O. Jerez-Xérès-Sherry
+              </li>
+              <li>La Panesa Fino Especial</li>
+              <li>Palomino/Bodegas Emilio Hidalgo/D.O. Jerez-Xérès-Sherry</li>
+              <li>Fino 1 Palma 50cl</li>
+              <li>
+                Palomino Fino/Bodegas González Byass/ D.O. Jerez-Xérès-Sherry
+              </li>
+              <li>Fino 3 Palma 50cl</li>
+              <li>
+                Palomino Fino/Bodegas González Byass/ D.O. Jerez-Xérès-Sherry
+              </li>
+              <li>Fino Señorío del Callao 50cl</li>
+              <li>
+                Palomino Fino/Bodegas León Domecq// D.O. Jerez-Xérès-Sherry
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu2">
+        <div class="sub-menu-separador">
+          <p>Manzanilla</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Clásicas</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Macarena muy fina</li>
+              <li>
+                Palomino/Bodegas Caballero/D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>Papirusa</li>
+              <li>
+                Palomino/Bodegas Lustau/D.O. Manzanilla Sanlúcar de Barrameda
+              </li>
+              <li>Deliciosa</li>
+              <li>
+                Palomino/Bodega Valdespino/D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>La Goya</li>
+              <li>
+                Palomino/ Bodega Delgado Zuleta/ D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+            </ul>
+          </div>
+          <button class="ver-mas two">En Rama</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>3 en Rama Manzanilla 2023 50CL</li>
+              <li>
+                Palomino/Bodegas Lustau/ D.O. Manzanilla Sanlúcar de Barrameda
+              </li>
+              <li>Callejuela en Rama</li>
+              <li>
+                Palomino/Bodegas Lustau/D.O. Manzanilla Sanlúcar de Barrameda
+              </li>
+            </ul>
+          </div>
+          <button class="ver-mas two">Pasada</button>
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>La Goya XL</li>
+              <li>
+                Palomino/Bodega Delgado Zuleta/ D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>Papirusa</li>
+              <li>Blanquito</li>
+              <li>
+                Palomino Fino/Bodega Callejuela/ D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>La Olvidada</li>
+              <li>La Goya</li>
+              <li>
+                Palomino Fino (La Choza-Pago Macharnudo)/Bodega Callejuela/
+                D.O. Manzanilla Sanlúcar de Barrameda
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Olorosos Medium</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Fino Perdido</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Olorosos</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Singulares</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Pata de Gallina Almacenista 50cl</li>
+              <li>Palomino/Bodega Lustau/ D.O. Jerez-Xérès-Sherry</li>
+              <li>El Cerro 50c</li>
+              <li>
+                Palomino Fino/Bodega Callejuela/ D.O. Jerez-Xérès-Sherry
+              </li>
+              <li>Gobernador</li>
+              <li>Palomino/Bodega Emilio Hidalgo/ D.O. Jerez-Xérès-Sherry</li>
+              <li>Señorío de Callao 50cl</li>
+              <li>Palomino/Bodega León Domecq/ D.O. Jerez-Xérès-Sherry</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Amontillados</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Singulares</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Macarena muy fina</li>
+              <li>
+                Palomino/Bodegas Caballero/D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>Papirusa</li>
+              <li>
+                Palomino/Bodegas Lustau/D.O. Manzanilla Sanlúcar de Barrameda
+              </li>
+              <li>Deliciosa</li>
+              <li>
+                Palomino/Bodega Valdespino/D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>La Goya</li>
+              <li>
+                Palomino/ Bodega Delgado Zuleta/ D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Palo Cortado</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Singulares</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Macarena muy fina</li>
+              <li>
+                Palomino/Bodegas Caballero/D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>Papirusa</li>
+              <li>
+                Palomino/Bodegas Lustau/D.O. Manzanilla Sanlúcar de Barrameda
+              </li>
+              <li>Deliciosa</li>
+              <li>
+                Palomino/Bodega Valdespino/D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+              <li>La Goya</li>
+              <li>
+                Palomino/ Bodega Delgado Zuleta/ D.O. Manzanilla Sanlúcar de
+                Barrameda
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Pale Cream</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Fino Perdido</li>
+                <li>
+                  Palomino fino/bodegas Sánchez Romate/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>La Panesa Fino Especial</li>
+                <li>
+                  Palomino/Bodegas Emilio Hidalgo/D.O. Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 2 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 3 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino Señorío del Callao 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas León Domecq// D.O. Jerez-Xérès-Sherry
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Moscatel</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Fino Perdido</li>
+                <li>
+                  Palomino fino/bodegas Sánchez Romate/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>La Panesa Fino Especial</li>
+                <li>
+                  Palomino/Bodegas Emilio Hidalgo/D.O. Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 2 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 3 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino Señorío del Callao 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas León Domecq// D.O. Jerez-Xérès-Sherry
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Cream</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Fino Perdido</li>
+                <li>
+                  Palomino fino/bodegas Sánchez Romate/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>La Panesa Fino Especial</li>
+                <li>
+                  Palomino/Bodegas Emilio Hidalgo/D.O. Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 2 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 3 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino Señorío del Callao 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas León Domecq// D.O. Jerez-Xérès-Sherry
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu3">
+        <div class="sub-menu-separador">
+          <p>Pedro Jimenez</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <!-- <div class="imagen-plato">
+                    <div class="fondo6">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div> -->
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Fino Perdido</li>
+                <li>
+                  Palomino fino/bodegas Sánchez Romate/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>La Panesa Fino Especial</li>
+                <li>
+                  Palomino/Bodegas Emilio Hidalgo/D.O. Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 2 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino 3 Palma 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas González Byass/ D.O.
+                  Jerez-Xérès-Sherry
+                </li>
+                <li>Fino Señorío del Callao 50cl</li>
+                <li>
+                  Palomino Fino/Bodegas León Domecq// D.O. Jerez-Xérès-Sherry
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="new-acordeon vinos"> Burbujas</button>
+    <div class="panel">
+      <button class="submenu new-submenu4">
+        <div class="sub-menu-separador">
+          <p>Dulces</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Libalis-Frizz 5.5º</li>
+                <li>
+                  Moscatel de Grano Menudo/Bodega Maetierra/Rioja Oriental>
+                </li>
+                <li>Viña Esmeralda Sparkling Gran Vas (Vegano)</li>
+                <li>Moscatel/Bodega Torres/Cataluña</li>
+                <li>Fragantia Nº 6 Rose 5.5º</li>
+                <li>
+                  Syrah/Bodega Finca Constancia/Vinos Tierra de Castilla
+                </li>
+                <li>Win 5.0 Verdejo Vegano (3.80 Merin) Bod. Matarromera</li>
+                <li>Verdejo/Bodega Win-Bdg. Matarromera/Rueda</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu5">
+        <div class="sub-menu-separador">
+          <p>0.0</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Win 0.0 Blanco Sin Alcohol</li>
+                <li>Verdejo/Bodega Win-Bdg. Matarromera/Castilla y León</li>
+                <li>Vilarnau 0.0 blanco Orgánico</li>
+                <li>Macabeo y Parallada/Bodega Vilarnau/Cataluña</li>
+                <li>Vilarnau 0.0 rosado</li>
+                <li>Garnacha/Bodega Vilarnau/Cataluña</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu6">
+        <div class="sub-menu-separador">
+          <p>Secas</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Tierra de Cádiz</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Campestral Ancestral White</li>
+              <li>100% Palomino/Bodegas Campestral</li>
+              <li>Forlong Burbuja Ancestral</li>
+              <li>100% Palomino/Bodegas Forlong</li>
+              <li>Deliciosa</li>
+              <li>Talayón Brut</li>
+              <li>100% Chardonnay/Bodegas Miguel Domecq</li>
+            </ul>
+          </div>
+          <button class="ver-mas one">Málaga</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Botani</li>
+              <li>100% Moscatel de Alejandría/Jorge Ordoñez</li>
+              <li>Botani Magnum</li>
+              <li>100% Moscatel de Alejandría/Jorge Ordoñez</li>
+            </ul>
+          </div>
+          <button class="ver-mas one">D.O. Champagne, Francia</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Mumm Cordon Rouge Brut</li>
+              <li>Pinot Noir, Chardonnay y Pinot Meunier/Bodega G.H. Mumm</li>
+              <li>Mumm Cordon Rouge Rosé</li>
+              <li>Pinot Noir, Chardonnay y Pinot Meunier/Bodega G.H. Mumm</li>
+              <li>Mumm Ice Xtra</li>
+              <li>Pinot Noir, Chardonnay y Pinot Meunier/Bodega G.H. Mumm</li>
+              <li>Jean Guerinot Blanc de Blancs</li>
+              <li>Chardonnay/Jean Guerinot</li>
+              <li>Moët&Chandon Brut Imperial</li>
+              <li>
+                Chardonnay, Pinot Noir y Pinot Meunier/Bodega Moët&Chandon
+              </li>
+              <li>Moët&Chandon Brut Imperial Magnum</li>
+              <li>Moët&Chandon Rosé Imperial</li>
+              <li>Moët&Chandon Rosé Imperial Magnum</li>
+              <li>Dom Perignon Vintage</li>
+            </ul>
+          </div>
+          <button class="ver-mas one">Cava</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>María Rigol Ordi</li>
+              <li>Macabeo. Xarel lo y Parellada/Bodegas María Rigol Ordi</li>
+              <li>Terrer de la Creu Brut Nature</li>
+              <li>Macabeo, Xarel-lo y Parellada/Bodega Torres</li>
+              <li>Ars Colecta Blanc de Noirs Brut Reserva</li>
+              <li>Pinot Noir, Xarel-lo y Trepat/Bodega Cordorniu</li>
+              <li>Piper Rare Millésime 2006</li>
+              <li>Chardonnay y Pinot Noir/Bodega Piper Heidsieck</li>
+            </ul>
+          </div>
+          <button class="ver-mas one">Corpinnat</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Recaredo Terrers</li>
+              <li>Xarel-lo, Macabeo y Parellada/Bodegas Recaredo</li>
+              <li>Recaredo Intens Rosado</li>
+              <li>Monastrell y Garnacha Negra/Bodegas Recaredo</li>
+              <li>Recaredo Reserva Particular</li>
+              <li>Xarel-lo y Macabeo/Bodegas Recaredo</li>
+            </ul>
+          </div>
+          <button class="ver-mas one">Penedés</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Raventós i Blanc de Nit 2021</li>
+              <li>Coupage/Bodega Raventós i Blanc</li>
+              <li>AT Roca Reserva Brut Nature</li>
+              <li>Coupage/Bodega AT Roca</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="new-acordeon alcoholicas">Blanco Semidulce</button>
+    <div class="panel">
+      <button class="submenu new-submenu7">
+        <div class="sub-menu-separador">
+          <p>Cádiz</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Viña Matalián Semi 2022</li>
+                <li>
+                  95% Palomino y 5% Moscatel de Grano Menudo/Bodega Primitivo
+                  Collantes
+                </li>
+                <li>Abulaga</li>
+                <li>Moscatel/Bodega Luís Caballero</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu8">
+        <div class="sub-menu-separador">
+          <p>Extremadura</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Entremares Semi</li>
+                <li>Coupage/Bodega Señorío de Orán</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu9">
+        <div class="sub-menu-separador">
+          <p>Tierra de Castilla</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Premium 1904 semidulce</li>
+                <li>
+                  verdejo, chardonnay, sauvignon blac/ Bod. Navarro López
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu9">
+        <div class="sub-menu-separador">
+          <p>Rueda</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Palomo Cojo</li>
+                <li>100% Verdejo/Bodega Álvarez y Díez</li>
+                <li>Tres Pilares</li>
+                <li>100% Verdejo/Bodega Tres Pilares</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu9">
+        <div class="sub-menu-separador">
+          <p>Rioja</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Libalis Maetierra</li>
+                <li>
+                  Moscatel de Grano Menudo, Viura y Malvesía/Bodega Maetierra
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="new-acordeon refrescos">Rosé</button>
+    <div class="panel">
+      <button class="submenu new-submenu10">
+        <div class="sub-menu-separador">
+          <p>Tierra De Cádiz</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Marismilla</li>
+                <li>Tintilla de Rota/Bodega Luis Pérez</li>
+                <li>Forlong Rosado Eco</li>
+                <li>Tintilla de Rota/Bodegas Forlong</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu11">
+        <div class="sub-menu-separador">
+          <p>Ribera del Duero</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Ferratus Rosé sobre Lías</li>
+                <li>100% Tempranillo/Bodegas Ferrratus</li>
+                <li>Hito 2022 (bosco7.14)</li>
+                <li>100% Tempranillo/Bodega Cepa 21</li>
+                <li>Territorio Luthier Clarete de Guarda</li>
+                <li>
+                  Tempranillo, Garnacha, Bobal, Albillo, Pirulés y
+                  Viura/Bodega Territorio Luthier
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="new-acordeon blanco">Blanco</button>
+    <div class="panel">
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Tierra de Cádiz</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Campestral White Palomino</li>
+                <li>Palomino/Bodega Campestral</li>
+                <li>Blanco de Hornillos</li>
+                <li>
+                  100% Palomino Fino (Pago Callejuela, Añina y
+                  Macharnudo/Bodega Callejuela)
+                </li>
+                <li>Forlong Blanco Vino de Pasto Balbaína</li>
+                <li>Palomino/Bodega Forlong</li>
+                <li>Forlong 80/20</li>
+                <li>
+                  100% Palomino (Pago Balbaína Alta) y pieles de PX/Bodega
+                  Forlong
+                </li>
+                <li>Forlong La Fleur, Crianza en Bota Bajo Velo 2017 50cl</li>
+                <li>100% Palomino (Pago Balbaína Baja)/Bodega Forlong</li>
+                <li>Finca los Atravesados Ecológico</li>
+                <li>Pedro Ximénez/Bodegas Viña Cardosa</li>
+                <li>El Muelle de Olaso</li>
+                <li>Palomino/Bodega Luis Pérez</li>
+                <li>La Escribana Vino de Pasto</li>
+                <li>Palomino (Macharnudo)/Bodega Luis Pérez</li>
+                <li>La Caleta</li>
+                <li>Chardonnay/Bodega The Wine Hunter Company</li>
+                <li>Campestral White crianza bajo Velo</li>
+                <li>Palomino/Bodega Campestral</li>
+                <li>Las Mercedes</li>
+                <li>Palomino Fino(Pago la Añina)/Bodega Callejuela</li>
+                <li>Tivo 2018</li>
+                <li>100% Uva Rey/Bodega Primitivo Collantes</li>
+                <li>Hacienda Quintería crianza lías</li>
+                <li>
+                  Palomino Fino (Pago Macharnudo)/Bodegas The Wine Hunter
+                  Company
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Mallorca:</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Can Axartell Corum Blanco 2020 crianza</li>
+                <li>100% Malvasía/Can Axartell</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Gallegos y Bierzo:</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato-btn">
+          <button class="ver-mas one">Valdeorras</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Mica Godello 2022</li>
+              <p>100% Godello/Viticultura Iría-Montero</p>
+              <li>100% Godello/Viticultura Iría-Montero</li>
+              <li>Avancia Cuveé Godello crianza sobre lías</li>
+              <li>Avancia Godello</li>
+              <li>Avancia Cuvee Mencia</li>
+              <p>100% Mencia/Bodegas Avancia</p>
+              <li>100% Mencia/Bodegas Avancia</li>
+              <li>O Luar Do Sil 2022</li>
+              <p>100% Godello/Bodega Pago de Capellanes</p>
+            </ul>
+          </div>
+          <button class="ver-mas three">Rías Baixas</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Sal Albariño</li>
+              <p>100% albariño/Viticultura Iría-Montero</p>
+              <li>Fulget</li>
+              <p>100% Albariño/Bodega Maior de Mendoza</p>
+              <li>Fulget Cuveé Semiseco</li>
+              <li>Albariño/Bodega Maior de Mendoza</li>
+              <li>3 Crianzas crianza lías</li>
+              <p>100% Albariño/ Bodega Maior de Mendoza</p>
+              <li>La Val Fermentado en Barrica</li>
+              <p>100% Albariño/Bodegas La Val</p>
+              <li>La Val Treixadura</li>
+              <li>100% Treixadura/Bodegas La Val</li>
+              <li>Más que 2</li>
+              <p>Albariño, Treixadura y Loureiro/ Bodegas La Val</p>
+              <li>Paco&Lola Heritage 2018 sobre lías</li>
+              <p>100% Albariño/Bodega Paco & Lola</p>
+              <li>Pintos ED. Los Nietos</li>
+              <p>100% Albariño/Bodega de Lagar de Pintos</p>
+            </ul>
+          </div>
+          <button class="ver-mas three">Ribeira Sacra</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Sílice Blanco</li>
+              <li>Coupage/Sílice Viticultores</li>
+              <li>Vía Romana Do Camiño</li>
+              <li>Godello/Bodega Vía Romana</li>
+            </ul>
+          </div>
+          <button class="ver-mas three">Ribeiro</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Marqués de Sanfiz</li>
+              <p>100% Treixadura/Bodega Méndez Rojo</p>
+              <li>Cuñas Davia</li>
+              <p>Bodega Cuñas Davia</p>
+              <li>El Paraguas Atlántico</li>
+              <p>Treixadura, Godello y Albariño</p>
+              <li>Sanaclodio 2021 sobre lías</li>
+            </ul>
+          </div>
+          <button class="ver-mas three">Monterrei</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Laberinto de Cidonia </li>
+              <p>100% Godello/Bodegas Laberinto de Cidonia</p>
+
+            </ul>
+          </div>
+          <button class="ver-mas three">Bierzo</button>
+
+          <!-- Contenido adicional oculto por defecto -->
+          <div class="contenido-adicional">
+            <!-- Aquí puedes agregar más contenido -->
+            <ul>
+              <li>Brezo Godello</li>
+              <p>95% Godello y 5% Doña Blanca/Bodegas y Viñedos Mengoba</p>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- panel 4 -->
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Extremadura</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Entremares DRY 2017</li>
+                <p>Macabeo/Bodegas Orán</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Penedés</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Miranius</li>
+                <p>100% Xarel-lo/Bodega Celler Credo</p>
+                <li>Ratpenat</li>
+                <p>100% Macabeo/Bodega Celler Credo </p>
+                <li>Clos Ancestral Blanco 2022</li>
+                <p>Forcada y Xarel-lo/Bodega Torres</p>
+                <li>Casa Vella</li>
+                <li>Fransola 2022</li>
+                <p>100% Sauvignon Blanc/Bodegas Torres</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Rueda</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>La Cotorra</li>
+                <p>100% Verdejo/Santiago Jordi</p>
+                <li>La Cotorra Magnum</li>
+                <p>100% Verdejo/Santiago Jordi</p>
+                <li>Viña Oropéndola</li>
+                <p>100% Verdejo </p>
+                <li>Viña Oropéndola Magnum</li>
+                <p>100% Verdejo</p>
+                <li>Malcorta 2022</li>
+                <p>100% Verdejo/Javier Sanz Viticultor</p>
+                <li>Tres Pilares</li>
+                <p>100% Verdejo/Bodega Tres Pilares</p>
+                <li>Malvid Selección crianza lías</li>
+                <p>100% Verdejo/Bodega Lasecanas</p>
+                <li>La Capilla Blanco 2021</li>
+                <p>50% Verdejo y 50% Sauvignon Blanc/Bodegas Finca La Capilla</p>
+                <li>Nogara</li>
+                <p>100% Verdejo/ Bodegas y Viñedos Valtravieso</p>
+                <li>El Transistor crianza lías</li>
+                <p>100% Verdejo/Compañía de Vinos Telmo Rodriguez</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>D.O. Pago Abadía Retuerta</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Le Domaine 2021 Vino de Pago Abadía Retuerta</li>
+                <p>80% Sauvignon y 20% Verdejo/Bodega Abadía Retuerta</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Tierra de Castilla</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Fan D´Oro 2021 crianza</li>
+                <p>100% Chardonnay/Bodega Arzuaga</p>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Ribera del Duero</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Dominio del Pidio Albillo Mayor</li>
+                <p>Albillo Mayor/Bodega Dominio del Pidio</p>
+                <li>El Manifiesto</li>
+                <p>100% Albillo Mayor/ Bodegas y Viñedos Valtravieso</p>
+                <li>La Despitada con crianza</li>
+                <p>100% Albillo Mayor/Bodegas Tarsus</p>
+                <li>Hispania Blanco con crianza</li>
+                <p>Albillo Mayor/Bodegas Territorio Luthier</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu17">
+        <div class="sub-menu-separador">
+          <p>Rioja</p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Bideona Viura de Cabezadas Crianza lías</li>
+                <p>100ª% Viura/Bodegas Península Vinicultores</p>
+                <li>Azpilicueta Colección Privada Fermentado en Barrica</li>
+                <p>100% Viura/Bodega Azpilicueta</p>
+                <li>La Bastid Olivier Rivière con Crianza</li>
+                <p>85% Viura, 15% Malvasía y Garnacha Blanca/Olivier Rivière</p>
+                <li>Mirando al Sur Olivier Rivière Crianza Botas de Jerez</li>
+                <p>100% Viura/Olivier Rivière</p>
+                <li>Blanca del Castillo Crianza</li>
+                <p>100% Viura/Bodega Castillo de Cruzcurrita</p>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <button class="new-acordeon viajeros-blancos">Viajeros Blancos</button>
+    <div class="panel">
+      <button class="submenu new-submenu16">
+        <div class="sub-menu-separador">
+          <p>Aconcagua, Chile</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+
+              <ul>
+                <li>Santa Digna Sauvignon Blanc 2022</li>
+                <p>100% Sauvignon Blanc/Bodega Miguel Torres Chile</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu16">
+        <div class="sub-menu-separador">
+          <p>Borgoña, Francia</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Pouilly-Fuisse Maconnais</li>
+                <p>100% Chadonnay/Bodegas Bouchard Père & Fils/AOC Pouilly-Fuissé</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu16">
+        <div class="sub-menu-separador">
+          <p>Burdeos, Francia</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Mouton Cadet Reverve Sauterns 2019 (mer28.91) crianza
+                </li>
+                <p>Muscadelle, Sauvignon Blanc y Semillon Blac/ Bodega Barons de Rothschild</p>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu16">
+        <div class="sub-menu-separador">
+          <p>Marlorough,Nueva Zalanda</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Cloudy Bay</li>
+                <p>100% Sauvignon Blanc/Bodega Cloudy Bay Vineyards
+                </p>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <!--  -->
+      <button class="submenu new-submenu16">
+        <div class="sub-menu-separador">
+          <p>Tokaj, Hungría</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Oremus Mandolás</li>
+                <p>Furmit/Bodega Oremus Vega-Sicilia</p>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!--  -->
+
+    <button class="new-acordeon rojo">Rojo</button>
+    <div class="panel">
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Tierra de Cádiz</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+
+                <li>Caracepa</li>
+                <p>60% Syrah y 40% Petit Verdot/Santiago Jordi</p>
+                <li>Arx</li>
+                <p>Syrah, Tintilla de Rota, Petit Verdot y Cabernet Sauvignon/Bodega Tesalia</p>
+                <li>Tesalia</li>
+                <p>Petit Verdot, Syrah, Tintilla de Rota y cabernet Sauvignon/Bodega Tesalia</p>
+                <li>El Triángulo</li>
+                <p>100% Tintilla de Rota/Bod. Luis Pérez</p>
+                <li>Garum</li>
+                <p>Merlot, Syrah, Petit Verdot y Tintilla de Rota/Bodegas Luis Pérez</p>
+                <li>Samaruco</li>
+                <p>50% Syrahy 50% Petit Verdot/Bodegas Luis Pérez</p>
+                <li>Finca Moncloa</li>
+                <p>Tintilla de Rota/Bodega González Byass</p>
+                <li>Finca Moncloa ED. Limitada</li>
+                <p>100%Tintilla de Rota/Bodegas Forlong</p>
+              </ul>
+
+            </div>
+            <!-- <div class="ingredientes">
+                <img src="" alt="" />
+                <img
+                  src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                  alt="lactosa"
+                />
+                <img
+                  src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Frutos-secos-1.png"
+                  alt="secos"
+                />
+              </div> -->
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Mallorca</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Can Axartell Ventum</li>
+                <p>Callet, Syrah y Merlot/Bodega Can Axartell</p>
+                <li>Ca´n Verdura</li>
+                <p>50% Montenegro, 20% Merlot, 10% Monastrell, 10% Syrah y 10% Callet/Bodega Can Verdura Viticultors</p>
+                <li>Supernova Mantonegro</li>
+                <p>100% Montenegro/Bodega Can Verdura Viticultors</p>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Penedés</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Atrium
+                </li>
+                <p>100% Merlot/Bodegas Torres</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <div class="descripcion-plato">
+        <div class="container-ingredientes">
+          <!-- <div class="ingredientes2">       <h3>Jamón de Bellota 100% ibérico, acompañado de pan cristal con tomate</h3></div> </div> 
+        <p>Cortado a mano, ración de 100 gramos.</p>
+          <h3>MARIDAJE</h3>
+
+          <P>Se recomienda acompañar con un vino tinto de reserva o bien la cerveza combina de forma excelente con toda gama de embutidos</P>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p> -->
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Priorato</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Terroir Històric Negre
+                </li>
+                <p>75% Garnacha Tinta y 25% Cariñena/ Bodega Terroir al Limit</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Arlanza</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  El Cadastro
+                </li>
+                <p>95% Tempranillo y 5% Garnacha/Bod.Oliver Riviére</p>
+                <li>Las Mamblas</li>
+                <p>Tempranillo, Mencía, Monastrell, Bobal y Garnacha/Bodegas y Viñedos Valtravieso</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Castilla La Mancha</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Ulterior Parcela nº 10
+                </li>
+                <p>100% Tinto Velasco/Bodega Verum</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>D.O. Pago Florentino</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Pago Florentino
+                </li>
+                <p>100% Tempranillo/La Solana Bodegas y Viñedos</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>D.O. Pago Abadía Retuerta</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Abadía Retuerta Selección Especial
+                </li>
+                <p>Tempranillo, Garnacha, Graciano y Malbec/Bodega Abadía Retuerta</p>
+                <li>Abadía Retuerta Cuveé Palomar</li>
+                <p>Tempranillo, Garnacha, Graciano y Malbec/Bodega Abadía Retuerta </p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Ribera del Júcar</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Mil Cantos
+                </li>
+                <p>Bobal y Airén/Bod y Viñedo Valtravieso</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Jumilla</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Pie Firme
+                </li>
+                <p>100% Monastrell/ Bodega y Viñedo Valtravieso</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Tierra de Castilla y León</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Mauro VS
+                </li>
+                <p>100% Tempranillo/Bodega Mauro</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Toro</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Dehesa Gago 2020
+                </li>
+                <p>100% Tempranillo/Bodega Compañía de Vinos de Telmo Rodríguez </p>
+                <li>Almirez</li>
+                <p>100% Tinta de Toro/Bodegas Matarromera</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Rioja</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>
+                  Montecillo Edición Limitada
+                </li>
+                <p>70%Tempranillo y 30% Graciano/Bodega Montecillo</p>
+                <li>Montecillo 22 Barricas</li>
+                <p>50%Tepranillo, 30%Graciano. 15%Garnacha y 5%Mazuelo/Bodegas Montecillo</p>
+                <li>Canterabuey Viñedos Singulares</li>
+                <p>100%Garnacha/Bodega Real Agrado</p>
+                <li>Sierra Cantabria Crianza</li>
+                <p>100%Tempranillo/Bodega Sierra Cantabria</p>
+                <li>El Puntido</li>
+                <p>100%Tempranillo/Bodega Sierra Cantabria</p>
+                <li>Azpilicueta Origen</li>
+                <p>100%Tempranillo/Bodega Azpilicueta</p>
+                <li>Señorío de Cuzcurrita 2020</li>
+                <p>100%Tempranillo/Bodega Castillo de Cuzcurrita</p>
+                <li>Cerrado del Castillo</li>
+                <p>100%empranillo/Bodega Castillo de Cuzcurrita</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu18">
+        <div class="sub-menu-separador">
+          <p>Ribera del Duero</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Sembro</li>
+                <p>100% Tinto Fino Tempranillo/Bodega Sembro</p>
+                <li>Sembro Magnum</li>
+                <p>100% Tinto Fino Tempranillo/Bodega Sembro</p>
+                <li>Sembro Edición Limitada</li>
+                <p>100% Tinto Fino Tempranillo/Bodega Sembro</p>
+                <li>Ferratus A0 Crianza</li>
+                <p>100% Tempranillo/Bodega Ferratus</p>
+                <li>Valtravieso</li>
+                <p>Tinto Fino, Cabernet Sauvignon y Merlot/Bodega y Viñedo Valtravieso</p>
+                <li>VT Tinto Fino</li>
+                <p>Tinto Fino/ Bodega y Viñedo Valtravieso</p>
+                <li>Montecillo Singladuras</li>
+                <p>100% Tinta del País/Bodegas Montecillo</p>
+                <li>Dominio Fournier Crianza</li>
+                <p>100% Tempranillo/Bodega Dominio Fournier</p>
+                <li>Dominio del Pidio</li>
+                <p>95% Tempranillo y 5% Albillo/Bodega Dominio del Pidio</p>
+                <li>Sr. Niño Ecológico</li>
+                <p>100% Tempranillo clon Roda (Pago la Recorba)Bodega Pradorey</p>
+                <li>Tarsus Finca El Canto</li>
+                <p>100% Tinta del País/Bodega Tarsus</p>
+                <li>Tarsus Terno</li>
+                <p>100% Tinta del País/Bodega Tarsus</p>
+                <li>La Capilla Crianza</li>
+                <p>Tempranillo/Bodegas Finca La Capilla</p>
+                <li>Matarromera Crianza</li>
+                <p>100% Tinto Fino/Bodega Matarromera</p>
+                <li>Conde de San Cristóbal 2020</li>
+                <p>Tempranillo/Bodega Conde de San Cristóbal y Viñedos</p>
+                <li>Pago de Carraovejas Crianza</li>
+                <p>Tinto Fino, Cabernet Sauvignon y Merlot/Bodega Pago de Carraovejas</p>
+                <li>Emilio Moro Crianza</li>
+                <p>100% Tempranillo/Bodegas Emilio Moro</p>
+                <li>Cepa 21 2020</li>
+                <p>Tempranillo/Bodega Cepa 21</p>
+                <li>Hito Tinto</li>
+                <p>Tempranillo/Bodega Cepa 21</p>
+                <li>Malabrigo</li>
+                <p>Tempranillo/Bodega Cepa 21</p>
+                <li>Horcajo</li>
+                <p>Tempranillo/Bodega Cepa 21</p>
+                <li>Hispania Tinto 2019</li>
+                <p>Tempranillo, Garnacha y 3% Albillo/Bodega Territorio Luthier</p>
+                <li>Valbuena 5º</li>
+                <p>Tinto Fino y Merlot/Bodegas Tempos Vega Sicilia</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <button class="new-acordeon viajeros-tinto">Viajeros Tinto</button>
+    <div class="panel">
+      <button class="submenu new-submenu19">
+        <div class="sub-menu-separador">
+          <p>Valle Central, Chile</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Santa Digna Cabernet Sauvignon Gran Reserva 2020(mer9.61)</li>
+                <p>100% Cabernet Sauvignon/Bodega Miguel Torres Chile</p>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu19">
+        <div class="sub-menu-separador">
+          <p>Mendoza, Argentina </p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Séptima Malbec Gran Reserva</li>
+                <p>Malbec, Cabernet Sauvignon y Tannat/Bodega Septima</p>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <button class="submenu new-submenu19">
+        <div class="sub-menu-separador">
+          <p>Borgoña, Francia</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Beaune Du Château Premier Cru</li>
+                <p>100% Pinot Noir/Bodega Bouchard Père & Fils</p>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu19">
+        <div class="sub-menu-separador">
+          <p>Bourdeos, Francia
+          </p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Mouton Cadet Rèserve Saint-Èmilion</li>
+                <p>Merlot, Cabernet Franc y Cabernet Sauvignon/Bodega Baron Philippe de Rothschild</p>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+    <button class="new-acordeon reservas">Reservas</button>
+    <div class="panel">
+      <button class="submenu new-submenu21">
+        <div class="sub-menu-separador">
+          <p>Rioja</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Azpilicueta Reserva (10.17mer) Bod. Azpilicueta</li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      <button class="submenu new-submenu21">
+        <div class="sub-menu-separador">
+          <p>Ribera del Duero</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <ul>
+                <li>Gran Valtravieso 2016</li>
+                <p>Tinto Fino/ Bodega y Viñedo Valtravieso</p>
+                <li>Territorio Luthier 2018</li>
+                <p>Tempranillo y Garnacha/Bodega Territorio Luthier</p>
+                <li>Tarsus Reserva 2018</li>
+                <p>98% Tinta del País y 2% Cabernet Sauvignon/Bodega Tarsus</p>
+                <li>Dominio Fournier Reserva 2016</li>
+                <p>100% Tempranillo/Bodega Dominio Fournier</p>
+                <li>Viña Monty Graciano Reserva 2015</li>
+                <p>100% Graciano/Bodegas Montecillo</p>
+                <li>Viña Monty Garnacha Reserva 2015</li>
+                <p>100% Garnacha/Bodegas Montecillo</p>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+
+    </div>
+    <!--  -->
+    <button class="new-acordeon algo-dulce">Something sweet  </button>
+    <div class="panel">
+      <button class="submenu new-submenu20">
+        <div class="sub-menu-separador">
+          <p>Chocolate death</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image"
+              href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PDRJ0037-scaled-1.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PDRJ0037-scaled-1.webp"
+                alt="baca" />
+            </a>
+          </div>
+
+          <div class="imagen-adicional"></div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>
+                Description of the dish
+
+              </h3>
+            </div>
+            <div class="ingredientes">
+              <img src="" alt="" />
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png" alt="lactosa" />
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Frutos-secos-1.png" alt="secos" />
+            </div>
+          </div>
+          <p>
+            Chocolate ingot stuffed with an aerial mouse, accompanied by a chocolate ice cream 
+
+          </p>
+          <h3>Wine pairing</h3>
+
+          <p>
+           Sweet red wine or an Port to complement the richness of chocolate
+
+          </p>
+          <h3>Allergens</h3>
+          <p>Gluten, dairy, egg, nuts</p>
+          <h3>6€</h3>
+        </div>
+      </div>
+      <button class="submenu new-submenu20">
+        <div class="sub-menu-separador">
+          <p>Caramelised “torrija”, PX crème brûlée and vanilla ice cream</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image"
+              href="https://ambarvistahermosa.com/wp-content/uploads/2023/10/PDRJ0058-scaled.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/PDRJ0058-scaled.webp"
+                alt="baca" />
+            </a>
+          </div>
+
+          <div class="imagen-adicional"></div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>
+                Description of the dish
+              </h3>
+            </div>
+            <div class="ingredientes">
+              <img src="" alt="" />
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png" alt="lactosa" />
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Frutos-secos-1.png" alt="secos" />
+            </div>
+          </div>
+          <p>
+           Brioche bread “torrija” dipped in milk and white chocolate, caramelized.
+
+          </p>
+          <h3>Wine pairing</h3>
+
+          <p>
+            A PX wine (Pedro Ximénez) or an icewine to emphasize the sweet notes of the dish.
+
+          </p>
+          <h3> Allergens</h3>
+          <p>
+           Dairy, egg, sulfite, gluten
+          </p>
+          <h3>5€</h3>
+        </div>
+      </div>
+      <button class="submenu new-submenu20">
+        <div class="sub-menu-separador">
+          <p>OUR VERY OWN PIÑA COLADA</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image"
+              href="https://ambarvistahermosa.com/wp-content/uploads/2023/10/PDRJ0076-scaled.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/PDRJ0076-scaled.webp"
+                alt="baca" />
+            </a>
+          </div>
+
+          <div class="imagen-adicional"></div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>
+                Description of the dish
+              </h3>
+            </div>
+            <div class="ingredientes">
+              <img src="" alt="" />
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png" alt="lactosa" />
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Frutos-secos-1.png" alt="secos" />
+            </div>
+          </div>
+          <p>
+            We have versioned the mythical cocktail and transformed it into a dessert with a base of butter crumble with lemon cake, ending it with a coconut foam and a few pieces of roasted and osmotized pineapple with a rum syrup.
+
+          </p>
+          <h3>Wine pairing</h3>
+
+          <p>
+            An aged rum to intensify the syrup flavors and enhance the tropical nuances of the dessert.
+
+          </p>
+          <h3>Allergens</h3>
+          <p>Dairy, gluten, egg</p>
+          <h3>7€</h3>
+        </div>
+      </div>
+      <div class="descripcion-plato">
+        <div class="container-ingredientes">
+          <!-- <div class="ingredientes2">       
+<h3>CHEESECAKE</h3></div> </div> 
+        <p>Our baked cheesecake is a perfect amalgam of smoothness and flavor. Creamy filling made with the finest cheese, each slice is a sensory journey with silky texture and balanced flavor.</p>
+          <h3>Wine pairing</h3>
+
+          <P>Combines perfectly with sweet wines such as Port or Moscatel. Its fruity notes complement the creaminess of the cake, offering a delicious and balanced experience.
+</P>
+          <h3>Allergens</h3>
+          <p>Dairy and egg</p> -->
+        </div>
+      </div>
+    </div>
+    <!-- -->
+
+  </div>
+
+
+  <script>
+    // Para iterar sobre los contenedores del submenu si agrega mas aumente el numero
+    document.addEventListener("DOMContentLoaded", function () {
+      for (let i = 1; i <= 30; i++) {
+        const className = `.new-submenu${i}`;
+        const subMenus = document.querySelectorAll(className);
+
+        subMenus.forEach(function (subMenu) {
+          const toggleButton = document.createElement("div");
+          toggleButton.classList.add("toggle");
+          toggleButton.innerHTML = '<div class="plus">+</div>';
+          subMenu.appendChild(toggleButton);
+
+          toggleButton.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const subMenuPanel = subMenu.nextElementSibling;
+
+            if (
+              subMenuPanel.style.display === "none" ||
+              subMenuPanel.style.display === ""
+            ) {
+              subMenuPanel.style.display = "block";
+              toggleButton.querySelector(".plus").style.display = "none";
+              toggleButton.innerHTML = '<div class="minus">-</div>';
+            } else {
+              subMenuPanel.style.display = "none";
+              toggleButton.querySelector(".minus").style.display = "none";
+              toggleButton.innerHTML = '<div class="plus">+</div>';
+            }
+          });
+
+          subMenu.addEventListener("click", function (event) {
+            event.stopPropagation();
+            const subMenuPanel = subMenu.nextElementSibling;
+
+            if (
+              subMenuPanel.style.display === "none" ||
+              subMenuPanel.style.display === ""
+            ) {
+              subMenuPanel.style.display = "block";
+              toggleButton.querySelector(".plus").style.display = "none";
+              toggleButton.innerHTML = '<div class="minus">-</div>';
+            } else {
+              subMenuPanel.style.display = "none";
+              toggleButton.querySelector(".minus").style.display = "none";
+              toggleButton.innerHTML = '<div class="plus">+</div>';
+            }
+          });
+        });
+      }
+
+      const acordeones = document.querySelectorAll(".new-acordeon");
+
+      acordeones.forEach(function (acordeon) {
+        acordeon.addEventListener("click", function () {
+          acordeones.forEach(function (item) {
+            if (item !== acordeon) {
+              item.classList.remove("activo");
+              item.nextElementSibling.style.display = "none";
+            }
+          });
+
+          this.classList.toggle("activo");
+          const panel = this.nextElementSibling;
+
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+            const otrosPaneles = document.querySelectorAll(".panel");
+            otrosPaneles.forEach(function (otroPanel) {
+              if (otroPanel !== panel) {
+                otroPanel.style.display = "none";
+              }
+            });
+          }
+        });
+      });
+    });
+    // JavaScript para mostrar/ocultar el contenido adicional y crear la cruz dinámicamente
+    const botonesVerMas = document.querySelectorAll(".ver-mas");
+
+    botonesVerMas.forEach((toggleButton) => {
+      const contenidoAdicional = toggleButton.nextElementSibling;
+      const cruz = document.createElement("div");
+      cruz.classList.add("plus");
+      cruz.textContent = "+";
+      toggleButton.appendChild(cruz);
+
+      toggleButton.addEventListener("click", () => {
+        if (contenidoAdicional.style.display === "none" || contenidoAdicional.style.display === "") {
+          contenidoAdicional.style.display = "block";
+          cruz.textContent = "-";
+        } else {
+          contenidoAdicional.style.display = "none";
+          cruz.textContent = "+";
+        }
+      });
+    });
+
+
+  </script>
+</body>
+
+</html>

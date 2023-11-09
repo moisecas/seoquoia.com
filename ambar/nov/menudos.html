@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Links para ampliación imagen -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <style>
+        body {
+            background-color: #D6CFC2;
+
+        }
+        button:active {
+            background-color: none!important;
+         }
+        
+
+        .texto-Cabezera {
+            align-content: center;
+            align-items: end;
+            text-align: center;
+            justify-content: space-between;
+            display: flex;
+            color: #9B6349;
+            font-size: 18px;
+
+        }
+
+        .texto-Cabezera .txt1 {
+            margin-left: 10%;
+            margin-bottom: 4px;
+        }
+
+        .texto-Cabezera .txt2 {
+            margin-right: 10%;
+            margin-bottom: 4px;
+        }
+
+        .acordeon {
+            color: white;
+            cursor: pointer;
+            padding: 20px;
+            padding-left: 40px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 18px;
+            transition: 0.4s;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            align-items: center;
+            justify-content: space-between;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 0%;
+            border-bottom-right-radius: 0%;
+        }
+
+
+        .acordeon.activo {
+            background-color: #E0A955!important;
+        }
+
+        .acordeon.principal {
+            background-color: #F6A336!important;
+        }
+
+        .acordeon.vinos {
+            background-color: #E99532!important;
+            position: relative;
+            margin-top: -3px;
+
+        }
+
+        .acordeon.alcoholicas {
+            background-color: #DD882F!important;
+            position: relative;
+            margin-top: -3px;
+        }
+
+        .acordeon.refrescos {
+            background-color: #D17B2C!important;
+            position: relative;
+            margin-top: -3px;
+
+        }
+
+        .acordeon.cafe {
+            background-color: #C66F29!important;
+            position: relative;
+            margin-top: -3px;
+        }
+
+        .acordeon.algo-dulce{
+            background-color: #bd682b;
+            position: relative;
+            margin-top: -3px;
+
+        }
+
+        /* Estilo para el ícono de más (+) */
+        .toggle .plus {
+            font-size: 30px;
+            /* Tamaño de fuente personalizado */
+        }
+
+        /* Estilo para el ícono de menos (-) */
+        .toggle .minus {
+            font-size: 30px;
+            /* Tamaño de fuente personalizado */
+        }
+
+
+        .toggle {
+            display: inline-block;
+            cursor: pointer;
+            padding-left: 0px;
+            /* Espaciado entre la cruz y el texto del submenú */
+            align-items: center;
+            margin-top: 15px;
+            padding-top: 2px;
+        }
+
+        .cross {
+            width: 20px;
+            /* Ancho de la cruz */
+            height: 25px;
+            /* Altura de la cruz */
+            background-color: transparent;
+            position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .cross:before,
+        .cross:after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            /* Ancho de las líneas de la cruz */
+            background-color: white;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cross:before {
+            transform: rotate(45deg);
+        }
+
+        .cross:after {
+            transform: rotate(-45deg);
+        }
+
+        .submenu-principal {
+            background-color: #D6CFC2 !important;
+        }
+
+        .panel {
+            padding: 0;
+            display: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            background-color: #D6CFC2 !important;
+            color: #8B593B;
+
+        }
+
+        .panel text {
+            color: #B57C45
+        }
+
+        .panel .panelsub-menu-panel-1 {
+            background-color: #D69D50;
+
+        }
+        .cesartxt{
+            font-size: 16px !important;
+            font-family:'TThoves', sans-serif !important ;
+            margin-top: 0px;
+        }
+        .cesarh3{
+            text-transform: uppercase !important;
+            font-size: 16px !important;
+            font-family: 'TThoves', sans-serif !important;
+            margin-bottom: 0.1em!important;
+        }
+
+        .panel-1-img {
+            align-content: center;
+            height: 70%;
+            width: 100%;
+            border-radius: 10px !important;
+            margin-top: -6px;
+        }
+
+        .submenu {
+            justify-content: space-between;
+            text-align: left;
+            padding-left: 40px;
+            padding-top: 15px;
+            padding-bottom: 1px;
+            display: flex;
+            border: none;
+            border-radius: 0;
+            color: white;
+            transition: background-color 0.4s;
+            width: 100%;
+
+        }
+   .submenu:active{
+    background-color:none!important;
+   }
+        /*  Colores primer acordeon submenu "Platos pricipales"*/
+
+        .submenu1 {
+            background-color: #F6A336 !important;
+            border-top: 1px;
+            border-radius: 3px;
+
+        }
+        
+
+        .submenu2 {
+            background-color: #f6a336 !important;
+            border-top: 1px;
+            border-radius: 3px;
+        }
+
+        .submenu3 {
+            background-color: #F6A336 !important;
+            border-top: 1px;
+            border-radius: 3px;
+        }
+
+        /*  Colores segundo acordeon submenu "Vinos"*/
+        .submenu4 {
+            background-color: #E99532 !important;
+            border-top: 1px;
+            border-radius: 3px;
+
+        }
+
+        .submenu5 {
+            background-color: #E99532 !important;
+             border-top: 1px;
+             border-radius: 3px;
+        }
+
+        .submenu6 {
+            background-color: #E99532 !important;
+            border-top: 1px;
+             border-radius: 3px;
+
+        }
+
+        .submenu7 {
+            background-color: #DD882F !important;
+             border-top: 1px;
+            border-radius: 3px;
+
+        }
+
+        .submenu8 {
+            background-color: #DD882F !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        .submenu9 {
+            background-color: #DD882F !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        .submenu10 {
+            background-color: #D17B2C !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        .submenu11 {
+            background-color: #D17B2C !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        .submenu12 {
+            background-color: #D17B2C !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        /* tercerpanel */
+        .submenu13 {
+            background-color: #C66F29 !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        .submenu14 {
+            background-color: #C66F29 !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        .submenu15 {
+            background-color: #C66F29 !important;
+             border-top: 1px;
+            border-radius: 3px;
+        }
+
+        button {
+            size: 30px;
+        }
+
+
+
+
+        .sub-menu-separador {
+            border-top: 1px solid white;
+            margin-top: 1px;
+            display: flex;
+            width: 90%;
+            display: flex;
+        }
+
+        .sub-menu-separador p {
+            font-size: 18px;
+            margin-top: 2%;
+            padding: 5px 0px 10px 5px;
+            display: flex;
+            margin-left: 10px;
+            margin-bottom: 5px;
+        }
+
+        .separador-transparente {
+            width: 100%;
+            height: 55px;
+            border-radius: 5px;
+            border-style: none;
+            background-color: #D6CFC2;
+            position: relative;
+            bottom: 0.2em;
+            cursor: pointer;
+            pointer-events: none;
+
+
+        }
+        .ingrediente-1{
+            margin-right: 8px;
+        }
+
+        /* Estilos imagen y ampliación*/
+
+        .imagen-plato {
+            max-width: 100%;
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .imagen-plato img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px !important;
+            cursor: pointer;
+        }
+
+
+
+
+        /* Estilos para la imagen adicional */
+        .imagen-adicional {
+            position: absolute;
+            top: 10px;
+            /* Ajusta la posición vertical según tus preferencias */
+            right: 10px;
+            /* Ajusta la posición horizontal según tus preferencias */
+            width: 50px;
+            /* Ancho de la imagen adicional */
+            height: auto;
+        }
+
+        /*Estilos texto descripcion plato */
+
+        .descripcion-plato p {
+            font-size: 16px !important;
+            padding-right: 8em;
+            margin-bottom: 0px;
+            margin-top: 1px;
+        }
+
+        .descripcion-plato {
+
+            font-family: 'TThoves', sans-serif;
+            font-size: 14px;
+            font-weight: bold  ;    
+            margin-bottom: 2em;
+            margin-left: 1em;
+
+
+        }
+
+        .descripcion-plato h3 {
+            text-transform: uppercase;
+            margin-bottom: 1px !important;
+            margin-top: 16px !important;
+            font-size: 16px;
+            font-family:'TThoves', sans-serif !important;
+        }
+
+        .ingredientes2 {
+            display: flex;
+            padding-top: 1em;
+            padding-bottom: 0.2em;
+        }
+
+        .ingredientes {
+            position: relative;
+            width: 40%;
+            /* Las imágenes ocupan el 40% del ancho */
+            display: flex;
+            /* Utilizamos flexbox para alinear las imágenes en fila */
+            align-items: center;
+            justify-content: flex-end;
+            top: 5px;
+        }
+
+
+        .ingredientes img {
+            max-width: 32px!important;
+            /* Ajusta el tamaño de las imágenes al 100% del contenedor */
+            max-height: 100%;
+            /* Ajusta el alto máximo de las imágenes al 100% del contenedor */
+        }
+
+        .ingredientes2 {
+            width: 60%;
+            /* El título ocupa el 60% del ancho */
+
+        }
+
+        .container-ingredientes {
+            display: flex;
+        }
+
+        .fondo1 {
+            background-color: #F6A336 !important;
+            border-bottom-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important;
+        }
+
+        .fondo2 {
+            background-color: #E99532 !important;
+            border-bottom-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important;
+        }
+
+        .fondo3 {
+            background-color: #DD882F !important;
+            border-bottom-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important;
+        }
+
+        .fondo4 {
+            background-color: #D17B2C !important;
+            border-bottom-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important;
+        }
+
+        .fondo5 {
+            background-color: #C66F29 !important;
+            border-bottom-left-radius: 20px !important;
+            border-bottom-right-radius: 20px !important;
+        }
+
+        @media (max-width: 900px) {
+            .ingredientes img {
+            max-width: 30%;
+             max-height: 60%;
+           }
+       }
+    
+    </style>
+</head>
+
+<body>
+    <div class="texto-Cabezera">
+        <!-- <p class="txt1">Para Comer </p> -->
+        <!-- <p class="txt2">Para Beber</p> -->
+
+    </div>
+
+    <div class="menu-contenedor">
+
+        <button class="acordeon principal">To whet your appetite</button>
+        <div class="panel">
+
+            <button class="submenu submenu1">
+                <div class="sub-menu-separador">
+                    <p>
+                        100% Iberian Acorn Ham, Accompanied By Crystal Bread With Tomato
+                    </p>
+                </div>
+            </button>
+
+            <div class="panel sub-menu-panel-1">
+
+                <div class="imagen-plato">
+                    <div class="fondo1">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_2_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Jamon-de-bellota-100_-iberico-5j-acompanado-de-pan-con-tomate_.webp"
+                                alt="Jamón de bellota">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/cerdo-1.png"
+                                alt="Ingrediente 2">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png"
+                                alt="Ingrediente 3">
+                        </div>
+                    </div>
+                    <p>Hand-cut, 100 gram serving.</p>
+                    <h3>Wine pairing</h3>
+
+                    <P> It is recommended to accompany it with a reserve red wine or beer, which combine excellently with the whole range of charcuterie.</P>
+                    <h3>Allergens</h3>
+                    <p>Gluten.</p>
+                    <p>€26</p>
+                </div>
+            </div>
+            <button class="submenu submenu2">
+                <div class="sub-menu-separador">
+
+                    <p>Black Angus Jerky Accompanied by our "Airbags"</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo1">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_4_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Cecina-de-black-angus-acompana-de-nuestro-airbags_.webp"
+                                alt="Black Angus Cecina">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/cordero-1.png"
+                                alt="Black Angus">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png"
+                                alt="Gluten">
+                        </div>
+                    </div>
+                    <p>Hand-cut, 80 gram serving.</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>It is recommended to accompany it with a red wine</P>
+                    <h3>Allergens</h3>
+                    <p>Gluten.</p>
+                    <p>15€</p>
+                </div>
+
+            </div>
+            <button class="submenu submenu3">
+                <div class="sub-menu-separador">
+                    <p>Cantabrian Anchovies 00, Paris Coffee Butter and sourdough bread</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo1">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Diseno-sin-titulo-_6_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Anchoa-00-del-cantabrico-mantequilla-cafe-Paris-pan-de-masa-madre.webp"
+                                alt="Anchoas del Cantábrico">
+                        </a>
+                    </div>
+                    
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Dish description</h3>
+                        </div>
+                        <div class="ingredientes"> <img class="ingrediente-1"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="Pescado">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-1.png"
+                                alt="Lactosa">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png"
+                                alt="Gluten">
+                        </div>
+                    </div>
+                    <p>2 toasts per serving.</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>It is recommended to accompany it with a white wine with volume and structure that is mature, with touches of noble woods.
+ </P>
+                    <h3>Allergens</h3>
+                    <p>Fish, Sulfites, Mustard, Lactose and Gluten</p>
+                    <p>5€</p>
+                </div>
+            </div>
+        </div>
+
+        <button class="acordeon vinos">Let's start! </button>
+        <div class="panel">
+
+
+            <button class="submenu submenu4">
+                <div class="sub-menu-separador">
+                    <p>Natural French Oyster No. 2 or French oyster no. 2 with citrus touches</p>
+
+                </div>
+            </button>
+
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Ostra-guillerdao-n2-con-toques-citricos-.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Ostra-guillerdao-n2-con-toques-citricos-.webp"
+                                alt="Ostra nº2">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Dish description</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/fluent-emoji-flat_spiral-shell.png"
+                                alt="Moluscos">
+                        </div>
+                    </div>
+                    <p> Considered the best oysters in the world, enjoy the authentic taste of the sea. You can request the oysters in 2 versions, natural or dress them with a few hints of yuzu citrus and lime zest.
+
+                    </p>
+                    <h3>Wine pairing</h3>
+                    <P>It is recommended to accompany it with a light sparkling wine</P>
+                    <h3>Allergens</h3>
+                    <p>Mollusc.</p>
+                    <p>4,5€ per piece</p>
+                </div>
+
+            </div>
+
+
+            
+
+            <button class="submenu submenu5">
+                <div class="sub-menu-separador">
+                    <p>Motril keel varnished with Galician blonde cow fat smoked on the table</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Quisquilla-de-motril-barnizada-con-grasa-de-vaca-rubia-gallega-ahumada-en-mesa-scaled.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Quisquilla-de-motril-barnizada-con-grasa-de-vaca-rubia-gallega-ahumada-en-mesa-scaled.webp"
+                                alt="Quisquilla de motril">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mariscos-2.png"
+                                alt="Crustaceo">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                        </div>
+                    </div>
+                    <p>The Motril shrimp is a smaller shrimp, native to the area, characterized by its blue roe, which you can taste in the form of a gel. This crustacean has a sweet taste, and we provide it with a salty touch with matured Galician blond cow fat and smoked with lemon sawdust.
+</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>It is recommended to accompany it with astringent or dry white wine </P>
+                    <h3>Allergens</h3>
+                    <p> Crustacean and lactose</p>
+                    <p>21€</p>
+                </div>
+
+            </div>
+
+
+            <button class="submenu submenu5">
+                <div class="sub-menu-separador">
+                    <p>Ceviche Nikkei de Corvina salvaje de Conil</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Ceviche-nikkei-de-corvina-salvaje-de-conil-scaled.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Ceviche-nikkei-de-corvina-salvaje-de-conil-scaled.webp"
+                                alt="Ceviche Nikkei">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DESCRIPCIÓN DEL PLATO</h3>
+                        </div>
+                        <div class="ingredientes"> <img
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/picante-1.png"
+                                alt="picante">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="Pescado">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mariscos-2.png"
+                                alt="Marisco">
+                        </div>
+                    </div>
+                    <p> This dish combines Peruvian and Japanese haute cuisine, made with the best local produce. Cut the fish into taquitos, marinate it in tiger's milk, garnish with chives and sorrel sprouts. All this is accompanied by the red pepper sauce, this sauce is an emulsion of citrus and spicy touches. 
+</p>
+                    <h3>WINE PAIRING</h3>
+
+                    <P>It is recommended to accompany it with a full-bodied sparkling wine</P>
+                    <h3>ALLERGENS</h3>
+                    <p>Fish, seafood and celery</p>
+                    <p>24,50€</p>
+                </div>
+
+            </div>
+
+
+            <button class="submenu submenu5">
+                <div class="sub-menu-separador">
+                    <p>Lemon fish Tiradito, Japanese vinaigrette and orange gel</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Tiradito-pez-limon-vinagreta-japo-gel-de-naranja.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Tiradito-pez-limon-vinagreta-japo-gel-de-naranja.webp"
+                                alt="Tiradito pez limon">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="Pescado">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png"
+                                alt="Gluten">
+                        </div>
+                    </div>
+                    <p>
+                         A Peruvian dish of raw fish, cut in the shape of Sashimi and similar in appearance to carpaccio, lemon fish is a typical fish from the coast of Conil, which is marinated with a Japanese vinaigrette and a few stitches of orange gel are added.
+                    </p>
+                    <h3>Wine pairing</h3>
+
+                    <P> It is recommended to accompany it with a fresh and crunchy white wine</P>
+                    <h3>Allergens</h3>
+                    <p>Fish, gluten and soy</p>
+                    <p>22€</p>
+                </div>
+
+            </div>
+
+            <button class="submenu submenu5">
+                <div class="sub-menu-separador">
+                    <p>Almadraba Tuna Toast Fight</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Lucha-de-tosta_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Lucha-de-tosta_.webp"
+                                alt="atun de almadraba">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="Pescado">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png"
+                                alt="Gluten">
+                        </div>
+                    </div>
+                    <p>Version of the tuna tartar on a crunchy thin bread, two versions of this dish are made, to choose the one you like best.
+                        <br>
+                        Version 1: Truffled cream cheese base. Tuna seasoned with soy sauce, finished with hints of basil.
+                        <br>
+                        Version 2: Avocado and lime cream base. Tuna dressed in a kimchi mayonnaise, finished with hints of spearmint.
+                    <h3>Wine pairing</h3>
+
+                    <P> It is recommended to accompany it with a soft and light wine </P>
+                    <h3>Allergens</h3>
+                    <p>Gluten, sulfites, fish and soy</p>
+                    <p>10€ 2u </p>
+                </div>
+
+            </div>
+            <button class="submenu submenu5">
+                <div class="sub-menu-separador">
+                    <p>Matured old cow steak tartar and cured yolk</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Steak-tartar-de-vaca-vieja-madurada-45-dA­as-Yema-curda-.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Steak-tartar-de-vaca-vieja-madurada-45-dA­as-Yema-curda-.webp"
+                                alt="Steak tartar">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Dish description</h3>
+                        </div>
+                        <div class="ingredientes"> <img
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="Sulfito">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="pescado">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/jam_eggs-f-1.png"
+                                alt="huevo">
+                        </div>
+                    </div>
+                    <p>Made of old cow sirloin, with classic dressing: cognac, Perrins sauce, tabasco, touch of finely chopped pickles 
+and yolk cured in salt and sugar. </p>
+                    <h3>Wine pairing</h3>
+
+                    <P>Steak tartare does not have an easy pairing. Avoiding the conventions of "for meat, red wine and for fish, white wine", we recommend a wine with nuances, which gives us greasiness and texture, while cleaning our mouths and preparing it for the next bite.</P>
+                    <h3>Allergens</h3>
+                    <p>Sulfite, fish, mustard and egg</p>
+                    <p>19€</p>
+                </div>
+
+            </div>
+            <button class="submenu submenu5">
+                <div class="sub-menu-separador">
+                    <p>Sanlúcar prawn salad</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Ensaladilla-de-langostinos-de-sanlucar_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Ensaladilla-de-langostinos-de-sanlucar_.webp"
+                                alt="Ensaladilla rusa">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Dish description</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mariscos-1.png"
+                                alt="Crustaceo">
+                        </div>
+                    </div>
+                    <p>Sanlúcar potatoes, carrot, egg, Sanlúcar prawn and homemade mayonnaise.
+                    </p>
+                    <h3>Wine pairing</h3>
+
+                    <P>It is recommended to accompany it with wines with good acidity and primary aromas that are not too fruity
+                    </P>
+                    <h3>Allergens</h3>
+                    <p>Mustard, egg and crustacean</p>
+                    <p>10€</p>
+                </div>
+
+            </div>
+
+            <button class="submenu submenu5">
+                <div class="sub-menu-separador">
+                    <p>Conil tomato salad with feta cheese snow</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Ensalada-de-tomates-de-conil_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Ensalada-de-tomates-de-conil_.webp"
+                                alt="Ostras guillerdao">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="sulfito">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                        </div>
+                    </div>
+                    <p> Pink ruff tomato and queen tomato, brought from our Conil orchard, with grated feta cheese, green touches and accompanied by a vinaigrette of roasted tomato juice and cut stick.</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>The acidity or sweetness of tomatoes can be complicated elements when pairing salads. We recommend light flavors in the mouth</P>
+                    <h3>Allergens</h3>
+                    <p>Dairy and sulfite</p>
+                    <p>12€</p>
+                </div>
+
+            </div>
+            <button class="submenu submenu6">
+                <div class="sub-menu-separador">
+                    <p>Our version of Caesar salad</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo2">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/version-cesar.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/version-cesar.webp"
+                                alt="version cesar">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="container-ingredientes">
+                    <div class="ingredientes2">
+                        <h3 class="cesarh3">Dish description</h3>
+                    </div>
+                    <div class="ingredientes"> <img
+                            src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png" alt="pescado">
+                        <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/jam_eggs-f-1.png"
+                            alt="huevo">
+                        <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png" alt="Gluten">
+                    </div>
+                </div>
+                <p class="cesartxt">Salad made with charcoal-roasted Tudela buds, we make a sauce based on mayonnaise, anchovies and Parmesan and we finish it with homemade crouton.
+</p>
+                <h3 class="cesarh3">Wine pairing</h3>
+
+                <P class="cesartxt">A wine with good acidity and citrus and herbaceous aromas is recommended. </P>
+                <h3 class="cesarh3">Allergen </h3>
+                <p class="cesartxt">Fish, mustard, gluten, dairy and egg.</p>
+                <p class="cesartxt">€14.50</p>
+
+
+
+            </div>
+
+        </div>
+        <button class="acordeon alcoholicas">Sharing is caring</button>
+        <div class="panel">
+            <button class="submenu submenu7">
+                <div class="sub-menu-separador">
+                    <p>Grilled Galician mussels with chipotle Biscayne and cilantro air</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mejillones-gallegos-ala-brasa-vizcaina-de-chipotle-aire-de-cilantro_.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mejillones-gallegos-ala-brasa-vizcaina-de-chipotle-aire-de-cilantro_.webp"
+                                alt="Mejillones">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Dish description</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/fluent-emoji-flat_spiral-shell.png"
+                                alt="Molusco">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="Sulfito">
+                        </div>
+                    </div>
+                    <p>We open the mussels with chamomile in our coals. We season this dish with Biscay sauce and a touch of chipotle, finishing with an air of coriander and fried sage leaves.
+</p>
+                    <h3>Wine pairing</h3>
+
+                    <P> It is recommended to accompany it with aged white wines, which have a slight woody taste</P>
+                    <h3>Allergens</h3>
+                    <p>Mollusc and sulphite</p>
+                    <p>17,50€</p>
+                </div>
+            </div>
+            <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Galician zamburiña on citrus coconut and mullet caviar</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Zamburinas-gallegas-sobre-coco-citrico-y-caviar-de-mujol.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Zamburinas-gallegas-sobre-coco-citrico-y-caviar-de-mujol.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Dish description</h3>
+                        </div>
+                        <div class="ingredientes"> <img
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="sulfito">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/fluent-emoji-flat_spiral-shell.png"
+                                alt="Molusco">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                        </div>
+                    </div>
+                    <p>We sauté the "zamburiña" with butter, and place them on a cream of coconut milk that we acidify with passion fruit and chamomile, finish with herring roe and top the dish with lime zest.</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>It is recommended to accompany with light and fresh wine</P>
+                    <h3>Allergens </h3>
+                    <p>Dairy, sulfite, celery and mollusk</p>
+                    <p>€4 per piece </p>
+                </div>
+            </div>
+
+            <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Iberian ham croquettes with fat emulsion and Iberian veil</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Croquetas-de-jamon-5j-emulsion-de-su-grasa-velocidad-iberico-scaled.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Croquetas-de-jamon-5j-emulsion-de-su-grasa-velocidad-iberico-scaled.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/jam_eggs-f-1.png"
+                                alt="huevo">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png"
+                                alt="Gluten">
+                        </div>
+                    </div>
+                    <p>Traditional croquettes, infused for more than 24 hours to achieve maximum intensity in flavor. Our croquettes are breaded with Panko and culminate with a slice of Iberian veil.</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>It is recommended to accompany it with warm and sweet red wine, it will help to enhance the Iberian nuances. </P>
+                    <h3>Allergens </h3>
+                    <p>Dairy, gluten and egg</p>
+                    <p>€2 per piece</p>
+                </div>
+            </div>
+            <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Lightly marinated and fried sea bass</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Lubina-adobada-levemente-y-frita.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Lubina-adobada-levemente-y-frita.webp"
+                                alt="Lubina frita">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="Sulfito">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="Pescado">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/gluten-1.png"
+                                alt="Gluten">
+                        </div>
+                    </div>
+                    <p> The sea bass is marinated in traditional Cádiz marinated for 24 hours, then fried to take advantage of 100% of this fish. It is recommended to eat the head of the sea bass, as it is one of the tastiest parts.</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>To enhance the flavor of marinated sea bass, a wine with fruity and aromatic nuances is recommended </P>
+                    <h3>Allergens</h3>
+                    <p>Fish, gluten and sulfite</p>
+                    <p>25€</p>
+                </div>
+            </div>
+            <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Grilled bimis with Romesco sauce</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Bimis-ala-brasa-con-salsa-romescu.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Bimis-ala-brasa-con-salsa-romescu.webp"
+                                alt="Bimis">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="Sulfito">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Frutos-secos-1.png"
+                                alt="frutos secos">
+                        </div>
+                    </div>
+                    <p>One of the healthiest vegetables, a hybrid between broccoli and cabbage. Scalded bimis "al dente" and finished with a touch of embers, to achieve crisp texture and smoky touches.
+</p>
+                    <h3>Wine pairing</h3>
+
+                    <P>A young and fresh wine is recommended. </P>
+                    <h3>Allergens</h3>
+                    <p>Nuts and sulfites</p>
+                    <p>10€</p>
+                </div>
+            </div>
+            <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Mellow Fish and Seafood Fideuá</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PA100107.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PA100107.webp"
+                                alt="Bimis">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DISH DESCRIPTION</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="Sulfito">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Frutos-secos-1.png"
+                                alt="frutos secos">
+                        </div>
+                    </div>
+                    <p>
+                        Our secret recipe combines fine strands of toasted noodles with a succulent fish and seafood broth, achieving a honeyed texture that caresses the palate. The salty aroma and intense flavors intertwine in perfect harmony.
+Sea bass, monk fish and prawns are mixed with the noodles, creating a feast of marine flavors. The presentation, a true visual delight, will transport you directly to our beaches. (Minimum waiting time 30 min.)
+                         
+                    </p>
+                    <h3>WINE PAIRING</h3>
+
+                    <P>It is recommended to accompany it with rosé wines, short aging in oak barrels, which provide toasted notes and delicate tannins.</P>
+                    <h3>ALLERGENS</h3>
+                    <p> Gluten, fish, crustacean, sulfite and celery.</p>
+                    <p>16€ per person</p>
+                </div>
+            </div>
+           
+            <!--  -->
+            <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Potato and Truffle Omelet</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/Tortilla-1.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/Tortilla-1.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DISH DESCRIPTIONS</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mariscos-2.png"
+                                alt="Crustaceo">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                        </div>
+                    </div>
+                    <p>An exquisite interpretation of the classic Spanish omelet enriched with the elegance and unmistakable aroma of the truffle. Our dish perfectly combines the softness of the traditional potato omelet with the subtlety and earthy flavor of the truffle.</p>
+                    <h3>WINE PAIRING</h3>
+                    
+                    <P>
+                        We recommend pairing the truffled potato omelet with a light to medium bodied young red wine, such as a young Tempranillo or Pinot Noir.
+                    </P>
+                    <h3>ALLERGENS</h3>
+                    <p> Gluten and truffles.</p>
+                    <p>12€/pax</p>
+
+                </div>
+                <!--  -->
+                
+            </div>
+            <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Stewed Albadraba tuna facera, sage ali oli and crispy ink</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/Tortilla-1.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/Tortilla-1.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DISH DESCRIPTION</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mariscos-2.png"
+                                alt="Crustaceo">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                        </div>
+                    </div>
+                    <p>We stew the tuna facera similar to the traditional pork cheek stew, using a broth made with tuna bones and we finish with a sage aioli to give it a fresh touch.
+Wine pairing: Vino tinto ligero, como un Pinot Noir o un joven Tempranillo. Sus tonos frutales y ligeros complementan la textura y sabor característicos del atún, aportando un equilibrio delicioso al plato.</p>
+                    <h3>WINE PAIRING</h3>
+                    
+                    <P>
+                        Light red wine, such as a Pinot Noir or a young Tempranillo. Its fruity and light tones complement the characteristic texture and flavor of tuna, providing a delicious balance to the dish.</P>
+                    <h3>ALLERGENS</h3>
+                    <p>Sulfite, fish and seafood.</p>
+                    <p>16€</p>
+
+                </div>
+                <!--  -->
+                
+            </div>
+        </div>
+        <button class="acordeon refrescos">Slow-cooked</button>
+        <div class="panel">
+            <button class="submenu submenu10">
+                <div class="sub-menu-separador">
+                    <p>Low loin of “Charra” cow from 45 to 65 days of maturation (minimum 300gr)</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/10/lomo-bajo-charra-1-scaled.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/lomo-bajo-charra-1-scaled.webp"
+                                alt="baca">
+                        </a>
+                    </div>
+
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DESCRIPTION OF THE DISH</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/vaca-ternera-1.png"
+                                alt="baca">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png" alt="asado">
+                        </div>
+                    </div>
+                    <p> Our Low loin of “Charra” cow is a jewel of meat, with a maturation of 45 to 65 days to intensify its flavor, tenderness and with very little fat. Prepared on the grill, this exceptional cut of meat, weighing at least 300 grams, is juicy and full of smoky flavors that will delight your senses. A culinary experience that pays homage to quality and tradition in every bite.</p>
+                    <h3>WINE PAIRING</h3>
+
+                    <P>The ideal choice would be to accompany it with a robust red wine, such as a Cabernet Sauvignon. Its body and tannins complement the richness and depth of the meat, creating a perfect balance on the palate. </P>
+                    <h3>ALLERGENS</h3>
+                    <p>N/A</p>
+                    <p>7€ 100g</p>
+                </div>
+            </div>
+            
+            <button class="submenu submenu10">
+                <div class="sub-menu-separador">
+                    <p>Premium beef steak certified from 45 to 65 days of maturation</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/10.png">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/10.png"
+                                alt="">
+                        </a>
+                    </div>
+
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DESCRIPTION OF THE DISH</h3>
+                            
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/vaca-ternera-1.png"
+                                alt="baca">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="Sulfito">
+                        </div>
+                    </div>
+                    <p>Our Premium Beef Steak, certified and matured for 45 to 65 days, is presented in its maximum splendor on the grill. This exceptional cut of meat is a real culinary gem, as it has a lot of fat infiltration. Each bite reveals a deep, smoky flavor with a juicy, tender texture.</p>
+                    <h3>WINE PAIRING</h3>
+
+                    <P>The ideal choice would be to accompany it with a red wine with body and character, such as Tempranillo Reserva. Its fruit notes and structured tannins enhance the intensity of the meat, offering a harmonious gastronomic experience.</P>
+                    <h3>ALLERGENS</h3>
+                    <p>No allergens</p>
+                    <p>8.5€ 100g</p>
+                </div>
+            </div>
+
+
+            <button class="submenu submenu10">
+                <div class="sub-menu-separador">
+                    <p>Àmbar mini burger of Galician blonde cow in brioche bread, rosemary tomato, live lettuce and secret sauce</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/11.png">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/11.png"
+                                alt="baca">
+                        </a>
+                    </div>
+
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DESCRIPTION OF THE DISH</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/vaca-ternera-1.png"
+                                alt="burguer">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/ahumado.png"
+                                alt="Sulfito">
+                        </div>
+                    </div>
+                    <p>The Galician blonde meat is marinated with a homemade dressing, given the necessary time to nuance the flavors, accompanied by a rosemary-flavored tomato and smoked live lettuce. It is served on brioche bread and watered with our secret sauce.</p>
+                    <h3>WINE PAIRING</h3>
+
+                    <P>A young red from the Ribera del Duero region or a Tempranillo from La Rioja would be suitable.</P>
+                    <h3>ALLERGENS</h3>
+                    <p>Gluten, dairy, egg and sesame.</p>
+                    <p>6€</p>
+                </div>
+            </div>
+
+            <button class="submenu submenu10">
+                <div class="sub-menu-separador">
+                    <p>Grilled octopus with citrus and spicy touches accompanied by micro vegetables</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Pulpo-a-la-brasa-con-pure-de-patatas-al-parmesano2.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Pulpo-a-la-brasa-con-pure-de-patatas-al-parmesano2.webp"
+                                alt="baca">
+                        </a>
+                    </div>
+
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="Pulpo">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/parrilla-1.png"
+                                alt="brasa">
+                        </div>
+                    </div>
+                    <p>The perfect point of cooking the octopus from our coast is sought, it ends with a touch of grill, which gives this dish a smoky and unique flavor. The carved octopus is presented, plated with chili sauce of different colors and micro-vegetables from our garden.
+
+                    </p>
+                    <h3>Wine pairing</h3>
+
+                    <P>We recommend white wines that have a refreshing acidity that complements the citrus flavors and helps balance the spiciness, while its aromatic profile enhances the notes of octopus and micro vegetables.</P>
+                    <h3>Allergens</h3>
+                    <p>Mollusc and fish</p>
+                    <p>19€</p>
+                </div>
+            </div>
+
+            <button class="submenu submenu10">
+                <div class="sub-menu-separador">
+                    <p>Fish of the day (according to market) opened to the back, made in our natural embers or with Bilbao sauce</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Ostra-guillerdao-n2-con-toques-citricos-.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Ostra-guillerdao-n2-con-toques-citricos-.webp"
+                                alt="baca">
+                        </a>
+                    </div>
+
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Pescado-1.png"
+                                alt="Pescado">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/parrilla-1.png"
+                                alt="brasa">
+                        </div>
+                    </div>
+                    <p>Fish with few bones, with a cut that facilitates its enjoyment, prepared over low heat in our embers. It is the choice of the diner to accompany it with Bilbao sauce or not.
+ </p>
+                    <h3>Wine pairing</h3>
+
+                    <P>For grilled fish, a medium-bodied white wine such as Albariño or Verdejo is recommended. Both provide freshness and citrus notes that perfectly complement the smooth, smoky taste of the fish</P>
+                    <h3>Allergens</h3>
+                    <p>Fish Bilbao sauce - Sulfite
+</p>
+                    <p>€65/kg</p>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="acordeon cafe">On the side</button>
+        <div class="panel">
+            <button class="submenu submenu14">
+                <div class="sub-menu-separador">
+                    <p>Grilled Lodosa “piquillo” peppers</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Pimientos-del-poquillo-de-lodosa-ala-brasa-3-1.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/Pimientos-del-poquillo-de-lodosa-ala-brasa-3-1.webp"
+                                alt="pimientos">
+                        </a>
+                    </div>
+
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+                            
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                           
+                        </div>
+                    </div>
+                    <p>Lodosa piquillo peppers, roasted to perfection, which offer a sweet and slightly smoky flavor, accompanied by their characteristic grilled aroma.
+Ideal for those looking for a traditional and tasty touch at their table
+ </p>
+
+                   
+                    <h3>Allergens</h3>
+                    <p>May contain traces of nuts if stuffed or cooked in shared facilities.
+                    </p>
+                    <p>€3.5 all trims </p>
+                </div>
+            </div>
+            <button class="submenu submenu14">
+                <div class="sub-menu-separador">
+                    <p>Bakery potatoes</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo4">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/08/Plato.png">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/08/Plato.png"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                           
+                        </div>
+                    </div>
+                    <p>
+                        Our thinly sliced baked potatoes, seasoned with fresh herbs, are the ideal complement to any dish. Their crunchy texture on the outside and softness on the inside make them the perfect accompaniment to enhance your favorite flavors
+                    </p>
+
+                    <h3>Allergens</h3>
+                    <p>
+                      Sulfite
+                    </p>
+                    <p>3.5€ </p>
+                </div>
+             
+
+         </div>
+            <button class="submenu submenu15">
+                <div class="sub-menu-separador">
+                    <p>Green Salad</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo4">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/08/Plato.png">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/08/Plato.png"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                           
+                        </div>
+                    </div>
+                    <p>
+                       Endive or live lettuce, Conil tomatoes and onion from our garden.
+                    </p>
+
+                    <h3>Allergens </h3>
+                    <p>
+                      Sulfite
+                    </p>
+                    <p>3.5€ </p>
+                </div>
+             
+         </div>
+         <!--  -->
+            <button class="submenu submenu15">
+                <div class="sub-menu-separador">
+                    <p>French fries with padrón peppers</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo4">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/08/Plato.png">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/08/Plato.png"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>Description of the dish</h3>
+
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                           
+                        </div>
+                    </div>
+                    <p>
+                      Our crispy French fries are combined with the classic padron peppers, providing a touch of freshness and surprise in every bite. The contrast between the crispy potatoes and the explosion of flavor of the padron peppers.
+                    </p>
+
+                    <h3>Allergens</h3>
+                    <p>
+                      Something sweet
+                    </p>
+                    <p>3.5€ </p>
+                </div>
+            
+         </div>
+            <button class="submenu submenu15">
+                <div class="sub-menu-separador">
+                    <p>Papines a la brasa</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo5">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/08/Plato.png">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/10/ensalda-verde-scaled.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <!-- Agrega la imagen adicional aquí -->
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DESCRIPCIÓN DEL PLATO</h3>
+
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                           
+                        </div>
+                    </div>
+                    <p>Patata portuguesa asada en horno de carbón, aromatizada con mantequilla casera de romero y acabadas con salsa de ajo y perejil.
+                        </p>
+
+                    <h3>ALÉRGENOS</h3>
+                    <p>
+                      Lácteo
+                    </p>
+                    <p>3.5€</p>
+                </div>
+             
+
+            </div>
+        </div>
+        
+        <!--  -->
+        
+    </div>
+    <button class="separador-transparente"></button>
+
+    <script>
+
+        // Para iterar sobre los contenedoresdel submenu si agrega mas  aumente el numero
+        document.addEventListener("DOMContentLoaded", function () {
+            for (let i = 1; i <= 15; i++) {
+                const className = `.submenu${i}`;
+                const subMenus = document.querySelectorAll(className);
+
+                subMenus.forEach(function (subMenu) {
+                    const toggleButton = document.createElement("div");
+                    toggleButton.classList.add("toggle");
+                    toggleButton.innerHTML = '<div class="plus">+</div>';
+                    subMenu.appendChild(toggleButton);
+
+                    toggleButton.addEventListener("click", function (e) {
+                        e.stopPropagation();
+                        const subMenuPanel = subMenu.nextElementSibling;
+
+                        if (subMenuPanel.style.display === "none" || subMenuPanel.style.display === "") {
+                            subMenuPanel.style.display = "block";
+                            toggleButton.querySelector(".plus").style.display = "none";
+                            toggleButton.innerHTML = '<div class="minus">-</div>';
+                        } else {
+                            subMenuPanel.style.display = "none";
+                            toggleButton.querySelector(".minus").style.display = "none";
+                            toggleButton.innerHTML = '<div class="plus">+</div>';
+                        }
+                    });
+
+                    subMenu.addEventListener("click", function (event) {
+                        event.stopPropagation();
+                        const subMenuPanel = subMenu.nextElementSibling;
+
+                        if (subMenuPanel.style.display === "none" || subMenuPanel.style.display === "") {
+                            subMenuPanel.style.display = "block";
+                            toggleButton.querySelector(".plus").style.display = "none";
+                            toggleButton.innerHTML = '<div class="minus">-</div>';
+                        } else {
+                            subMenuPanel.style.display = "none";
+                            toggleButton.querySelector(".minus").style.display = "none";
+                            toggleButton.innerHTML = '<div class="plus">+</div>';
+                        }
+                    });
+                });
+            }
+
+            const acordeones = document.querySelectorAll(".acordeon");
+
+            acordeones.forEach(function (acordeon) {
+                acordeon.addEventListener("click", function () {
+                    acordeones.forEach(function (item) {
+                        if (item !== acordeon) {
+                            item.classList.remove("activo");
+                            item.nextElementSibling.style.display = "none";
+                        }
+                    });
+
+                    this.classList.toggle("activo");
+                    const panel = this.nextElementSibling;
+
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                        const otrosPaneles = document.querySelectorAll(".panel");
+                        otrosPaneles.forEach(function (otroPanel) {
+                            if (otroPanel !== panel) {
+                                otroPanel.style.display = "none";
+                            }
+                        });
+                    }
+                });
+            });
+        });
+
+
+    </script>
+
+</body>
+
+</html>
