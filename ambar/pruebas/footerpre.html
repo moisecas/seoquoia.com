@@ -1,4 +1,4 @@
-    <!-- Font Awesome versión más reciente -->
+<!-- Font Awesome versión más reciente -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <footer class="foot">
@@ -48,15 +48,27 @@
         text-align: left;
         height: auto;
         letter-spacing: 2px;
+        position: relative; /* Se añade para posicionamiento absoluto del pseudo-elemento */
+    }
+
+    footer.foot::after {
+        content: '';
+        position: absolute;
+        bottom: 0;  /* Ajustado para que la línea quede al final */
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: #826150; /* Color marrón */
     }
 
     .footer-content {
         max-width: 1200px; 
         margin: 0 auto; 
+        position: relative;
+        z-index: 1; /* Asegura que el contenido esté por encima de la línea */
     }
 
     .footer-bottom {
-        border-top: 1px solid #826150;
         padding-top: 15px;
         text-align: center;
     }

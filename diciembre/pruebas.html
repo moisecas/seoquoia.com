@@ -1,21 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <title>Expertos en Google</title>
   <style>
-    .circle-line-container {
-      display: flex;
-      align-items: center;
+    .google-experts-container { 
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 300px;      
+      margin: auto; /* Centrar el contenedor si el body está comentado */
+      background-color: white; /* Fondo blanco para el contenedor */
     }
 
+    .google-experts-title { 
+      font-size: 24px;
+      margin-bottom: 16px;
+      color: black;
+    }
+
+    .google-experts-paragraph { 
+      font-size: 14px;
+      margin-bottom: 16px;
+      color: black;
+      text-align: justify; /* Justificar el texto del párrafo */
+    }
+
+    .google-experts-button { 
+      display: inline-block;
+      padding: 10px 15px;
+      text-align: center;
+      text-decoration: none;
+      color: white;
+      background-color: black;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    /* Estilo del círculo sin borde */
     .circle {
       margin-right: 5px;
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      border: 1px solid white;
       background-color: transparent;
     }
 
+    /* Línea personalizada sin bordes */
     hr.custom-line {
       flex-grow: 1;
       border: none;
@@ -24,20 +55,6 @@
       height: 1px;
       margin: 0 10px;
     }
-
-    .content {
-      color: white;
-    }
-
-    .content h2 {
-      font-size: 1.5em;
-      margin: 10px 0;
-    }
-
-    .content p {
-      font-size: 14px; 
-      margin: 5px 0;
-    }
   </style>
 </head>
 <body>
@@ -45,9 +62,13 @@
     <div class="circle"></div>
     <hr class="custom-line">
   </div>
-  <div class="content">
-    <h2>Optimización Técnica</h2>
-    <p>Este servicio es complementario a la Auditoria SEO. Aplicamos las mejoras en tus canales Digitales</p> <!-- Etiqueta h6 cambiada a p -->
+  <div class="google-experts-container">
+    <h5 class="google-experts-title">Expertos en Google</h5>
+    <p class="google-experts-paragraph">Nuestro equipo de Expertos está listo para analizar tus necesidades y diseñar una estrategia de SEO Personalizada, para destacarte por encima de la competencia. ¡No pierdas la oportunidad de impulsar tu negocio con nuestra ayuda.</p>
+    <a href="#" class="google-experts-button">¿Hablamos?</a>
   </div>
 </body>
 </html>
+
+
+
