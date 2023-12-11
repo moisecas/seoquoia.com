@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .signup-container {
+      border: 2px solid #fff; 
+      display: flex;
+      padding: 8px;
+    }
+
+    .signup-input {
+      border: none;
+      padding: 8px 16px;
+      margin-right: 8px; 
+      flex-grow: 1; 
+      color: #fff; 
+    }
+
+    .signup-input:focus {
+      outline: none; 
+    }
+
+    .signup-button {
+      padding: 8px 16px;
+      background-color: #000; 
+      color: #fff; 
+      border: 2px solid #fff; 
+      cursor: pointer; 
+      text-transform: uppercase; 
+    }
+
+    /* Estilos para eliminar el aspecto por defecto de los inputs en diferentes navegadores */
+    .signup-input::-webkit-input-placeholder { color: #fff; }
+    .signup-input:-moz-placeholder { color: #fff; }
+    .signup-input::-moz-placeholder { color: #fff; }
+    .signup-input:-ms-input-placeholder { color: #fff; }
+
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <input type="email" class="signup-input" placeholder="Your email" />
+    <button class="signup-button">Sign up</button>
+  </div>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000; /* Suponiendo un fondo negro */
+    }
+
+    .signup-container {
+      border: 2px solid #fff; 
+      display: flex;
+      padding: 8px;
+      max-width: 500px; /* Ajusta este valor según tus necesidades */
+    }
+
+    .signup-input {
+      flex: 1; /* El input ocupa el espacio disponible pero respeta el max-width del contenedor */
+      padding: 8px 16px;
+      margin-right: 8px; 
+      background-color: #fff; /* Fondo blanco para el input */
+      color: #000; /* Texto negro para el input */
+    }
+
+    .signup-input:focus {
+      outline: none; 
+    }
+
+    .signup-button {
+      padding: 8px 16px;
+      background-color: #fff; /* Fondo blanco para el botón */
+      color: #000; /* Texto negro para el botón */
+      border: 2px solid #fff; /* Borde blanco para el botón */
+      cursor: pointer; 
+      text-transform: uppercase; 
+    }
+
+    /* Estilos para eliminar el aspecto por defecto de los inputs en diferentes navegadores */
+    .signup-input::-webkit-input-placeholder { color: #000; }
+    .signup-input:-moz-placeholder { color: #000; }
+    .signup-input::-moz-placeholder { color: #000; }
+    .signup-input:-ms-input-placeholder { color: #000; }
+
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <input type="email" class="signup-input" placeholder="Your email" />
+    <button class="signup-button">Sign up</button>
+  </div>
+</body>
+</html>
