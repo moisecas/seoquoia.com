@@ -1,0 +1,2990 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Links para ampliación imagen -->
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+  <style>
+    body {
+      background-color: #D6CFC2;
+
+    }
+
+    button:active {
+      background-color: none !important;
+    }
+
+
+    .texto-Cabezera {
+      align-content: center;
+      align-items: end;
+      text-align: center;
+      justify-content: space-between;
+      display: flex;
+      color: #9B6349;
+      font-size: 18px;
+
+    }
+
+    .texto-Cabezera .txt1 {
+      margin-left: 10%;
+      margin-bottom: 4px;
+    }
+
+    .texto-Cabezera .txt2 {
+      margin-right: 10%;
+      margin-bottom: 4px;
+    }
+
+    .acordeon {
+      color: white;
+      cursor: pointer;
+      padding: 20px;
+      padding-left: 40px;
+      width: 100%;
+      border: none;
+      text-align: left;
+      outline: none;
+      font-size: 18px;
+      transition: 0.4s;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      align-items: center;
+      justify-content: space-between;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 0%;
+      border-bottom-right-radius: 0%;
+    }
+
+
+    .acordeon.activo {
+      background-color: #E0A955 !important;
+    }
+
+    .acordeon.principal {
+      background-color: #F6A336 !important;
+    }
+
+    .acordeon.vinos {
+      background-color: #E99532 !important;
+      position: relative;
+      margin-top: -3px;
+
+    }
+
+    .acordeon.alcoholicas {
+      background-color: #DD882F !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .acordeon.deseo {
+      background-color: #924b00 !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .acordeon.deseo.dentro {
+      background-color: #b97021 !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .lista-vinos {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0; 
+    background-color: #fff;
+    border-top: 3px solid #000; 
+    font-family: 'Arial', sans-serif;
+    }
+
+    .item-vino {
+    border-bottom: 1px solid #000; 
+    padding: 10px 5px;
+    background-color: #fff; 
+    }
+
+    .item-vino:last-child {
+    border-bottom: 3px solid #000; 
+    }
+
+    .vino-nombre {
+    font-weight: bold;
+    color: #000; 
+    display: block; 
+    margin-bottom: 5px; 
+    }
+
+    .vino-precio {
+    font-weight: bold;
+    color: #000; 
+    display: block; 
+    text-align: right; 
+    margin-bottom: 5px; 
+    }
+
+    .vino-descripcion {
+    color: #555; 
+    font-style: italic; 
+    margin-left: 5px; 
+    }
+
+
+
+    .acordeon.refrescos {
+      background-color: #D17B2C !important;
+      position: relative;
+      margin-top: -3px;
+
+    }
+
+    .acordeon.cafe {
+      background-color: #C66F29 !important;
+      position: relative;
+      margin-top: -3px;
+    }
+
+    .acordeon.algo-dulce {
+      background-color: #bd682b;
+      position: relative;
+      margin-top: -3px;
+
+    }
+
+    /* Estilo para el ícono de más (+) */
+    .toggle .plus {
+      font-size: 30px;
+      /* Tamaño de fuente personalizado */
+    }
+
+    /* Estilo para el ícono de menos (-) */
+    .toggle .minus {
+      font-size: 30px;
+      /* Tamaño de fuente personalizado */
+    }
+
+
+    .toggle {
+      display: inline-block;
+      cursor: pointer;
+      padding-left: 0px;
+      /* Espaciado entre la cruz y el texto del submenú */
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 2px;
+    }
+
+    .cross {
+      width: 20px;
+      /* Ancho de la cruz */
+      height: 25px;
+      /* Altura de la cruz */
+      background-color: transparent;
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .cross:before,
+    .cross:after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 2px;
+      /* Ancho de las líneas de la cruz */
+      background-color: white;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .cross:before {
+      transform: rotate(45deg);
+    }
+
+    .cross:after {
+      transform: rotate(-45deg);
+    }
+
+    .submenu-principal {
+      background-color: #D6CFC2 !important;
+    }
+
+    .panel {
+      padding: 0;
+      display: none;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      background-color: #D6CFC2 !important;
+      color: #8B593B;
+
+    }
+
+    .panel text {
+      color: #B57C45
+    }
+
+    .panel .panelsub-menu-panel-1 {
+      background-color: #D69D50;
+
+    }
+
+    .cesartxt {
+      font-size: 16px !important;
+      font-family: 'TThoves', sans-serif !important;
+      margin-top: 0px;
+      font-weight: bold;
+    }
+
+    .cesarh3 {
+      text-transform: uppercase !important;
+      font-size: 16px !important;
+      font-family: 'TThoves', sans-serif !important;
+      margin-bottom: 0.1em !important;
+      font-weight: bold;
+      margin-top: 16px;
+
+    }
+
+    .panel-1-img {
+      align-content: center;
+      height: 70%;
+      width: 100%;
+      border-radius: 10px !important;
+      margin-top: -6px;
+    }
+
+    .submenu {
+      justify-content: space-between;
+      text-align: left;
+      padding-left: 40px;
+      padding-top: 15px;
+      padding-bottom: 1px;
+      display: flex;
+      border: none;
+      border-radius: 0;
+      color: white;
+      transition: background-color 0.4s;
+      width: 100%;
+    }
+
+    .submenu:active {
+      background-color: none !important;
+    }
+
+    /*  Colores primer acordeon submenu "Platos pricipales"*/
+
+    .submenu1 {
+      background-color: #F6A336 !important;
+      border-top: 1px;
+      border-radius: 3px;
+
+    }
+
+
+    .submenu2 {
+      background-color: #f6a336 !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu3 {
+      background-color: #F6A336 !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    /*  Colores segundo acordeon submenu "Vinos"*/
+    .submenu4 {
+      background-color: #E99532 !important;
+      border-top: 1px;
+      border-radius: 3px;
+
+    }
+
+    .submenu5 {
+      background-color: #E99532 !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu6 {
+      background-color: #E99532 !important;
+      border-top: 1px;
+      border-radius: 3px;
+
+    }
+
+    .submenu7 {
+      background-color: #DD882F !important;
+      border-top: 1px;
+      border-radius: 3px;
+
+    }
+
+    .submenu8 {
+      background-color: #DD882F !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu9 {
+      background-color: #DD882F !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu10 {
+      background-color: #D17B2C !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu11 {
+      background-color: #D17B2C !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu12 {
+      background-color: #D17B2C !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    /* tercerpanel */
+    .submenu13 {
+      background-color: #C66F29 !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu14 {
+      background-color: #C66F29 !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    .submenu15 {
+      background-color: #C66F29 !important;
+      border-top: 1px;
+      border-radius: 3px;
+    }
+
+    button {
+      size: 30px;
+    }
+
+    .sub-menu-separador {
+      border-top: 1px solid white;
+      margin-top: 1px;
+      display: flex;
+      width: 90%;
+      display: flex;
+    }
+
+    .sub-menu-separador p {
+      font-size: 18px;
+      margin-top: 2%;
+      padding: 5px 0px 10px 5px;
+      display: flex;
+      margin-left: 10px;
+      margin-bottom: 5px;
+    }
+
+    .separador-transparente {
+      width: 100%;
+      height: 55px;
+      border-radius: 5px;
+      border-style: none;
+      background-color: #D6CFC2;
+      position: relative;
+      bottom: 0.2em;
+      cursor: pointer;
+      pointer-events: none;
+
+
+    }
+
+    .ingrediente-1 {
+      margin-right: 8px;
+    }
+
+    /* Estilos imagen y ampliación*/
+
+    .imagen-plato {
+      max-width: 100%;
+
+      overflow: hidden;
+      position: relative;
+    }
+
+    .imagen-plato img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px !important;
+      cursor: pointer;
+    }
+
+
+
+
+    /* Estilos para la imagen adicional */
+    .imagen-adicional {
+      position: absolute;
+      top: 10px;
+      /* Ajusta la posición vertical según tus preferencias */
+      right: 10px;
+      /* Ajusta la posición horizontal según tus preferencias */
+      width: 50px;
+      /* Ancho de la imagen adicional */
+      height: auto;
+    }
+
+    /*Estilos texto descripcion plato */
+
+    .descripcion-plato p {
+      font-size: 16px !important;
+      padding-right: 8em;
+      margin-bottom: 0px;
+      margin-top: 1px;
+    }
+
+    .descripcion-plato {
+
+      font-family: 'TThoves', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 2em;
+      margin-left: 1em;
+
+
+    }
+
+    .descripcion-plato h3 {
+      text-transform: uppercase;
+      margin-bottom: 1px !important;
+      margin-top: 16px !important;
+      font-size: 16px;
+      font-family: 'TThoves', sans-serif !important;
+    }
+
+    .ingredientes2 {
+      display: flex;
+      padding-top: 1em;
+      padding-bottom: 0.2em;
+    }
+
+    .ingredientes {
+      position: relative;
+      width: 40%;
+      /* Las imágenes ocupan el 40% del ancho */
+      display: flex;
+      /* Utilizamos flexbox para alinear las imágenes en fila */
+      align-items: center;
+      justify-content: flex-end;
+      top: 5px;
+    }
+
+
+    .ingredientes img {
+      max-width: 32px !important;
+      /* Ajusta el tamaño de las imágenes al 100% del contenedor */
+      max-height: 100%;
+      /* Ajusta el alto máximo de las imágenes al 100% del contenedor */
+    }
+
+    .ingredientes2 {
+      width: 60%;
+      /* El título ocupa el 60% del ancho */
+
+    }
+
+    .container-ingredientes {
+      display: flex;
+    }
+
+    .fondo1 {
+      background-color: #F6A336 !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo2 {
+      background-color: #E99532 !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo3 {
+      background-color: #DD882F !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo4 {
+      background-color: #D17B2C !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .fondo5 {
+      background-color: #C66F29 !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    @media (max-width: 900px) {
+      .ingredientes img {
+        max-width: 30%;
+        max-height: 60%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="texto-Cabezera">
+    <!-- <p class="txt1">Para Comer </p> -->
+    <!-- <p class="txt2">Para Beber</p> -->
+
+  </div>
+
+  <div class="menu-contenedor">
+
+    <button class="acordeon principal">Ritos de Iniciación</button>
+    <div class="panel">
+
+      <button class="submenu submenu1">
+        <div class="sub-menu-separador">
+          <p>
+            Jamón ibérico de bellota 100% y su pan "tumaca"
+          </p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/JAMON.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/JAMON.webp" alt="Jamón de bellota">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+
+
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp"" alt=" Gluten">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p>Cortado a mano, ración de 100 gramos y acompañado de pan cristal crujiente, aove y tomate rallado.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajePapirusa">Papirusa</a> (Bodega Lustau),
+            <a href="#anclajeFinoQuinta">Fino Quinta</a> (Bodega Osborne).
+          </p>
+
+          <h3>ÁLERGENOS</h3>
+          <p>Gluten</p>
+          <P>26,00€</P>
+          <p></p>
+        </div>
+      </div>
+
+      <button class="submenu submenu2">
+        <div class="sub-menu-separador">
+          <p>
+            Ostra Francesa al natural / Granizado de manzana verde y wasabi
+          </p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080115.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080115.webp" alt="Ostra Francesa">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+
+
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="alergenos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lace">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p>Ostras Gillardeau, probablemente las mejores del mundo…
+            El sabor único de una ostra Gillardeau, no te dejará indiferente. Es el más suave y sofisticado de todas las ostras. Está considerada por muchos como la mejor del mundo. Este producto gourmet, es sinónimo de lujo y excelencia. Y es que la casa francesa Gillardeau tiene fama de cultivar las ostras más exquisitas del mercado.
+
+          </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeRecaredo">Recaredo Terrers Brut (Bodega Credo),</a>
+            <a href="#anclajeForlong">Forlong 80/20 (Bodega Forlong).</a>
+          </p>
+
+          <h3>ALÉRGENOS</h3>
+          <p>Moluscos y lácteos </p>
+          <P>4,50€</P>
+          <p></p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>
+            Nuestra selección de quesos Premium
+          </p>
+        </div>
+      </button>
+
+      <div class="panel sub-menu-panel-1">
+
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080037.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080037.webp" alt="Selección de quesos">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+
+
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lácteo">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p>Descubre nuestros Quesos Seleccionados: Desde el delicioso Manchego con D.O. hasta los más exclusivos quesos internacionales, como el stilton y nacionales, como el idiazabal. Puede solicitar un extra de foie.
+          </p>
+          <h3>MARIDAJE</h3>
+
+
+          <p> Para Postre
+            <a href="#anclajeAbuelHitao">AbuelHita(Bodega Campestral),</a>
+            <a href="#anclajeSr">Sr. Niño (Bodega Pradorey).</a>
+          </p>
+
+
+          <h3>ALÉRGENOS</h3>
+          <p>Lácteo</p>
+          <p>14,00€ / 130gr.</p>
+          <p>18,00€ / 250gr.</p>
+          <p></p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+
+          <p>Pincho de anchoa, boquerón y palo cortado</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090322.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090322.webp" alt="Pincho de anchoa">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="alergenos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="alérgenos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="">
+            </div>
+          </div>
+          <p>Esta tosta es una explosión de sabor en el paladar. La unión del boquerón en vinagre y el boquerón en salazón (anchoa). Sobre un delicioso pan brioche tostado, una mahonesa ahumada y un pisto tradicional. </p>
+          <h3>MARIDAJE</h3>
+          <p>
+            <a href="#anclajeCoquinero">Coquinero Fino en Rama (Bodega Osborne), </a>
+            <a href="#anclajeBombilla">Bombilla Fino (Bodega Toro Albalá).</a>
+          </p>
+
+
+          <h3>ALÉRGENOS</h3>
+
+          <p>Pescado, lácteos, huevos y gluten.</p>
+
+          <p style="font-size: 50px;">10,00€ / 2un.</p>
+
+        </div>
+
+      </div>
+
+      <div class="panel sub-menu-panel-1">
+
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <!--  <a data-fancybox="plato-image"
+                            href="">
+                            <img id="plato-image"
+                                src=""
+                                alt="">
+                        </a> -->
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+
+
+
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p> </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajePapirusa">Papirusa</a> (Bodega Lustau),
+            <a href="#anclajeFinoQuinta">Fino Quinta</a> (Bodega Osborne).
+          </p>
+
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten.</p>
+          <P>10,00€ / 2ud.</P>
+          <p></p>
+        </div>
+      </div>
+
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Tandem de almadraba: duo de tostas de atún rojo</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080462.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080462.webp" alt="atún almadraba">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="alergenos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="huevos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="leche">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="gluten">
+            </div>
+          </div>
+          <p>El atún rojo salvaje de almadraba es el gran protagonista. Producto excepcional. Estas tostas de atún son ideales para compartir y destacan por los innumerables matices que encierran.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeFino">Fino en Rama (Bodega Fernando castilla), </a>
+            <a href="#anclajeFulget">Fulget Albariño (Bodega Maior Mendoza).</a>
+          </p>
+
+          <h3>ALÉRGENOS</h3>
+          <p>Moluscos, soja, pescado, huevo, lácteo y gluten.</p>
+          <p>12,00€ / 2un.</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Croquetas cremosas de jamón de bellota con velo ibérico</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090358.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090358.webp" alt="Croquetas de jamón iberico">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="huevos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="Lactosa">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p>Con la nueva receta mejorada hemos dado con una Croqueta que se derrite en tu boca gracias a su textura súper cremosa que viene envuelta en panko, un pan rallado japonés que absorbe menos aceite y aporta un crujiente extra en tu bocado.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeSupernova">Supernova (Bodega Can Verdura), </a>
+            <a href="#anclajeSembro">Sembro (BodegaSembro).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Huevos, lácteos y gluten.</p>
+          <p>2,75€/un.</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Ensaladilla rusa, velo crujiente y matices de humo</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/Ensaladilla.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/Ensaladilla.webp" alt="<ensaladilla Rusa">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="Huevos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="Crustaceo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Moluscos">
+            </div>
+          </div>
+          <p>Recetas de ensaladilla rusa hay miles, pero la nuestra, con gamba blanca de Huelva, papa de Sanlucar y su cuidada elaboración hará que sea un verdadero disfrute para los sentidos.
+          </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeMarqués">Marqués de Sanfiz (Bodega Mendez Rojo), </a>
+            <a href="#anclajeLaberinto">Laberinto de Cidonia (Bodega Laberinto de Cidonia).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Huevos, crustáceo y molusco.</p>
+          <p>12,50€</p>
+        </div>
+      </div>
+
+
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Tortilla de Betanzos trufada</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080333.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080333.webp" alt="Tortilla">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/frutos-de-cascara.webp" alt="Frutos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/apio.webp" alt="apio">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Gluten">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lacteo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="egg">
+            </div>
+          </div>
+          <p> Tortilla de Betanzos, o tortilla estilo galaico. Se diferencia de la tortilla de patatas tradicional en que esta es mucho más melosa, con textura casi líquida. Y no es de extrañar, ya que lleva muchos más huevos que una tortilla de patatas convencional. Y el eterno debate: ¿Con o sin cebolla?
+            Nosotros le ponemos trufa…. </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajesemiseco">Fulgen Albariño Semi Seco (Bodega Maior Mendoza), </a>
+            <a href="#anclajeVolaina">Volaina Parellada (Bodega Credo).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Frutos de cáscara, apio, pescado, huevo, lácteos y gluten.</p>
+          <p>14,00€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Tortilla melosa con pulpo a feira</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080271.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080271.webp" alt="Tortilla melosa con pulpo">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="Huevos">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Moluscos">
+
+            </div>
+          </div>
+          <p> Porque nos gusta muchísimo la tortilla española y porque adoramos el pulpo a la gallega tanto como el pulpo a feira, unir la tortilla y el pulpo es una combinación deliciosa que solo se puede disfrutar con entusiasmo. </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeCampestral">Campestral Ancestral (Bodega Campestral), </a>
+            <a href="#anclajeMiranius">Miranius Xarel·lo (Bodega Credo).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Huevo y molusco.</p>
+          <p>16,00€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Burrata al carbón de gamba blanca, curry rojo y tomates confitados</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080078.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080078.webp" alt="Burrata">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/apio.webp" alt="apio">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="Lactosa">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="Crustaceo">
+            </div>
+          </div>
+          <p>Burrata buenísima al horno de carbón bañada en curry rojo thai, cherries confitados y gambas blancas de Huelva. Explosión de sabores….
+          </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeBotani">Botani Espumoso (Bodega Jorge Ordoñez), </a>
+            <a href="#anclajeForlong">Forlong 80/20 (Bodega Forlong).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Apio, lácteos y crustáceo.</p>
+          <p>16,50€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Aguacate a la brasa, pesto de cilantro y pico de gallo de anacardos</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/aguacate-brasa.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/aguacate-brasa.webp" alt="">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/frutos-secos.webp" alt="FRUTOS SECOS">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p> Aguacate a la brasa, pesto de cilantro y pico
+            de gallo de anacardos. </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeWin">Win 5.0 Verdejo Vino Vegano (Bodega Matarromer), </a>
+            <a href="#anclajeVilarnau">Vilarnau 0.0 Rosado Garnacha (Bodega Vilarnau).</a>
+          </p>
+          <h3></h3>
+          <p></p>
+          <p>17,50€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Falso ravioli de picaña madurada 100 días</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090272.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090272.webp" alt="Ravioli">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lacteo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+
+            </div>
+          </div>
+          <p>La tentación tiene nombre, aunque haya que adivinarlo tras un número eterno y mágico: Picaña.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeMas">Más que dos (Bodega La Val), </a>
+            <a href="#anclajeViña">Viña Oropéndola verdejo.</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Lácteo y gluten.</p>
+          <p>18,50€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu3">
+        <div class="sub-menu-separador">
+          <p>Steak tartar de vaca rubia gallega con yema de caserío sobre tuétano al carbón</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo1">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/STAEK-TARTAR-SOBRE-TUETANO.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/STAEK-TARTAR-SOBRE-TUETANO.webp" alt="Steak tartar">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img class="ingrediente-1" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/apio.webp" alt="Apio">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/mostaza.webp" alt="Mostaza">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="Huevo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p> Tartar de solomillo de vaca (21 días de maduración) sobre tuétano al carbón, una explosiva combinación que estalla en boca con sus múltiples sabores. ¡Un lujo carnívoro! </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeOloroso">Oloroso Señorío de Callao (Bodega León Domecq), </a>
+            <a href="#anclajeAmontillado">Amontillado la Honda (Bodega Osborne).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Apio, mostaza, soja, huevos y gluten.</p>
+          <p>24,00€</p>
+        </div>
+      </div>
+
+
+    </div>
+
+    <button class="acordeon vinos">Culto a la Madre Tierra</button>
+    <div class="panel">
+
+
+      <button class="submenu submenu4">
+        <div class="sub-menu-separador">
+          <p>Ensalada Ámbar (brotes tiernos, mango, aguacate, brie y vinagreta de mango</p>
+
+        </div>
+      </button>
+
+
+
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo2">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Ensalada-Ambar.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Ensalada-Ambar.webp" alt="Ensalada Ambar">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lacteos">
+
+
+            </div>
+          </div>
+          <p> Lo mejor de la axarquía, delicioso mango y aguacate perfectos en su punto de maduración. Queso tierno francés y otros ingredientes de temporada que van bañados por una cremosa vinagreta de mango.</p>
+          <h3>MARIDAJE</h3>
+          <p>
+            <a href="#anclajeAvancia">Avancia Modelo (Bodega Jorge Ordoñez), </a>
+            <a href="#anclajeFerratus">Ferratos Rosé Lías (Bodega Ferratos).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Lácteos.</p>
+          <p>16,50€</p>
+        </div>
+
+      </div>
+
+
+
+
+      <button class="submenu submenu5">
+        <div class="sub-menu-separador">
+          <p>Ensalada kaiso salmón aburi</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo2">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080105.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080105.webp" alt="Poke">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/granos-de-sesano.webp" alt="Granos de sesamo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="Crustaceo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Moluscos">
+            </div>
+          </div>
+          <p>Es una ensalada de salmón salvaje marinado, cortado en dados combinado con verduras, frutas y arroz y aderezado con una variedad de ingredientes como salsa de soja, aceite de sésamo, algas wakame,etc.. Esta combinación de ingredientes crea un plato fresco, sabroso y muy nutritivo. ¿Preparado para sentir un océano de sensaciones?
+          </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeRosado">Forlong Rosado vegano (Bodega Forlong). </a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Sésamo, soja, pescado, crustáceo y moluscos.</p>
+          <p>18,00€</p>
+        </div>
+
+      </div>
+
+      <button class="submenu submenu5">
+        <div class="sub-menu-separador">
+          <p>Ensalada de lechuga viva y tomates de la huerta de Conil</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo2">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Ensalada-de-tomates-de-conil.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Ensalada-de-tomates-de-conil.webp" alt="TOMATES DE conil">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p>La lechuga viva se considera un producto gourmet de alta calidad ya que conserva su frescura y propiedades hasta tu plato y lo acompañamos de tomate de la huerta de Conil, llamado Primor por el cariño y el mimo con el que se cultiva.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeRosado">Forlong Rosado vegano (Bodega Forlong). </a>
+          </p>
+          <h3></h3>
+          <p></p>
+          <p>18,00€</p>
+        </div>
+
+      </div>
+
+
+      <button class="submenu submenu5">
+        <div class="sub-menu-separador">
+          <p>Risotto de boletus, parmesano reggiano y manzanilla de Sanlúcar</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo2">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/RISOTO-DE-SETAS.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/RISOTO-DE-SETAS.webp" alt="Risotto">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lactose">
+
+            </div>
+          </div>
+          <p> Es cremoso, sabroso y delicioso. Con textura suave y mantecosa, su sabor a setas nunca deja de sorprendernos ya que en la actualidad sabemos que contienen el quinto sabor: el umami. Este plato es una autentica delicia. </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeLadespistada">La Despistada Albillo Mayor (Bodega Tarsus), </a>
+            <a href="#anclajeElmanifiesto">El Manifiesto Albillo (Bodega Valtraviesso).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Lácteos.</p>
+          <p>24,00€</p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="acordeon alcoholicas">Culto al Agua</button>
+    <div class="panel">
+      <button class="submenu submenu7">
+        <div class="sub-menu-separador">
+          <p>Tic Tac Boom (Atún rojo en bola coreana para elaborar Saam en mesa)</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Tic-Tac-Boom-Atun-rojo-en-bola-coreana-para-elaborar-Saam-en-mesaestudio.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Tic-Tac-Boom-Atun-rojo-en-bola-coreana-para-elaborar-Saam-en-mesaestudio.webp" alt="Atun rojo">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="trigo">
+            </div>
+          </div>
+          <p>Una sorpresa de plato preparado en mesa que combina la manera asiática con los ingredientes de la zona. Otra manera distinta de tomar un atún rojo de almadraba, todo un acierto en la elección. Ya marinada de sopletes en mesa y le da al atún una composición y textura de ligazón perfecta.
+            Una vez fundido y mezclado se enrolla junto con unas tiras de zanahoria, cebolla roja y salsa teriyaki en unas hojas de lechuga iceberg a modo de taco mejicano. La sensación en boca es de frescura, crujiente y suavidad. Primero percibías el crujiente del bocado para luego sentir la frescura y, por ultimo, la suavidad del atún macerado. Un plato original y perfecto en su concepción y ejecución.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeMuelle">El Muelle de Olaso (Bodega Luis Pérez), </a>
+            <a href="#anclajeGoya">Goya XL (Bodega Delgado Zuleta).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, pescado, moluscos y gluten.</p>
+          <p>24,00€</p>
+        </div>
+      </div>
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Vieira a la brasa sobre crema de mariscos</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/VIERAS.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/VIERAS.webp" alt="Vieiras">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="Crustaceo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="Lactosa">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p>Nuestras vieiras son un clásico. Sobre una bechamel suave de marisco y con un topping de lima rallada están cargadas de los matices más sofisticados.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeCampestral">La Val Treixadura (Bodega La Val), </a>
+            <a href="#anclajeEsmeralda">Viña Esmeralda Sparkling Gran Vas Vegano (Bodega Torres).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Crustáceo, molusco, lácteos, pescado y gluten.</p>
+          <p>6,00€ / un.</p>
+        </div>
+      </div>
+
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Salmón sushi flambé</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080379.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080379.webp" alt="Sushi flambé">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="Huevos">
+            </div>
+          </div>
+          <p> Bocado de salmón flambeado sobre lima y una salsa exquisita en 4 unidades
+          </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeAbulaga">Abulaga (Bodega Caballero), </a>
+            <a href="#anclajebarbazul">Barbazul Chardonnay (Bodega Huerta de Albalá).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, molusco, pescado y gluten.</p>
+          <p>18,50€</p>
+        </div>
+      </div>
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p> Tesoro Ambar con lingote de almadraba </p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/tesoro-estudio-2.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/tesoro-estudio-2.webp" alt="tesoro">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p> El atún rojo es un verdadero tesoro culinario q merece ser apreciado. Desde su origen el las profundidades del océano hasta su llegada al plato, ha sido cuidadosamente capturado y tratado. Su sabor exquisito, su textura única y sus beneficios para la salud lo convierten en una elección perfecta.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajefleur">Forlong Le Fleur, </a>
+            <a href="#anclajeCreu">Terrer de la Creu Brut Nature (Bodega Torres).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, pescado y gluten.</p>
+          <p>26,00€</p>
+        </div>
+      </div>
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Ceviche Nikkei</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080474.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080474.webp" alt="Ceviche">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+
+            </div>
+          </div>
+          <p>El ceviche Nikkei representa
+            un hermoso encuentro entre dos culturas culinarias distintas, que se unen para crear una experiencia gastronómica única. Es un testimonio de la historia y la influencia de la inmigración en la gastronomía peruana, y su popularidad perdura hasta nuestros días como un homenaje a la riqueza y la creatividad de la cocina peruana.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajePremium">Premium 1904 (Bodega Navarro López), </a>
+            <a href="#anclajeCapilla">La Capilla Verdejo(Bodega Finca la Capilla).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Pescado y soja.</p>
+          <p>24,00€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Fetuccini de carabineros y boletus flambeados</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090131.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090131.webp" alt="Fettuccini">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="crustaceo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="huevo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lacteo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p> Plato diferente y único. Directamente de Italia, una receta de Carabineros con pasta y con una fina salsa flambeada. Un plato de origen genovés, donde lo llaman “gambero rosso atlántico” para diferenciarlo de la gamba roja mediterránea, aunque sean especies diferentes. Mucho sabor, mucho aroma, y pocos ingredientes, cocina tradicional italiana con los sabores nuestros.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeCampestral">Campestral Ancestral (Bodega Campestral), </a>
+            <a href="#anclajeTalayon">Talayon Brut (Bodega Miquel Domecq).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Crustáceo, huevo, lácteos y gluten.</p>
+          <p>28,00€</p>
+        </div>
+      </div>
+
+      <!--  -->
+      <!-- <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Fetuccini de carabineros y boletus flambeados</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PB160199.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PB160199.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DESCRIPCIÓN DEL PLATO</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mariscos-2.png"
+                                alt="Crustaceo">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                        </div>
+                    </div>
+                    <p>Una exquisita interpretación de la clásica tortilla española enriquecida con la eleganci
+                        y el aroma inconfundible de la trufa. Nuestro plato combina a la perfección la suavidad 
+                        de la tortilla de patata tradicional con la sutileza y el sutil sabor terroso de la trufa.</p>
+                    <h3>MARIDAJE</h3>
+                    
+                    <P>
+                        Recomendamos para el maridaje de la tortilla de patatas 
+                        trufada un vino tinto joven de cuerpo ligero a medio, como un Tempranillo joven o un Pinot Noir.
+                    </P>
+                    <h3>ALÉRGENOS</h3>
+                    <p>Gluten, Trufas.</p>
+                    <p>28,00€</p>
+
+                </div>     
+            </div> -->
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Pescado de lonja según temporada a la espalda</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090345.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090345.webp" alt="Imagen del plato">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p> Nuestras costas nos ofrecen sus riquezas marinas y hacemos una selección del mejor pescado.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeBarbazul">Barbazul Chardonnay (Bodega Huerta de Albalá), </a>
+            <a href="#anclajeVolaina">Volaina Parellada (Bodega Credo).</a>
+          </p>
+          <h3></h3>
+          <p></p>
+          <p>Precio varia según mercado</p>
+
+        </div>
+
+      </div>
+    </div>
+
+    <button class="acordeon deseo">Culto al Deseo</button>
+    <button class="acordeon deseo dentro">Postres</button>
+    <div class="panel">
+      <button class="submenu submenu7">
+        <div class="sub-menu-separador">
+          <p>Full Black, Para 2 Personas</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Tic-Tac-Boom-Atun-rojo-en-bola-coreana-para-elaborar-Saam-en-mesaestudio.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Tic-Tac-Boom-Atun-rojo-en-bola-coreana-para-elaborar-Saam-en-mesaestudio.webp" alt="Atun rojo">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="trigo">
+            </div>
+          </div>
+          <p>Explosión de chocolate en varías texturas, tierno bizcocho, helados con diferentes cacaos y crujientes de chocolate </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            AbuelHita (Bodega Campestral), Santa Águeda Naranja (Bodega Marqués de Villalba).
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten, huevo y lácteo.</p>
+          <p>9,00€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Nuestra Tarta De Queso Caramelizada Con Helado De Leche Fresa De Conil</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/VIERAS.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/VIERAS.webp" alt="Vieiras">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="Crustaceo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="Lactosa">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p>Nuestras vieiras son un clásico. Sobre una bechamel suave de marisco y con un topping de lima rallada están cargadas de los matices más sofisticados.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeCampestral">La Val Treixadura (Bodega La Val), </a>
+            <a href="#anclajeEsmeralda">Viña Esmeralda Sparkling Gran Vas Vegano (Bodega Torres).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Crustáceo, molusco, lácteos, pescado y gluten.</p>
+          <p>6,00€ / un.</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Pasión Por La Paviova</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080379.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080379.webp" alt="Sushi flambé">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="Huevos">
+            </div>
+          </div>
+          <p> Bocado de salmón flambeado sobre lima y una salsa exquisita en 4 unidades
+          </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeAbulaga">Abulaga (Bodega Caballero), </a>
+            <a href="#anclajebarbazul">Barbazul Chardonnay (Bodega Huerta de Albalá).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, molusco, pescado y gluten.</p>
+          <p>18,50€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p> Torrija Tibia Con Helado Artesano </p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/tesoro-estudio-2.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/tesoro-estudio-2.webp" alt="tesoro">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p> El atún rojo es un verdadero tesoro culinario q merece ser apreciado. Desde su origen el las profundidades del océano hasta su llegada al plato, ha sido cuidadosamente capturado y tratado. Su sabor exquisito, su textura única y sus beneficios para la salud lo convierten en una elección perfecta.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajefleur">Forlong Le Fleur, </a>
+            <a href="#anclajeCreu">Terrer de la Creu Brut Nature (Bodega Torres).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, pescado y gluten.</p>
+          <p>26,00€</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="acordeon deseo dentro">Vinos De Postres</button>
+    <div class="panel">
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Listado de vinos para postres</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="descripcion-plato">
+          <div class="container-ingredientes"> 
+            <ul class="lista-vinos">
+                <li class="item-vino">
+                  <span class="vino-nombre">Santa Águeda naranja 50cl B 25,00€ / C 5,00€</span>
+                  <span class="vino-descripcion">Zalema y Moscatel/Bodegas Marqués de Villalúa/D.O. Condado de Huelva</span>
+                </li>
+                <li class="item-vino">
+                  <span class="vino-nombre">Ruby Oporto B25.00€ / C 25.00€</span>
+                  <span class="vino-descripcion">Coupage/Bodega Osborne/Vino Generoso de Oporto</span>
+                </li>
+                <li class="item-vino">
+                  <span class="vino-nombre">Tintilla de Rota 50cl B 32.00€ / C 6.50€</span>
+                  <span class="vino-descripcion">Tintilla de Rota (Pago Callejuela)/Bodega Callejuela/Cádiz</span>
+                </li>
+                <li class="item-vino">
+                  <span class="vino-nombre">V Dulce de Invierno 50cl B 32.00€ / C 6.50€</span>
+                  <span class="vino-descripcion">80% Verdejo y 20% Moscatel/Javier Sanz Viticultor/Valladolid</span>
+                </li>
+                <li class="item-vino">
+                  <span class="vino-nombre">Abuelita Hita naturalmente dulce 50cl B 46.00€/C 9.00€</span>
+                  <span class="vino-descripcion">Tintilla de Rota, Merlot y Petit Verdot/Bodegas Campesrtral/Cádiz</span>
+                </li>
+                <li class="item-vino">
+                  <span class="vino-nombre">Oremus Tokaji Aszú 5 puttonyos 50cl B 49.00€/C 9.00€</span>
+                  <span class="vino-descripcion">Coupage/Bodega Oremus-Vega Sicilia/D.O. Tokaj</span>
+                </li>
+              </ul>
+              
+              
+        </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <button class="acordeon deseo dentro">Merienda</button>
+    <div class="panel">
+      <button class="submenu submenu7">
+        <div class="sub-menu-separador">
+          <p>Tic Tac Boom (Atún rojo en bola coreana para elaborar Saam en mesa)</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Tic-Tac-Boom-Atun-rojo-en-bola-coreana-para-elaborar-Saam-en-mesaestudio.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/Tic-Tac-Boom-Atun-rojo-en-bola-coreana-para-elaborar-Saam-en-mesaestudio.webp" alt="Atun rojo">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="trigo">
+            </div>
+          </div>
+          <p>Una sorpresa de plato preparado en mesa que combina la manera asiática con los ingredientes de la zona. Otra manera distinta de tomar un atún rojo de almadraba, todo un acierto en la elección. Ya marinada de sopletes en mesa y le da al atún una composición y textura de ligazón perfecta.
+            Una vez fundido y mezclado se enrolla junto con unas tiras de zanahoria, cebolla roja y salsa teriyaki en unas hojas de lechuga iceberg a modo de taco mejicano. La sensación en boca es de frescura, crujiente y suavidad. Primero percibías el crujiente del bocado para luego sentir la frescura y, por ultimo, la suavidad del atún macerado. Un plato original y perfecto en su concepción y ejecución.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeMuelle">El Muelle de Olaso (Bodega Luis Pérez), </a>
+            <a href="#anclajeGoya">Goya XL (Bodega Delgado Zuleta).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, pescado, moluscos y gluten.</p>
+          <p>24,00€</p>
+        </div>
+      </div>
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Vieira a la brasa sobre crema de mariscos</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/VIERAS.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/VIERAS.webp" alt="Vieiras">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="Crustaceo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="Lactosa">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p>Nuestras vieiras son un clásico. Sobre una bechamel suave de marisco y con un topping de lima rallada están cargadas de los matices más sofisticados.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeCampestral">La Val Treixadura (Bodega La Val), </a>
+            <a href="#anclajeEsmeralda">Viña Esmeralda Sparkling Gran Vas Vegano (Bodega Torres).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Crustáceo, molusco, lácteos, pescado y gluten.</p>
+          <p>6,00€ / un.</p>
+        </div>
+      </div>
+
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Salmón sushi flambé</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080379.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080379.webp" alt="Sushi flambé">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="Soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/moluscos.webp" alt="Molusco">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="Huevos">
+            </div>
+          </div>
+          <p> Bocado de salmón flambeado sobre lima y una salsa exquisita en 4 unidades
+          </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeAbulaga">Abulaga (Bodega Caballero), </a>
+            <a href="#anclajebarbazul">Barbazul Chardonnay (Bodega Huerta de Albalá).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, molusco, pescado y gluten.</p>
+          <p>18,50€</p>
+        </div>
+      </div>
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p> Tesoro Ambar con lingote de almadraba </p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/tesoro-estudio-2.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/tesoro-estudio-2.webp" alt="tesoro">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p> El atún rojo es un verdadero tesoro culinario q merece ser apreciado. Desde su origen el las profundidades del océano hasta su llegada al plato, ha sido cuidadosamente capturado y tratado. Su sabor exquisito, su textura única y sus beneficios para la salud lo convierten en una elección perfecta.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajefleur">Forlong Le Fleur, </a>
+            <a href="#anclajeCreu">Terrer de la Creu Brut Nature (Bodega Torres).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, pescado y gluten.</p>
+          <p>26,00€</p>
+        </div>
+      </div>
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Ceviche Nikkei</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080474.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2080474.webp" alt="Ceviche">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/pescado.webp" alt="Pescado">
+
+            </div>
+          </div>
+          <p>El ceviche Nikkei representa
+            un hermoso encuentro entre dos culturas culinarias distintas, que se unen para crear una experiencia gastronómica única. Es un testimonio de la historia y la influencia de la inmigración en la gastronomía peruana, y su popularidad perdura hasta nuestros días como un homenaje a la riqueza y la creatividad de la cocina peruana.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajePremium">Premium 1904 (Bodega Navarro López), </a>
+            <a href="#anclajeCapilla">La Capilla Verdejo(Bodega Finca la Capilla).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Pescado y soja.</p>
+          <p>24,00€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Fetuccini de carabineros y boletus flambeados</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090131.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090131.webp" alt="Fettuccini">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="crustaceo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="huevo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lacteo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="Gluten">
+            </div>
+          </div>
+          <p> Plato diferente y único. Directamente de Italia, una receta de Carabineros con pasta y con una fina salsa flambeada. Un plato de origen genovés, donde lo llaman “gambero rosso atlántico” para diferenciarlo de la gamba roja mediterránea, aunque sean especies diferentes. Mucho sabor, mucho aroma, y pocos ingredientes, cocina tradicional italiana con los sabores nuestros.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeCampestral">Campestral Ancestral (Bodega Campestral), </a>
+            <a href="#anclajeTalayon">Talayon Brut (Bodega Miquel Domecq).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Crustáceo, huevo, lácteos y gluten.</p>
+          <p>28,00€</p>
+        </div>
+      </div>
+
+      <!--  -->
+      <!-- <button class="submenu submenu8">
+                <div class="sub-menu-separador">
+                    <p>Fetuccini de carabineros y boletus flambeados</p>
+                </div>
+            </button>
+            <div class="panel sub-menu-panel">
+                <div class="imagen-plato">
+                    <div class="fondo3">
+                        <a data-fancybox="plato-image"
+                            href="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PB160199.webp">
+                            <img id="plato-image"
+                                src="https://ambarvistahermosa.com/wp-content/uploads/2023/11/PB160199.webp"
+                                alt="Imagen del plato">
+                        </a>
+                    </div>
+                    <div class="imagen-adicional">
+
+                    </div>
+                </div>
+                <div class="descripcion-plato">
+                    <div class="container-ingredientes">
+                        <div class="ingredientes2">
+                            <h3>DESCRIPCIÓN DEL PLATO</h3>
+                        </div>
+                        <div class="ingredientes"> <img src="" alt="">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/Mariscos-2.png"
+                                alt="Crustaceo">
+                            <img src="https://ambarvistahermosa.com/wp-content/uploads/2023/09/lacteo-2.png"
+                                alt="Lactosa">
+                        </div>
+                    </div>
+                    <p>Una exquisita interpretación de la clásica tortilla española enriquecida con la eleganci
+                        y el aroma inconfundible de la trufa. Nuestro plato combina a la perfección la suavidad 
+                        de la tortilla de patata tradicional con la sutileza y el sutil sabor terroso de la trufa.</p>
+                    <h3>MARIDAJE</h3>
+                    
+                    <P>
+                        Recomendamos para el maridaje de la tortilla de patatas 
+                        trufada un vino tinto joven de cuerpo ligero a medio, como un Tempranillo joven o un Pinot Noir.
+                    </P>
+                    <h3>ALÉRGENOS</h3>
+                    <p>Gluten, Trufas.</p>
+                    <p>28,00€</p>
+
+                </div>     
+            </div> -->
+
+      <button class="submenu submenu8">
+        <div class="sub-menu-separador">
+          <p>Pescado de lonja según temporada a la espalda</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090345.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090345.webp" alt="Imagen del plato">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p> Nuestras costas nos ofrecen sus riquezas marinas y hacemos una selección del mejor pescado.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeBarbazul">Barbazul Chardonnay (Bodega Huerta de Albalá), </a>
+            <a href="#anclajeVolaina">Volaina Parellada (Bodega Credo).</a>
+          </p>
+          <h3></h3>
+          <p></p>
+          <p>Precio varia según mercado</p>
+
+        </div>
+        <!--  -->
+
+      </div>
+    </div>
+
+
+    <button class="acordeon refrescos">Culto al Fuego</button>
+    <div class="panel">
+      <button class="submenu submenu10">
+        <div class="sub-menu-separador">
+          <p>Carabinero abierto a la brasa</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090251-scaled.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090251-scaled.webp" alt="carabinieri">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/crustaceos.webp" alt="Crustáceo">
+
+            </div>
+          </div>
+          <p> Los carabineros son un lujo en cualquier cocina. Te lo presentamos a la brasa donde se extrae su máximo potencial y sabor único.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeHispania">Hispania Blanco Crianza (Bodega Territorio Luthier), </a>
+            <a href="#anclajeBideona">Bideona Viura de Cabezadas Crianza (Bodega Península Vinicultores).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Crustáceos</p>
+          <p>18,00€ / 100gr.</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu10">
+        <div class="sub-menu-separador">
+          <p>Solomillo de ternera brasa 200gr aprox. blackpepper sauce</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090420.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090420.webp" alt="solomillo">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <style>
+          .ingredientes img {
+            margin-right: 5px;
+            /* Puedes ajustar el valor según la separación que desees */
+          }
+        </style>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/soja.webp" alt="soja">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lacteo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="gluten">
+
+            </div>
+          </div>
+          <p>Nuestro solomillo de sabor , textura muy tierna y jugosa va presentando con una salsa cremosa a la pimienta diferente a cualquier otra que hayas probado.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeTinto">Barbazul Tinto Selección Especial (Bodega Huerta de Albalá), </a>
+            <a href="#anclajeCadastro">El Cadastro (Bodega Oliver Riviére).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Soja, lácteos y gluten.</p>
+          <p>30,00€</p>
+        </div>
+      </div>
+
+
+      <button class="submenu submenu10">
+        <div class="sub-menu-separador">
+          <p>Chuletón de vaca frisona madurado</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090339.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090339.webp" alt="chuleton">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="gluten">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="huevo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lace">
+            </div>
+          </div>
+          <p>El chuletón de Vaca Frisona Gallega madurado es un auténtico tesoro culinario. Procedente de la prestigiosa raza Frisona Gallega y está sometido a un cuidadoso proceso de maduración, este chuletón despliega una combinación de sabores y texturas que deleitarán a los paladares más exigentes. </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeARX">ARX (Bodega Tesalia), </a>
+            <a href="#anclajeMalabrigo">Malabrigo (Bodega Cepa 21).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten, lácteo y huevo.</p>
+          <p>9,50€ / 100gr.</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu10">
+        <div class="sub-menu-separador">
+          <p>Lomo bajo Premium</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/LOMO-BAJO.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/LOMO-BAJO.webp" alt="lomo">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p>Se caracteriza por su aspecto jugoso y su infiltración de grasa.
+            Presenta una mayor intensidad. </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeMil">Mil Cantos (Bodega Valtravieso), </a>
+            <a href="#anclajeulterior">Ulterior Parcela nº10 (Bodega Verum).</a>
+          </p>
+          <h3></h3>
+          <p></p>
+          <p>8€ / 100gr. </p>
+        </div>
+      </div>
+
+
+      <button class="submenu submenu10">
+        <div class="sub-menu-separador">
+          <p>Mini burguer Ámbar</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090353.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090353.webp" alt="burguer">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/huevos.webp" alt="huevo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/lacteos.webp" alt="lacteo">
+              <img src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/contiene-gluten.webp" alt="gluten">
+            </div>
+          </div>
+          <p>Nuestra hamburguesa en versión mini pero con la maxima calidad, queso cheddar, huevo poche, bacon y nuestra salsa especial... </p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeSanta">Santa Digna Cabernet Sauvignon (Bodega Miguel Torres Chile), </a>
+            <a href="#anclajeA0">Ferratos A0(Bodega Ferratos).</a>
+          </p>
+          <h3>ALÉRGENOS</h3>
+          <p>Gluten, huevo y lácteos.</p>
+          <p>7,00€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu10">
+        <div class="sub-menu-separador">
+          <p>Presa ibérica al carbón 500 g aprox.</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090519.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090519.webp" alt="PRESA IBERICA">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p>Descubre una experiencia culinaria única con nuestra exquisita Presa Ibérica al carbón, una pieza entera de aproximadamente 500 gramos, cuidadosamente preparada para deleitar tu paladar. Disfruta de la jugosidad y el sabor inigualable de esta selección premium, asada a la perfección sobre brasas ardientes, creando un plato que fusiona tradición y modernidad. Sumérgete en la intensidad de los sabores ahumados y la terneza de la carne, una propuesta gastronómica que cautivará a los amantes de la buena cocina. ¡Una experiencia única que te transportará a la esencia auténtica de la gastronomía ibérica!</p>
+
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeCapilla">La Capilla Crianza (Bodega Finca La Capilla), </a>
+            <a href="#anclajeSembro">Sembró Edición Limitada (Bodega Sembro).</a>
+          </p>
+          <h3></h3>
+          <p></p>
+          <p>32,00€</p>
+        </div>
+      </div>
+
+      <button class="submenu submenu10">
+        <div class="sub-menu-separador">
+          <p>Mollejas de ternera</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090443.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/02/P2090443.webp" alt="Mollejas de ternera">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+              <img src="" alt="">
+              <img src="" alt="">
+            </div>
+          </div>
+          <p> Embárcate en una experiencia culinaria con nuestras suculentas Mollejas de Ternera, un plato que promete cautivar tu paladar. Disfruta de la exquisita ternura de estas mollejas de ternera, preparadas y presentadas como una obra maestra culinaria. Deléitate con la armoniosa combinación de sabores y texturas mientras las mollejas se asan a la perfección, ofreciendo una experiencia gastronómica que fusiona a la perfección la innovación con el atractivo clásico. Eleva tu experiencia culinaria con este plato único, donde cada bocado es una celebración de la rica herencia y experiencia culinaria que define nuestro establecimiento.</p>
+          <h3>MARIDAJE</h3>
+
+          <p>
+            <a href="#anclajeMontecillo">Montecillo Edición Limitada (Bodega Montecarlo), </a>
+            <a href="#anclajeGarnacha">Dindi Garnacha (Bodega Malaparte).</a>
+          </p>
+          <h3></h3>
+          <p></p>
+          <p>21,00€</p>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="acordeon cafe">Guarniciones</button>
+    <div class="panel">
+      <button class="submenu submenu14">
+        <div class="sub-menu-separador">
+          <p>Patata asada con mantequilla francesa</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo3">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/PATATAS-ASADAS.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/PATATAS-ASADAS.webp" alt="">
+            </a>
+          </div>
+
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3></h3>
+
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+
+            </div>
+          </div>
+          <p>Descubre la deliciosa perfección de nuestras patatas asadas con mantequilla, una guarnición que eleva el sencillo tubérculo a una experiencia culinaria extraordinaria. Las patatas, cuidadosamente asadas hasta obtener un dorado crujiente por fuera y una textura tierna por dentro, se impregnan con la suavidad y el sabor indulgente de la mantequilla de la más alta calidad. Este acompañamiento, con su irresistible combinación de sabores tostados y la cremosidad de la mantequilla, complementa a la perfección cualquier plato principal, añadiendo un toque reconfortante y exquisito a tu experiencia gastronómica.</p>
+
+
+          <h3></h3>
+          <p></p>
+          <p>4,00€ </p>
+        </div>
+      </div>
+
+      <button class="submenu submenu15">
+        <div class="sub-menu-separador">
+          <p>Patatas fritas con padrones</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo4">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/PATATAS-FRITAS-CON-PIMIENTOS-PADRON.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/PATATAS-FRITAS-CON-PIMIENTOS-PADRON.webp" alt="">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DE LA GUARNICIÓN</h3>
+
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+
+            </div>
+          </div>
+          <p>Sabores vibrantes con nuestra guarnición de patatas fritas acompañadas de pimientos del padrón. Las crujientes patatas, doradas a la perfección, se mezclan con la sorprendente explosión de sabor de los pimientos del padrón, que ofrecen una intrigante combinación de lo picante y lo suave. Cada bocado es una aventura sensorial, donde la textura crujiente de las patatas se encuentra con la jugosidad y el toque ligeramente picante de los pimientos. Esta guarnición añade un toque emocionante a tu plato principal, convirtiendo cada comida en un festín de contrastes que deleitará a tu paladar.
+          </p>
+
+          <h3></h3>
+          <p></p>
+
+
+          <p>4,00€ </p>
+        </div>
+
+      </div>
+
+      <button class="submenu submenu15">
+        <div class="sub-menu-separador">
+          <p>Verduras a la plancha</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo4">
+            <a data-fancybox="plato-image" href="https://ambarvistahermosa.com/wp-content/uploads/2024/03/GUARNICION-VERDURAS-PLANCA.webp">
+              <img id="plato-image" src="https://ambarvistahermosa.com/wp-content/uploads/2024/03/GUARNICION-VERDURAS-PLANCA.webp" alt="">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DE LA GUARNICIÓN</h3>
+
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+
+            </div>
+          </div>
+          <p>
+            Explora la frescura y vitalidad en cada bocado con nuestras vibrantes Verduras a la Plancha, una guarnición que celebra la paleta de colores y sabores de la naturaleza. La selección cuidadosa de verduras frescas, desde tiernos espárragos hasta jugosos tomates cherry, se cocina a la perfección en la plancha para resaltar su textura crujiente y sus aromas naturales. Cada mordisco es una sinfonía de sabores frescos y vibrantes, que transporta tu paladar a un jardín de delicias culinarias. Disfruta de esta explosión de vegetales asados que añade un toque saludable y lleno de vida a tu experiencia gastronómica.</p>
+
+
+          <h3></h3>
+          <p> </p>
+
+
+          <p>4,00€ </p>
+        </div>
+
+      </div>
+      <button class="submenu submenu15">
+        <div class="sub-menu-separador">
+          <p>Cogollos de lechuga</p>
+        </div>
+      </button>
+      <div class="panel sub-menu-panel">
+        <div class="imagen-plato">
+          <div class="fondo5">
+            <a data-fancybox="plato-image" href="">
+              <img id="plato-image" src="" alt="">
+            </a>
+          </div>
+          <!-- Agrega la imagen adicional aquí -->
+          <div class="imagen-adicional">
+
+          </div>
+        </div>
+        <div class="descripcion-plato">
+          <div class="container-ingredientes">
+            <div class="ingredientes2">
+              <h3>DESCRIPCIÓN DEL PLATO</h3>
+
+            </div>
+            <div class="ingredientes"> <img src="" alt="">
+
+            </div>
+          </div>
+          <p>Experimenta la frescura en su máxima expresión con nuestros Cogollos de Lechuga, una guarnición delicada y crujiente que aporta una explosión de sabor verde a cada bocado.</p>
+
+
+          <h3></h3>
+          <p></p>
+
+
+          <p>4,00€</p>
+        </div>
+
+
+      </div>
+    </div>
+
+    <!--  -->
+
+  </div>
+  <button class="separador-transparente"></button>
+
+  <script>
+    // Para iterar sobre los contenedoresdel submenu si agrega mas  aumente el numero
+    document.addEventListener("DOMContentLoaded", function() {
+      for (let i = 1; i <= 15; i++) {
+        const className = `.submenu${i}`;
+        const subMenus = document.querySelectorAll(className);
+
+        subMenus.forEach(function(subMenu) {
+          const toggleButton = document.createElement("div");
+          toggleButton.classList.add("toggle");
+          toggleButton.innerHTML = '<div class="plus">+</div>';
+          subMenu.appendChild(toggleButton);
+
+          toggleButton.addEventListener("click", function(e) {
+            e.stopPropagation();
+            const subMenuPanel = subMenu.nextElementSibling;
+
+            if (subMenuPanel.style.display === "none" || subMenuPanel.style.display === "") {
+              subMenuPanel.style.display = "block";
+              toggleButton.querySelector(".plus").style.display = "none";
+              toggleButton.innerHTML = '<div class="minus">-</div>';
+            } else {
+              subMenuPanel.style.display = "none";
+              toggleButton.querySelector(".minus").style.display = "none";
+              toggleButton.innerHTML = '<div class="plus">+</div>';
+            }
+          });
+
+          subMenu.addEventListener("click", function(event) {
+            event.stopPropagation();
+            const subMenuPanel = subMenu.nextElementSibling;
+
+            if (subMenuPanel.style.display === "none" || subMenuPanel.style.display === "") {
+              subMenuPanel.style.display = "block";
+              toggleButton.querySelector(".plus").style.display = "none";
+              toggleButton.innerHTML = '<div class="minus">-</div>';
+            } else {
+              subMenuPanel.style.display = "none";
+              toggleButton.querySelector(".minus").style.display = "none";
+              toggleButton.innerHTML = '<div class="plus">+</div>';
+            }
+          });
+        });
+      }
+
+      const acordeones = document.querySelectorAll(".acordeon");
+
+      acordeones.forEach(function(acordeon) {
+        acordeon.addEventListener("click", function() {
+          acordeones.forEach(function(item) {
+            if (item !== acordeon) {
+              item.classList.remove("activo");
+              item.nextElementSibling.style.display = "none";
+            }
+          });
+
+          this.classList.toggle("activo");
+          const panel = this.nextElementSibling;
+
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+            const otrosPaneles = document.querySelectorAll(".panel");
+            otrosPaneles.forEach(function(otroPanel) {
+              if (otroPanel !== panel) {
+                otroPanel.style.display = "none";
+              }
+            });
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
